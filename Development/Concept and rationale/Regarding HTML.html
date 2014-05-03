@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="author" content="Daiki Umeda (XJINE)">
+	<meta name="generator" content="Blackboard">
+	<meta name="generator" content="KARAS">
+	<meta charset="UTF-8" />
+	<title>KARAS - Regarding HTML</title>
+	<link rel="stylesheet" href="../../default.css" type="text/css" media="all" charset="">
+	<meta property="og:site_name" content="KARAS">
+	<meta property="og:title" content="Regarding HTML">
+	<meta property="og:url" content="http://www.lightweightmarkuplanguage.com/Development/Concept and rationale/Regarding HTML.html">
+	<meta property="og:image" content="http://www.lightweightmarkuplanguage.com/ogpimg.jpg">
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+	  ga('create', 'UA-44157178-2', 'lightweightmarkuplanguage.com');
+	  ga('send', 'pageview');
+	</script>
+</head>
+<body>
+<div id="outframe">
+	<header>
+		<a id="logo" href="../../index.html" title="Top"></a>
+		<h1><a href="../../index.html">KARAS</a></h1>
+		<h2><a href="../../index.html">Lightweight Markup Language</a></h2>
+	</header>
+	<div id="contents">
+		<div id="sidebar">
+			<ul class="menu">
+				<li><a href="./../../Syntax/index.html" title="Syntax">Syntax</a></li>
+				<li><a href="./../../Download.html" title="Download">Download</a></li>
+				<li><a href="./../../License.html" title="License">License</a></li>
+				<li><a href="./../../Development/index.html" title="Development">Development</a></li>
+				<li><a href="./../../Donation.html" title="Donation">Donation</a></li>
+				<li><a href="./../../Information.html" title="Donation">Information</a></li>
+			</ul>
+			<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+			<!-- KARAS_Side_160x600 -->
+			<ins class="adsbygoogle"
+			     style="display:inline-block;width:160px;height:600px"
+			     data-ad-client="ca-pub-9133526697051515"
+			     data-ad-slot="6825762586"></ins>
+			<script>
+			(adsbygoogle = window.adsbygoogle || []).push({});
+			</script>
+		</div>
+		<div id="maincolumn">
+			<div id="pageinfo">
+				<div id ="topicpath"><a href="../../index.html">Top</a>&nbsp;&gt;&nbsp;<a href="../../Development/index.html">Development</a>&nbsp;&gt;&nbsp;<a href="../Concept and rationale/index.html">Concept and rationale</a>&nbsp;&gt;&nbsp;<a href="Regarding HTML.html">Regarding HTML</a></div>
+				<div id="lastmodified">Last modified : 2014. 05. 02</div>
+			</div>
+			<article>
+			<h1 id="regardinghtml">Regarding HTML</h1>
+<p>このページでは HTML に関連するシステム設計について解説しています。</p>
+<ul>
+<li><a href="#identifyhtml">HTML 要素の識別</a></li>
+<li><a href="#identifyltmark"><i>&lt;</i> から始まるテキストの識別</a></li>
+<li><a href="#karasinhtml">HTML 内にある KARAS の構文</a></li>
+<li><a href="#rmvlinebreak">改行の除去</a></li>
+<li><a href="#breakinmlink">メディアリンクの改行</a></li>
+<li><a href="#ltgtinprecode"><i>pre</i>, <i>code</i>, <i>samp</i> の中にある <i>&lt;</i> と <i>&gt;</i> は変換されない</a></li>
+</ul>
+<h2 id="identifyhtml">HTML 要素の識別</h2>
+<p>KARAS で書かれたテキストには HTML を含めることができます。ただし KARAS の標準的なコンバーターは、HTML タグの内容を理解しません。例えば次のようなとき、テキストは <i>p</i> 要素として出力されます。</p>
+<figure>
+<figcaption>Input</figcaption>
+<pre class="karas"><code class="karas">This text become a paragraph. &lt;pre&gt;In HTML&lt;/pre&gt;, p element cannot include pre element.</code></pre>
+</figure>
+<figure>
+<figcaption>Output</figcaption>
+<pre class="html"><code class="html">&lt;p&gt;This text become a paragraph. &lt;pre&gt;In HTML&lt;/pre&gt;, p element cannot include pre element.&lt;/p&gt;</code></pre>
+</figure>
+<p>この出力結果の HTML は誤った構造を持っています。 <i>pre</i> 要素は <i>p</i> 要素に含めることができないためです。もしも KARAS の標準的なコンバーターがタグを解析するならば、 <u><i>p</i> - <i>pre</i> - <i>p</i></u> のように、2つの <i>p</i> 要素が <i>pre</i> 要素を挟む構造になります。しかし KARAS の標準的なコンバーターではこれをしません。理由は変換速度のためです。</p>
+<p>ユーザが書いた HTML タグの中身を解析すれば、理想的な出力結果を得られますが、解析することの負担はとても大きいです。W3C の資料を読む限り、2014年現在では、インライン要素は 28 種類、それ以外の要素は、28種類以上あります。もしもタグを解析して適切な出力結果を得ようとするならば、少なくともインライン要素の 28種類のいずれのタグであるかを判定する必要があります。タグが現れる度にそのような処理をすることは、変換速度を落とすことにつながります。</p>
+<p>ユーザが自由に HTML を挿入するときは、そのユーザは HTML に対して十分な理解を持っていると考えられます。したがって出力結果の正しさを保証することよりも、変換速度を優先することに大きな問題はないと判断しました。この <i>pre</i> 要素の問題以外にも、HTML の構文を解析しないことによって起こるほとんどの問題は、高速な変換のために解決されません。</p>
+<ul>
+<li>Reference
+<ul>
+<li><a href="http://www.w3.org/TR/2012/CR-html5-20121217/text-level-semantics.html#the-bdi-element">HTML5 4.6 Text-level semantics - W3C</a></li>
+</ul>
+</li>
+</ul>
+<p>この問題は将来的に、あらゆる環境で十分な変換速度が実現できるタイミングで、解決することができるかもしれません。つまり、将来的には、KARAS の標準的なコンバーターが、タグも正しく認識する可能性がある、ということです。しかしながら、現在のところ、その予定はありません。その理由については次の項目で解説します。</p>
+<h2 id="identifyltmark"><i>&lt;</i> から始まるテキストの識別</h2>
+<p>KARAS の標準のコンバーターでは、<code>&lt;</code> から始まるテキストを HTML 要素として判定します。理由は、上の項目と同じです。 <code>&lt;</code> から始まるテキストが、HTML タグの一部なのか、あるいはテキストなのか、判定するためには多くの処理を必要とします。</p>
+<p>さらに、将来、新たな HTML 要素が定義されることもあるかもしれません。また、ユーザが独自に定義するタグについても検証することは困難です。あらゆるタグを KARAS の変換処理から取り除くことは、私は良いことだと考えています。</p>
+<h2 id="karasinhtml">HTML 内にある KARAS の構文</h2>
+<p><code>&lt;</code> から開始されるテキストに含まれる KARAS の構文は変換されません。正しく変換するためには多くの処理が必要になり、変換速度が遅くなるからです。また、変換しないことによって、そのテキストが KARAS のコンバーターによって変換されないことを明らかにすることができます。KARAS では必要なら HTML を書くことができますが、HTML を書くときの多くは、コピーアンドペーストを使うと思います。この仕様であれば、コピーアンドペーストした HTML テキストに含まれる KARAS の構文を探してエスケープするような、面倒くさい作業は要らなくなります。</p>
+<p>当然のことですが、ユーザは、KARAS の構文で出力される HTML と同じ内容の HTML を書くことができます。したがって、この仕様は問題を持っていないと考えています。</p>
+<h2 id="rmvlinebreak">改行の除去</h2>
+<p>多くのブラウザでは、HTML の <i>p</i> 要素や <i>li</i> 要素の中にある改行は、半角スペースと同じように僅かな空間としてレンダリングされます。KARAS では空行が現れるまでは、改行を含めたテキストを1つのブロックとしてみなします。例えば、次のようなときです。</p>
+<figure>
+<figcaption>Input</figcaption>
+<pre class="karas"><code class="karas">This is sample text.
+This is 2nd line.</code></pre>
+</figure>
+<figure>
+<figcaption>Output</figcaption>
+<pre class="html"><code class="html">&lt;p&gt;This is sample text.
+This is 2nd line.&lt;/p&gt;</code></pre>
+</figure>
+<p>このとき1つの問題が起こります。改行が半角スペースとしてレンダリングされることは、特定の言語にとっては良くないことです。例えば、日本語などのように、それぞれの単語を空白で区切らない言語です。例えば次のような入力の場合です。</p>
+<figure>
+<figcaption>Input</figcaption>
+<pre class="karas"><code class="karas">ABCDEFGHIJK
+LMNOPQRSTU</code></pre>
+</figure>
+<p>この出力結果は、ブラウザ上では <samp>ABCDEFGHIJK LMNOPQRSTU</samp> となります。これは英語のような単語ごとをスペースで区切る言語では良いルールですが、日本語のような、単語が連続する言語では良いルールではありません。</p>
+<p>この問題に柔軟に対応することは困難です。例えば言語によって、改行を消した方が良いのかどうかを判定することが考えられます。あるいは、例えば日本語であっても、ユーザが書いたテキストが英語であったり、他のスペースを必要とする言語であるかもしれません。KARAS の標準的なコンバータでは、この問題を解決していません。</p>
+<p>この問題を解決するためには、様々な国の言語の理解を深めなければいけません。また、改行が現れるたびに、その前後の文字や単語の構成を確認する必要もあります。1つ目は、問題が大きすぎて、開発者個人では対応することができません。2つ目についても、変換速度を落としてまで対応するべき内容ではないと判断しました。</p>
+<p>将来的には、この問題を解決するための仕組みが KARAS の標準的なコンバーターに実装される可能性があります。それはあらゆる環境下で十分な変換速度が得られると判断したときでしょう。一方で、この問題はブラウザ側で解決するべき問題ではないか、とも私は考えています。</p>
+<h2 id="breakinmlink">メディアリンクの改行</h2>
+<p>メディアリンクの構文から出力される HTML はすべて改行されていません。例えば <i>img</i> 要素や <i>video</i> 要素です。これは、それらの要素がフローコンテンツ (ブロック) か、フレージングコンテンツ (インライン) にもなりえるからです。Webブラウザなどのユーザエージェントは、改行をわずかなスペースとしてレンダリングします。ユーザが連続して書いたメディアリンクに、コンバーターが勝手に改行を付けて、スペースを入れてしまうことは良くありません。例えば次のようなテキストです。</p>
+<figure>
+<figcaption>Pattern-1</figcaption>
+<pre class="karas"><code class="karas">(((ImageURL-A)))
+(((ImageURL-B)))</code></pre>
+</figure>
+<figure>
+<figcaption>Pattern-2</figcaption>
+<pre class="karas"><code class="karas">(((ImageURL-A)))(((ImageURL-B))</code></pre>
+</figure>
+<p>Pattern-1 ではユーザが改行を書いているので、2つの要素の間にはブラウザがわずかなスペースをレンダリングします。一方で、ユーザがスペースをレンダリングしたくないときは、Pattern-2 のように書きます。このとき、コンバーターが改行を挿入してしまうと、ユーザが臨んだ結果とは異なる結果が出力されます。この問題のために、あらゆるリンクは改行されません。また <i>param</i> 要素などについても改行しません。いくつかの要素だけ改行されていると、気持ちが悪いでしょう。</p>
+<p>リストの構文では改行していますが、これについては問題がありません。CSS などを使って横並びにするリストは、改行が原因の同じ問題を持っています。しかしながら、KARAS の構文では、リストを出力するための記号 <code>-</code> を行頭に書かなければいけません。横並びにするリストは、KARAS は書くことができませんから、改行は問題になりません。</p>
+<h2 id="ltgtinprecode"><i>pre</i>, <i>code</i>, <i>samp</i> の中にある <i>&lt;</i> と <i>&gt;</i> は変換されない</h2>
+<p>KARAS の構文から出力される <i>pre</i>, <i>code</i>, <i>samp</i> 要素の中にある <code>&lt;</code> と <code>&gt;</code> は、それぞれ <code>&amp;lt;</code> と <code>&amp;gt;</code> に変換されます。しかしながら、ユーザが HTML として書いた <i>pre</i>, <i>code</i>, <i>samp</i> 要素のときは、それらは変換されません。これは、<i>pre</i>, <i>code</i>, <i>samp</i> 内のタグを有効にするためです。装飾や意味を持たせることを目的としたタグが挿入される可能性があるからです。</p>
+			</article>
+			<footer>
+<p><small><a href="http://www.lightweightmarkuplanguage.com">&copy; KARAS - Lightweight Markup Language</a></small></p>
+			</footer>
+		</div>
+	</div>
+</div>
+</body>
+</html>

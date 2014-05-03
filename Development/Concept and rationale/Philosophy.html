@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="author" content="Daiki Umeda (XJINE)">
+	<meta name="generator" content="Blackboard">
+	<meta name="generator" content="KARAS">
+	<meta charset="UTF-8" />
+	<title>KARAS - Philosophy</title>
+	<link rel="stylesheet" href="../../default.css" type="text/css" media="all" charset="">
+	<meta property="og:site_name" content="KARAS">
+	<meta property="og:title" content="Philosophy">
+	<meta property="og:url" content="http://www.lightweightmarkuplanguage.com/Development/Concept and rationale/Philosophy.html">
+	<meta property="og:image" content="http://www.lightweightmarkuplanguage.com/ogpimg.jpg">
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+	  ga('create', 'UA-44157178-2', 'lightweightmarkuplanguage.com');
+	  ga('send', 'pageview');
+	</script>
+</head>
+<body>
+<div id="outframe">
+	<header>
+		<a id="logo" href="../../index.html" title="Top"></a>
+		<h1><a href="../../index.html">KARAS</a></h1>
+		<h2><a href="../../index.html">Lightweight Markup Language</a></h2>
+	</header>
+	<div id="contents">
+		<div id="sidebar">
+			<ul class="menu">
+				<li><a href="./../../Syntax/index.html" title="Syntax">Syntax</a></li>
+				<li><a href="./../../Download.html" title="Download">Download</a></li>
+				<li><a href="./../../License.html" title="License">License</a></li>
+				<li><a href="./../../Development/index.html" title="Development">Development</a></li>
+				<li><a href="./../../Donation.html" title="Donation">Donation</a></li>
+				<li><a href="./../../Information.html" title="Donation">Information</a></li>
+			</ul>
+			<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+			<!-- KARAS_Side_160x600 -->
+			<ins class="adsbygoogle"
+			     style="display:inline-block;width:160px;height:600px"
+			     data-ad-client="ca-pub-9133526697051515"
+			     data-ad-slot="6825762586"></ins>
+			<script>
+			(adsbygoogle = window.adsbygoogle || []).push({});
+			</script>
+		</div>
+		<div id="maincolumn">
+			<div id="pageinfo">
+				<div id ="topicpath"><a href="../../index.html">Top</a>&nbsp;&gt;&nbsp;<a href="../../Development/index.html">Development</a>&nbsp;&gt;&nbsp;<a href="../Concept and rationale/index.html">Concept and rationale</a>&nbsp;&gt;&nbsp;<a href="Philosophy.html">Philosophy</a></div>
+				<div id="lastmodified">Last modified : 2014. 04. 28</div>
+			</div>
+			<article>
+			<h1 id="philosophy">Philosophy</h1>
+<p>KARAS の設計方針とは別の、抽象的な考えについて解説しています。</p>
+<ul>
+<li><a href="#havetoshow">設計理由、思想は明示するべきである</a>
+<ul>
+<li><a href="#mustrationale">示すべき設計理由</a></li>
+</ul>
+<li><a href="#markandrest">Markdown や reStructuredText は素晴らしいが十分でない</a></li>
+<li><a href="#lmlandpdl">LML and PDL</a></li>
+<li><a href="#otherref">LML 以外に参考にしたもの</a></li>
+<li><a href="#semanticweb">セマンティックWebのような設計思考は、(遠い)将来に排除されるべきである</a></li>
+<li><a href="#abouthtml5">HTML5 は価値を損ねている</a></li>
+<li><a href="#outputformat">出力形式を HTML に限定する必要はない</a></li>
+<li><a href="#thinkabouthtml">HTML に対する私の見解</a>
+<ul>
+<li><a href="#aboutsmall"><i>small</i> 要素は名前を変更するべき</a></li>
+<li><a href="#aboutcite"><i>cite</i> 要素は出典を示す要素であるべき</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="havetoshow">設計理由、思想は明示するべきである</h2>
+<p>どんなに小さなプロダクトでもオープンソースプロダクトでは設計理由や思想を示すことは重要であると考えています。理由はいくつかあります。</p>
+<p>1つは同じようなプロダクトの増殖を防ぐためです。これはライセンスの増殖と同じです。増殖を防ぐためには、多くのユーザに設計理由、思想を明示して、それに賛同してもらう必要があります。また理由を示すことで、設計についてより具体的な議論をすることができます。</p>
+<p>もう1つの理由は、1つ目に関連します。将来的に、より良いプロダクトを発生させるためです。プロダクトの良い点を新たなプロダクトに採用することができます。将来的にコンピュータができることが増えれば、今あるプロダクトだけでは対応できなくなることは明らかです。新たなプロダクトを作るために、過去にあるプロダクトの開発の経緯を知ることは重要です。過去のプロダクトが失敗したことを、繰り返すことは良くありません。</p>
+<h3 id="mustrationale">示すべき設計理由</h3>
+<p>WHATWG が <q><a href="http://wiki.whatwg.org/wiki/FAQ#Is_design_rationale_documented.3F">Is design rationale documented?</a></q> で述べているように、すべての議論や検討、設計理由を明記することはとても大変で、またその資料は膨大に膨れ上がってしまいます。このことは確かに正しいです。ただし、少なくても、その設計に決定することになった最も大きな理由については示すべきです。</p>
+<h2 id="markandrest">Markdown や reStructuredText は素晴らしいが十分でない</h2>
+<p>Markdown や reStructuredText は素晴らしい発明です。特に Markdown は日常的な習慣の中で使われる記号を用いているので、ある種のインターフェースとしてとても優れていると思います。しかし私にとって Markdown では機能が足りず、reStructuredText は複雑すぎました。他にも textlie などの有名な軽量マークアップ言語はみましたが、どれも私が納得するものではありませんでした。</p>
+<p>唯一 SkrivML だけが私と似た思想、理念で設計されていることが分かりましたが、それでも、私は満足しませんでした。私は私のアイデアが素晴らしいものだと信じて KARAS を開発しました。</p>
+<p>※実際には多くの場合は Markdown で十分でしょう。私もそう思うことがあります。そして Markdown の最も素晴らしい点は、その名前だと私は思います。</p>
+<h2 id="lmlandpdl">LML and PDL</h2>
+<p>LML と PDL(Page Description Language) のまとめです。いくつかのページは日本語のページです。また、<a href="http://en.wikipedia.org/wiki/Lightweight_markup_language">Wikipedia のページ - Lightweight markup language</a> に関連する情報が良くまとめられています。</p>
+<ul>
+<li><a href="http://www.maplefish.com/todd/aft-refman.html">Almost Free Text</a></li>
+<li><a href="http://asciidoc.org/">AsciiDoc</a></li>
+<li><a href="http://en.wikipedia.org/wiki/BBCode">BBCode</a></li>
+<li><a href="http://angg.twu.net/blogme.html">BlogMe</a></li>
+<li><a href="http://www.wikicreole.org/wiki/CheatSheet">CREOLE</a></li>
+<li><a href="https://www.dokuwiki.org/ja:syntax">DokuWiki</a></li>
+<li><a href="http://ja.wikipedia.org/wiki/Ghostscript">Ghostscript</a></li>
+<li><a href="http://hatenadiary.g.hatena.ne.jp/keyword/%E3%81%AF%E3%81%A6%E3%81%AA%E8%A8%98%E6%B3%95%E4%B8%80%E8%A6%A7">(JPN) Hatena</a></li>
+<li><a href="http://ja.wikipedia.org/wiki/Markdown">Markdown</a></li>
+<li><a href="http://www.mediawiki.org/wiki/Help:Formatting">Mediawiki</a></li>
+<li><a href="http://perldoc.perl.org/perlpod.html">PlainOldDocumentation</a></li>
+<li><a href="http://www.asahi-net.or.jp/~vw4k-kbys/plain2/plain2.html">(JPN) plain2</a>
+<ul>
+<li><a href="http://www.jaist.ac.jp/~k-chinen/pg/plain2/eng/plain2-readme.eng.html">(ENG) plain2</a></li>
+</ul>
+</li>
+<li><a href="http://ja.wikipedia.org/wiki/PostScript">PostScript</a></li>
+<li><a href="http://pukiwiki.sourceforge.jp/">(JPN) Pukiwiki</a></li>
+<li><a href="http://docutils.sourceforge.net/rst.html">reStructuredText</a></li>
+<li><a href="https://github.com/kmuto/review/blob/master/doc/format.rdoc">(JPN) Re:VIEW</a></li>
+<li><a href="http://markup.skriv.org/">SkrivML</a></li>
+<li><a href="http://redcloth.org/hobix.com/textile/">textile</a></li>
+<li><a href="http://epydoc.sourceforge.net/manual-epytext.html">The Epytext Markup Language</a></li>
+<li><a href="http://ulmul.rubyforge.org/">ULMUL</a></li>
+<li><a href="http://ja.wikipedia.org/wiki/XML_Paper_Specification">XML Paper Specification</a></li>
+</ul>
+<h2 id="otherref">LML 以外に参考にしたもの</h2>
+<p>KARAS の構文を設計するために LML を参考にするのは当然ですが、プログラミング言語や正規表現も参考にしています。</p>
+<p>また、KARAS を使って、どのようなテキストやドキュメントを書けるか、十分に検討しました。そのために、学術論文、新聞・お菓子や薬のパッケージ、ダイレクトメール、小説、辞書などを観察しました。HTML や CSS を使ってレイアウトすることが難しい(テクニックが必要)パターンを除いて、多くのドキュメントの制作のために使うことができるように注意しました。</p>
+<p>もしかすると KARAS の機能は十分ではありませんが、機能が多いと、取扱説明書は更に複雑で長くなります。またもしもそのような広い範囲に対応ができるようなシステムが必要なら、HTML を使えば良いと考えています。</p>
+<h2 id="semanticweb">セマンティックWebのような設計思考は、(遠い)将来に排除されるべきである</h2>
+<p>セマンティックWebの概念は残るでしょう。しかしながら、テキストとして記述された内容、あるいはその一部が、どのような性質や情報を示すかを、コンピュータが自動で識別し、分類できるようになることが、この分野の究極的な目標であるべきだと私は考えています。そして将来そうなることを期待しています。そのようなシステムのユーザは、KARAS のようにテキストの持つ意味を入力しなくて良くなり、現状よりも更に自然にドキュメントを書くことができるようになるでしょう。KARAS はそのような未来が来るときまで使うことができれば良いです。</p>
+<p>とは言え、ドキュメントを目で見て認識して利用するのは我々人間です。したがって文章やそのブロックを分かり易く記述する手法はしばらくの間はなくなることはないでしょう。また HTML のようなテキストに意味を持たせるためのフォーマットも、コンピュータがドキュメントを識別した結果を保存したりするために、しばらくの間はなくなることがないでしょう。</p>
+<h2 id="abouthtml5">HTML5 は価値を損ねている</h2>
+<p>HTML5 の記事を多く見かけるようになりました(in 2014)。しかしながら、実際のところ、その内容は Canvas 要素に Javascript や CSS3 を組み合わせたものがほとんどです。新たに定義されたタグや要素は蔑ろにされています。しかし気持ちはよく分かるのです。テキストの意味を考えながら、タグを打つのが凄く面倒だからです。KARAS タグを打つ面倒を取り払って HTML の価値を高めてくれるでしょう。</p>
+<h2 id="outputformat">出力形式を HTML に限定する必要はない</h2>
+<p>KARAS は標準的な出力フォーマットを HTML としていますが、これに限らず、あらゆる環境で KARAS の構文を採用しても良いと思います。EPUB や PDF を出力する場合には、HTML を中間言語として、HTML を変換するシステムを作ることが考えられるでしょう。また、必要なら、EPUB や PDF に必要なパラメータは、KARAS の拡張記法によって記述することができます。</p>
+<h2 id="thinkabouthtml">HTML に対する私の見解</h2>
+<p>私の HTML に対する見解をここで述べておきます。これらは KARAS を設計するときに考えたものです。私の基本姿勢は、より簡潔に、より分かりやすく、直せるものは直すべきだ、です。これは W3C などの姿勢とは異なります。</p>
+<ul>
+<li>Reference
+<ul>
+<li><a href="http://www.w3.org/TR/html-design-principles/#priority-of-constituencies">3.2. Priority of Constituencies - W3C</a></li>
+</ul>
+</li>
+</ul>
+<div class="note">
+<p>次のことに注意してください。私は W3C や WHATWG のグループが行ってきた、議論の記録の一部しか読んでいません。またすべての経緯と貢献者の思いを知っているわけではありません。貢献者の方々には尊敬と感謝の念を持っていますが、ここで述べる問題や意見は、それとは別のレイヤーの問題です。</p>
+</div>
+<h3 id="aboutsmall"><i>small</i> 要素は名前を変更するべき</h3>
+<p>2014年1月現在、HTML5 では、 <i>small</i> 要素は、免責事項や注意事項を述べるために使うこと、と推奨されています。この設計は私は間違いであると思います。 <i>small</i> という単語から、これらの内容について明らかに推測できないためです。</p>
+<p>文字を小さくする目的で、 <i>small</i> という単語を使う機会は必ずあるのです。ふつう、特定の文字だけを小さくしようとすると &lt;span class= "small"&gt; を利用するでしょう。このことを考えたとき、 <i>small</i> 要素の設計は明らかに誤りであるのだろうと考えました。例えそれが今までの歴史の中で当たり前のように使われていてもです。人間は間違いを正すことができます。</p>
+<h3 id="aboutcite"><i>cite</i> 要素は出典を示す要素であるべき</h3>
+<p>2014年1月現在、HTML5 では、 <i>cite</i> 要素は、作品タイトルなどを述べるために使うこと、と推奨されています。私はこの設計が好きではありません。 <i>cite</i> という単語は、本来、<i>引用する</i> という意味を持っているからです。引用するときは、作品であっても人の発言であっても良いはずです。しかし長く続いた(悪しき)習慣に基づき、 <i>cite</i> 要素は作品タイトルを示すことはあっても、発言者を示すために使うことができなくなりました。これは非常に残念です。</p>
+<p>習慣やデファクトスタンダードに基づきルールを決めることは悪いことではありません。しかしながら、人間は間違いを正すことができることを忘れてはいけません。私は KARAS のユーザが <i>cite</i> 要素を、発言者を示すために使うことを希望しています。KARAS では <code>@@</code> で閉じたテキストを <i>cite</i> 要素として出力することができます。また @ をもう1つ増やすと <i>small</i> 要素として出力することができます。もしもあなたが私に同調してくれるのなら、発言者を示すために @ を2つ書いて <i>cite</i> 要素を出力してください。W3C や WHATWG の見解に従うべきだと思うのであれば、@ を3使いて <i>small</i> 要素を出力することができます。あるいは <i>strong(b)</i> 要素や <i>span</i> 要素を使うべきでしょう。KARAS には <i>span</i> 要素を使うためのインライングループという構文も用意されています。</p>
+<div class="note">
+<p>2014年1月現在、Twitter のタイムラインの発言者名は <i>strong</i> 要素でマークアップされています。Twitter-Bootstrap の <i>Blockquote</i> の項目では、 <i>small</i> 要素になっていますが。</p>
+</div>
+<ul>
+<li>Reference
+<ul>
+<li><a href="http://wiki.whatwg.org/wiki/Cite_element">Cite Element - WHATWG</a></li>
+<li><a href="http://wiki.whatwg.org/wiki/FAQ#The_.3Ccite.3E_element_should_allow_names_of_people_to_be_marked_up">The &lt;cite&gt; element should allow names of people to be marked up - WHATWG</a></li>
+</ul>
+</li>
+</ul>
+			</article>
+			<footer>
+<p><small><a href="http://www.lightweightmarkuplanguage.com">&copy; KARAS - Lightweight Markup Language</a></small></p>
+			</footer>
+		</div>
+	</div>
+</div>
+</body>
+</html>

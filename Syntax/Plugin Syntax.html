@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="author" content="Daiki Umeda (XJINE)">
+	<meta name="generator" content="Blackboard">
+	<meta name="generator" content="KARAS">
+	<meta charset="UTF-8" />
+	<title>KARAS - Plugin Syntax</title>
+	<link rel="stylesheet" href="../default.css" type="text/css" media="all" charset="">
+	<meta property="og:site_name" content="KARAS">
+	<meta property="og:title" content="Plugin Syntax">
+	<meta property="og:url" content="http://www.lightweightmarkuplanguage.com/Syntax/Plugin Syntax.html">
+	<meta property="og:image" content="http://www.lightweightmarkuplanguage.com/ogpimg.jpg">
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+	  ga('create', 'UA-44157178-2', 'lightweightmarkuplanguage.com');
+	  ga('send', 'pageview');
+	</script>
+</head>
+<body>
+<div id="outframe">
+	<header>
+		<a id="logo" href="../index.html" title="Top"></a>
+		<h1><a href="../index.html">KARAS</a></h1>
+		<h2><a href="../index.html">Lightweight Markup Language</a></h2>
+	</header>
+	<div id="contents">
+		<div id="sidebar">
+			<ul class="menu">
+				<li><a href="./../Syntax/index.html" title="Syntax">Syntax</a></li>
+				<li><a href="./../Download.html" title="Download">Download</a></li>
+				<li><a href="./../License.html" title="License">License</a></li>
+				<li><a href="./../Development/index.html" title="Development">Development</a></li>
+				<li><a href="./../Donation.html" title="Donation">Donation</a></li>
+				<li><a href="./../Information.html" title="Donation">Information</a></li>
+			</ul>
+			<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+			<!-- KARAS_Side_160x600 -->
+			<ins class="adsbygoogle"
+			     style="display:inline-block;width:160px;height:600px"
+			     data-ad-client="ca-pub-9133526697051515"
+			     data-ad-slot="6825762586"></ins>
+			<script>
+			(adsbygoogle = window.adsbygoogle || []).push({});
+			</script>
+		</div>
+		<div id="maincolumn">
+			<div id="pageinfo">
+				<div id ="topicpath"><a href="../index.html">Top</a>&nbsp;&gt;&nbsp;<a href="../Syntax/index.html">Syntax</a>&nbsp;&gt;&nbsp;<a href="Plugin Syntax.html">Plugin Syntax</a></div>
+				<div id="lastmodified">Last modified : 2014. 05. 02</div>
+			</div>
+			<article>
+			<h1>Plugin Syntax</h1>
+<p>KARAS では、標準的な構文とは別に、特別な構文を持っています。その構文をプラグイン構文と呼びます。プラグイン構文は、単純にマークアップするための以外に、特別な機能を持つことができます。</p>
+<div class="note">
+<p>プラグイン構文は、そのプラグインが導入されたシステム (KARAS) でなければ使うことができません。そのシステムが持つ、特別な構文です。</p>
+</div>
+<ul>
+<li><a href="#description">Description</a></li>
+<li><a href="#sampleplugin">Sample plugin</a>
+<ul>
+<li><a href="#nowediting">NowEditiong</a></li>
+<li><a href="#mark">Mark</a></li>
+<li><a href="#tableofc">TOC (Table Of Contents)</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="description">Description</h2>
+<p>プラグイン構文はテキストを <code>[[</code> と <code>]]</code> で閉じます。プラグイン構文には2つの種類があります。1つはレベル1のコンバート型 (Convert type) です。もう1つはレベル2のアクション型 (Action type) です。</p>
+<dl>
+<dt><b>Convert type plugin (Level1)</b></dt>
+<dd><pre class="karas"><code class="karas">[[ PluginName :: option1 :: option2... :: markedupText]]</code></pre></dd>
+<dt><b>Action type plugin (Level2)</b></dt>
+<dd><pre class="karas"><code class="karas">[[[ PluginName :: option1 :: option2...]]]</code></pre></dd>
+</dl>
+<p>プラグイン構文は必ずプラグイン名を1つ目のオプションに指定します。オプションは、<code>::</code> で区切られます。指定したプラグイン名によって、処理の内容が変わります。プラグイン名は大文字であるか小文字であるかを考慮しません。</p>
+<p>コンバート型のプラグインは、ある本文テキストを装飾したり、変換したりするために使います。例えば、他のフォーマットで書かれたテキストを変換するために使うことが出来ます。コンバート型のプラグインで本文テキストを指定するときは、必ず、オプションの最後に指定します。</p>
+<p>アクション型のプラグインは、そのテキスト全体の内容を使ったテキストを出力するために使います。例えば、目次 <i>TOC</i> (Table Of Contents) のために使います。あるいは、単独で、システムに命令を出すために使うことが出来ます。例えば、コメント欄を挿入したり、ページを非公開にしたりするために使うことが出来ます。</p>
+<h2 id="sampleplugin">Sample plugin</h2>
+<p>KARAS の標準のコンバータのセットに含まれるいくつかのプラグインについて解説します。</p>
+<h3 id="nowediting">NowEditiong</h3>
+<p>NowEditing プラグインは、テキストを出力から削除して、代わりに、 <i>"Now Editing"</i> のテキストを表示するプラグインです。 レベル1 (Convert type) では、オプションとして指定されたテキストを削除します。レベル2 (Action type) では、そのページのすべてのテキストを削除します。</p>
+<figure>
+<figcaption>Input</figcaption>
+<pre class="karas"><code class="karas">[[nowediting :: sample text.]]
+[[[nowediting]]]</code></pre>
+</figure>
+<figure>
+<figcaption>Output</figcaption>
+<pre class="html"><code class="html">&lt;b&gt; Now Editing. &lt;/b&gt;
+&lt;p&gt;&lt;span style=\&#34;font-size:300%;\&#34;&gt;&lt;b&gt; Now Editing. &lt;/b&gt;&lt;/span&gt;&lt;/p&gt;</code></pre>
+</figure>
+<h3 id="mark">Mark</h3>
+<p>Mark プラグインは、指定したテキストを <i>Mark</i> タグで閉じるプラグインです。 Mark プラグインはレベル1 (Convert type) しか持ちません。レベル2 (Action type) として実行すると、実行エラーのテキストが得られます。 オプションを2つ指定するとき、1つ目のオプションにマークアップする色を指定することができます。</p>
+<div class="note">
+<p>KARAS は <i>Mark</i> 要素を出力するための構文を持っていません。</p>
+</div>
+<figure>
+<figcaption>Input</figcaption>
+<pre class="karas"><code class="karas">[[mark :: markedup text.]]
+[[mark :: red :: markedup text.]]</code></pre>
+</figure>
+<figure>
+<figcaption>Output</figcaption>
+<pre class="html"><code class="html">&lt;mark&gt;markedupText&lt;/mark&gt;
+&lt;mark style=&#34;background-color:red;&#34;&gt;markedupText&lt;/mark&gt;</code></pre>
+</figure>
+<h3 id="tableofc">TOC (Table Of Contents)</h3>
+<p>TOC プラグインは、ページに含まれる見出しをリストにして出力するプラグインです。 TOC プラグインはレベル2 (Action type) しか持ちません。レベル1 (Convert type) として実行すると、実行エラーのテキストが得られます。 オプションを1つ指定するとき、1つ目のオプションにリストにする見出しの最小レベルを指定します。2 を指定するとき、レベル1の見出しはリストに含まれません。オプションを2つ指定するとき、リストにする見出しの最大レベルを指定します。3 を指定するとき、レベル 4, 5, 6 の見出しはリストに含まれません。</p>
+<figure>
+<figcaption>Input</figcaption>
+<pre class="karas"><code class="karas">= Level1
+== Level2
+=== Level3 :: idoption
+==== Level4
+
+[[[toc]]]
+
+[[[toc::2::3]]]</code></pre>
+</figure>
+<figure>
+<figcaption>Output</figcaption>
+<pre class="html"><code class="html">&lt;h1&gt;Level1&lt;/h1&gt;
+&lt;h2 id=&#34;idoption&#34;&gt;Level2&lt;/h2&gt;
+&lt;h3&gt;Level3&lt;/h3&gt;
+&lt;h4&gt;Level4&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Level1
+	&lt;ul&gt;&lt;li&gt;Level2
+		&lt;ul&gt;&lt;li&gt;&lt;a href=&#34;#idoption&#34;&gt;Level3&lt;/a&gt;
+			&lt;ul&gt;&lt;li&gt;Level4&lt;/li&gt;&lt;/ul&gt;
+		&lt;/li&gt;&lt;/ul&gt;
+	&lt;/li&gt;&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Level2
+&lt;ul&gt;&lt;li&gt;&lt;a href=&#34;#idoption&#34;&gt;Level3&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+</figure>
+			</article>
+			<footer>
+<p><small><a href="http://www.lightweightmarkuplanguage.com">&copy; KARAS - Lightweight Markup Language</a></small></p>
+			</footer>
+		</div>
+	</div>
+</div>
+</body>
+</html>
