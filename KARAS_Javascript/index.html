@@ -78,6 +78,7 @@ function convertKARAS()
     var target = document.getElementById("outputarea");
     text = KARAS.convert(text);
     target.innerHTML = text;
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, "outputarea"]);
 }
 
 -->
