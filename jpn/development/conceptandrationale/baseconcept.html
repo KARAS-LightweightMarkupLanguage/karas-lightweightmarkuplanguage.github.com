@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="author" content="Daiki Umeda (XJINE)">
+<meta name="generator" content="BlackBoard">
+<meta name="generator" content="KARAS">
+<meta charset="UTF-8">
+<title>KARAS - Base concept</title>
+<link rel="stylesheet" href="../../../resource/default.css" type="text/css" media="all" charset="">
+<meta property="og:site_name" content="KARAS">
+<meta property="og:title" content="Lightweight Markup Language - KARAS">
+<meta property="og:url" content="http://lightweightmarkuplanguage.com/">
+<meta property="og:image" content="../../../resource/ogpimg.jpg">
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-44157178-2', 'lightweightmarkuplanguage.com');
+ga('send', 'pageview');
+</script>
+</head>
+<body>
+<div id="outframe">
+    <header>
+        <a id="logo" href="../../index.html" title="Top"></a>
+        <div id="pagetitle">
+            <h1><a href="../../index.html">KARAS</a></h1>
+            <h1><a href="../../index.html">Lightweight Markup Language</a></h1>
+        </div>
+        <div id="socialbutton">
+            <a href="http://twitter.com/share?text='Lightweight Markup Language - KARAS'&amp;url=http://lightweightmarkuplanguage.com"
+               title="Share on Twitter" 
+               onclick="javascript:window.open(this.href,'Twitter','menubar=no,toolbar=no,scrollbars=yes,resizable=yes,height=300,width=450');
+                        return false;">
+                <img src="../../../resource/tw_35x.png" alt="Share on Twitter">
+            </a>
+            <a href="http://www.facebook.com/share.php?u=http://lightweightmarkuplanguage.com"
+               title="Share on Facebook" 
+               onclick="javascript:window.open(this.href,'Facebook','menubar=no,toolbar=no,scrollbars=yes,resizable=yes,height=300,width=450');
+                        return false;">
+                <img src="../../../resource/fb_35x.png" alt="Share on Facebook">
+            </a>
+            <a href="https://plus.google.com/share?url=http://lightweightmarkuplanguage.com"
+               title="Share on Google+" 
+               onclick="javascript:window.open(this.href,'Google+','menubar=no,toolbar=no,scrollbars=yes,resizable=yes,height=600,width=600');
+                        return false;">
+                <img src="../../../resource/gp_35x.png" alt="Share on Google+">
+            </a>
+            <a href="https://github.com/KARAS-LightweightMarkupLanguage"
+               title="Go to GitHub" target="_blank">
+                <img src="../../../resource/gh_35x.png" alt="Go to GitHub">
+            </a>
+        </div>
+    </header>
+    <div id="contents">
+        <div id="sidebar">
+            <ul class="menu">
+                <li><a href="../../syntax/index.html" title="Syntax">Syntax</a></li>
+                <li><a href="../../download.html" title="Download">Download</a></li>
+                <li><a href="../../license.html" title="License">License</a></li>
+                <li><a href="../../development/index.html" title="Development">Development</a></li>
+                <li><a href="../../donation.html" title="Donation">Donation</a></li>
+                <li><a href="../../information.html" title="Donation">Information</a></li>
+            </ul>
+            <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+            <!-- KARAS_Side_160x600 -->
+            <ins class="adsbygoogle"
+                 style="display:inline-block;width:160px;height:600px"
+                 data-ad-client="ca-pub-9133526697051515"
+                 data-ad-slot="6825762586"></ins>
+            <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+        <div id="maincolumn">
+            <div id="pageinfo">
+                <div id ="topicpath"><a href="../../index.html">Top</a>&nbsp;&gt;&nbsp;<a href="../../development/index.html">Development</a>&nbsp;&gt;&nbsp;<a href="../conceptandrationale/index.html">Concept & Rationale</a>&nbsp;&gt;&nbsp;<a href="baseconcept.html">Base concept</a></div>
+                <div id="lastmodified">Last modified : 2014. 04. 28</div>
+            </div>
+            <article>
+            <h1 id="baseconcept">Base concept</h1>
+<p>KARAS の基本となる設計方針について解説しています。</p>
+<ul>
+<li><a href="#karaspurpose">KARAS の主たる目的はドキュメントの作成である</a>
+<ul>
+<li><a href="#exception">例外</a></li>
+</ul>
+<li><a href="#syntaxmarks">構文のために使う記号</a></li>
+<li><a href="#easyrule">構文は直感的で、可能な限り似たルールであるのが望ましい</a></li>
+<li><a href="#continuoussyntax">記号が連続する構文</a></li>
+<li><a href="#sameoutput">複数の構文から同一の出力が得られるのは良くない</a></li>
+<li><a href="#whitesyntax">空白文字を用いる構文は良くない</a></li>
+<li><a href="#commentout">コメントアウトは実装されるべきである</a></li>
+<li><a href="#linebreak">改行の実装は実装されるべきである</a></li>
+<li><a href="#syntaxnest">同じ記号の構文から出力される要素を入れ子にする必要はない</a></li>
+<li><a href="#convertspeed">構文に使う記号の種類と変換速度</a></li>
+<li><a href="#extension">構文を拡張する方法は用意するべき</a></li>
+</ul>
+<h2 id="karaspurpose">KARAS の主たる目的はドキュメントの作成である</h2>
+<p>いくつかの LML はレイアウトや装飾のための構文を持っていますが、KARAS は持っていません。KARAS の主たる目的は、ドキュメントの生成としているためです。KARAS はドキュメントを生成するための様々なシステムに導入されるべきです。したがって、生成されたドキュメントがどのようにレイアウトされるかは、KARAS が実装されたシステムが決定するべきです。KARAS を使って出力された HTML ドキュメントは CSS によって装飾されるべきでしょう。</p>
+<h3 id="exception">例外</h3>
+<p>例外として、テーブルに関する仕組みについては、レイアウトのための仕組みが含まれます。<i>text-align</i> (文章揃え)の設定です。これについてはいくつか理由があります。1つは既存の多くの LML が対応しているためです。もう1つは、数値を扱うセルが定義されるとき、その数字を右揃えにすることで単位を揃えて見せるためです。テーブルの見やすさはそのデザインやレイアウトに大きく左右されます。また CSS などの設定ファイルによってテーブルのデザインを微調整することは、非常に手間のかかる作業です。これらの理由から、KARAS ではテーブルでのみ、レイアウトに関する構文を定義しています。</p>
+<h2 id="syntaxmarks">構文のために使う記号</h2>
+<p>当たり前のことですが、ある国の言語に固有の記号を構文に使うことは良くありません。KARAS のすべての構文は、最も広く使われている文字コードである、ASCII コードに含まれている記号から構成されています。入力の容易さに差はありますが、ほとんど全ての国のキーボードで入力することができるでしょう。</p>
+<p>次の記号が ASCII コードに含まれるすべての記号です。</p>
+<pre>| ~ \ &#34; ` &#39; ! ? @ # $ % ^ &amp; * , . ; : _ + - = &lt; &gt; [ ] { } ( )</pre>
+<h2 id="easyrule">構文は直感的で、可能な限り似たルールであるのが望ましい</h2>
+<p>ユーザがマークアップに集中することは良くありません。ユーザはドキュメントを書くことに集中するべきです。また、いくつものルールを覚えることは学習コストがかかります。KARAS ではこの問題を3つ方法で解決します。</p>
+<ol>
+<li>記号の見た目や意味から、その構文が出力するテキストの意味を分かり易くする。</li>
+<li>いくつかの違う種類の記号を組み合わせない。</li>
+<li>構文の構造を可能な限り似たものにする。
+<ul>
+<li>構文は記号を2つ以上続けることで成立する。</li>
+<li>構文の記号の数を増やすことで、意味が強くなる。</li>
+</ul>
+</li>
+</ol>
+<p>これらのルールによって、KARAS は多くの機能を持ちながらも、直感的に書くことができます。</p>
+<h2 id="continuoussyntax">記号が連続する構文</h2>
+<p>記号を連続する構文構造は、エスケープ <i>\</i> の使用頻度を下げることができます。また記号が 2 つ続けて記述されることによって、KARAS の構文とそれ以外の記述を目視によって区別しやすくなります。つまり、変換前のプレーンテキストの見通しを良くします。コピーアンドペーストしたテキストの誤変換を少なくすることもできるでしょう。</p>
+<p>このルールは、マークアップされたテキストの変換処理を効率良く行うことにも貢献します。特定の記号が連続するかどうかで変換する処理が必要かどうかを判定することができます。</p>
+<p>一方で、入力回数が増えるという問題があります。もしかしたら、あなたは冗長と思うかもしれません。しかしながら繰り返し入力する記号は同じ記号です。同じキーを押すだけですから、私はこのことは大きな問題にはならないと考えています。</p>
+<h2 id="sameoutput">複数の構文から同一の出力が得られるのは良くない</h2>
+<p>いくつかの LML では、複数の異なる構文が同一の結果を出力する場合があります。これは複数ユーザによって編集されるドキュメントで、混乱を起こす可能性を持っています。</p>
+<p>このことは、プラグインや構文の変換システムを開発する際にも問題を引き起こします。1つは複数の入力方法に対応するようにシステムを開発する必要がある、という問題です。単純に、開発のコストが上がる、という問題です。</p>
+<p>さらに、もし複数の入力に対応しないシステムが作られるようになると、もう1つの問題を引き起こします。例えば入力方法 <i>A</i> と <i>B</i> が同じ結果を出力するとします。このとき、入力方法 <i>A</i> に対応しない環境で、ユーザが入力方法 <i>A</i> を入力してしまう可能性があります。ユーザは期待した結果を得られなくなります。KARAS は、可能な限り、異なる構文が同じ出力結果を出力しないように設計されています。</p>
+<h2 id="whitesyntax">空白文字を用いる構文は良くない</h2>
+<p>いくつかの LML では、例えば、整形済みテキストやネストされたリストを出力するために空白文字を使います。空白文字によって出力結果が変わることがあります。</p>
+<p>このような構文は、空白文字を視認できない環境下でユーザの入力ミスを起こしやすく、良くありません。テキストベースの編集環境下では、可能な限り、空白文字を使う構文を定義するべきではないと考えています。また、空白文字のように見難いものの数は数えたくありません。これらの理由から、KARAS は空白文字を使う構文を持っていません。</p>
+<div class="note">
+<p><i>python</i> のようなプログラミング言語を悪いと言っているわけではありません。LML なら空白文字を扱わない方が親切だ、と私は主張しています。必ずしもエディタを必要としないからです。逆に、<i>python</i> もエディタがあって初めて素晴らしい力を発揮できるものと考えています。</p>
+</div>
+<h2 id="commentout">コメントアウトは実装されるべきである</h2>
+<p>いくつかの LML は、コメントアウトの構文を持っていません。KARAS では、コメントアウトのための構文を定義しています。文章そのものにも、それがどういう意図で書かれているのか、文章設計の意図を残したいことが多々あるためです。</p>
+<h2 id="linebreak">改行の実装は実装されるべきである</h2>
+<p>いくつかの LML は、改行の構文を持っていません。KARAS は改行の構文を持っています。その理由は次の通りです。</p>
+<p>小説や詩などの文学作品では空の行が意味を持つことがあります。例えば改行によって、間 や静寂を表現するために用いられます。次のような文が書かれるとき、この文は1つの段落として出力されるべきです。複数の段落として出力されることは適切ではありません。</p>
+<pre>When I turned around,
+
+THUDDDDD !!
+
+it fell from the sky.</pre>
+<p>改行が必要になる例はこの限りではありませんが、このような状況を適切に処理するために、改行するための構文は必要です。</p>
+<h2 id="syntaxnest">同じ記号の構文から出力される要素を入れ子にする必要はない</h2>
+<p>KARAS では同じ記号の構文から出力される要素を入れ子にすることはできません。そのようなルールは多くの場合に必要ではないと考えています。理由は次の通りです。</p>
+<p>例えば、<i>b</i> 要素と <i>strong</i> 要素を入れ子にして出力するテキストはない方が良いと考えています。テキストの持つ意味が重複するからです。また装飾を目的としてそれらを入れ子にすることも良くありません。</p>
+<p>W3C の <i>strong</i> 要素のサンプルでは <i>strong</i> 要素を入れ子にしています。<i>strong</i> 要素は入れ子にすることによって、重要性の順序を示すことができます。しかしながら、実際には、重要性の順序を考えながらドキュメントを書くことは少ないでしょう。もしも <i>strong</i> 
+を入れ子にすることで重要性を示しても、それはプログラムに対しては役に立ちますが、人間の読者に対しては役には立ちません。重要性に順序を設ける必要があるならば、章やリストを使って、読者に伝えるべきです。軽量マークアップ言語はそのようにして使うべきです。もしもプログラムに対して役にたつドキュメントを書く必要があるのなら、HTML を使いましょう。</p>
+<p><i>var</i> 要素や <i>code</i> 要素にも同じです。<i>code</i> 要素の中にある変数のテキストに、一々 <i>var</i> 要素を書いていくなんて面倒です。もしもそういう出力結果が欲しければ、<i>code</i> 要素の内容を自動で解析するようなシステムを作るべきです。</p>
+<p>他に、例えば、<i>sup</i> 要素や <i>sub</i> 要素を入れ子にすることも多くはないでしょう。もしも必要なら HTML タグを直接書くことで対応することができます。また、入れ子にできるような設計にしても、書かなければいけない記号の数と、HTML のために書く文字の数の差は少ないですし、そのようなプレーンテキストは読みにくいでしょう。</p>
+<h2 id="convertspeed">構文に使う記号の種類と変換速度</h2>
+<p>KARAS の構文は ASCII コードに含まれるほとんどの記号を使っています。構文の種類と使う記号の数が増えると、考慮するべきパターンが増えて、変換速度が遅くなります。事実、KARAS は他の軽量マークアップ言語よりも変換に時間がかかるでしょう。しかしながら 2014 年現在使われている PC でも十分に高速に変換されますし、PC の性能は将来的にさらに向上します。また、高速な動作を必要とするならば、変換結果をキャッシュするような仕組みをシステムが持つべきでしょう。実際に、多くの Wiki システムではキャッシュするための仕組みを導入することができます。</p>
+<p>また、もしも多くのテキストが書かれたドキュメントを変換する必要があるならば、まずはそのドキュメントを分割することを考えるべきです。</p>
+<h2 id="extension">構文を拡張する方法は用意するべき</h2>
+<p>構文を拡張する方法は、開発者によって用意されるべきです。その言語から派生した言語が多く出現することを抑制するためです。わずかに異なる言語に新しい名前をつけて普及させることは、その言語を利用するユーザを混乱させることに繋がります。(LML は出力のパターンが少ないので特に注意するべきでしょう。)</p>
+<p>拡張された構文であることをユーザに明確に提示することは重要です。あるシステム <i>A</i> で使用できた構文は、あるシステム <i>B</i>では使えない、ということをユーザに示す必要があります。拡張構文を定義すれば、ユーザに対し、その構文が異なるシステムでは使えないことを明示することができます。</p>
+            </article>
+            <footer>
+<p><small><a href="http://lightweightmarkuplanguage.com">&copy; KARAS - Lightweight Markup Language</a></small></p>
+            </footer>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="author" content="Daiki Umeda (XJINE)">
+<meta name="generator" content="BlackBoard">
+<meta name="generator" content="KARAS">
+<meta charset="UTF-8">
+<title>KARAS - Advanced - HTML</title>
+<link rel="stylesheet" href="../../resource/default.css" type="text/css" media="all" charset="">
+<meta property="og:site_name" content="KARAS">
+<meta property="og:title" content="Lightweight Markup Language - KARAS">
+<meta property="og:url" content="http://lightweightmarkuplanguage.com/">
+<meta property="og:image" content="../../resource/ogpimg.jpg">
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-44157178-2', 'lightweightmarkuplanguage.com');
+ga('send', 'pageview');
+</script>
+</head>
+<body>
+<div id="outframe">
+    <header>
+        <a id="logo" href="../index.html" title="Top"></a>
+        <div id="pagetitle">
+            <h1><a href="../index.html">KARAS</a></h1>
+            <h1><a href="../index.html">Lightweight Markup Language</a></h1>
+        </div>
+        <div id="socialbutton">
+            <a href="http://twitter.com/share?text='Lightweight Markup Language - KARAS'&amp;url=http://lightweightmarkuplanguage.com"
+               title="Share on Twitter" 
+               onclick="javascript:window.open(this.href,'Twitter','menubar=no,toolbar=no,scrollbars=yes,resizable=yes,height=300,width=450');
+                        return false;">
+                <img src="../../resource/tw_35x.png" alt="Share on Twitter">
+            </a>
+            <a href="http://www.facebook.com/share.php?u=http://lightweightmarkuplanguage.com"
+               title="Share on Facebook" 
+               onclick="javascript:window.open(this.href,'Facebook','menubar=no,toolbar=no,scrollbars=yes,resizable=yes,height=300,width=450');
+                        return false;">
+                <img src="../../resource/fb_35x.png" alt="Share on Facebook">
+            </a>
+            <a href="https://plus.google.com/share?url=http://lightweightmarkuplanguage.com"
+               title="Share on Google+" 
+               onclick="javascript:window.open(this.href,'Google+','menubar=no,toolbar=no,scrollbars=yes,resizable=yes,height=600,width=600');
+                        return false;">
+                <img src="../../resource/gp_35x.png" alt="Share on Google+">
+            </a>
+            <a href="https://github.com/KARAS-LightweightMarkupLanguage"
+               title="Go to GitHub" target="_blank">
+                <img src="../../resource/gh_35x.png" alt="Go to GitHub">
+            </a>
+        </div>
+    </header>
+    <div id="contents">
+        <div id="sidebar">
+            <ul class="menu">
+                <li><a href="../syntax/index.html" title="Syntax">Syntax</a></li>
+                <li><a href="../download.html" title="Download">Download</a></li>
+                <li><a href="../license.html" title="License">License</a></li>
+                <li><a href="../development/index.html" title="Development">Development</a></li>
+                <li><a href="../donation.html" title="Donation">Donation</a></li>
+                <li><a href="../information.html" title="Donation">Information</a></li>
+            </ul>
+            <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+            <!-- KARAS_Side_160x600 -->
+            <ins class="adsbygoogle"
+                 style="display:inline-block;width:160px;height:600px"
+                 data-ad-client="ca-pub-9133526697051515"
+                 data-ad-slot="6825762586"></ins>
+            <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+        <div id="maincolumn">
+            <div id="pageinfo">
+                <div id ="topicpath"><a href="../index.html">Top</a>&nbsp;&gt;&nbsp;<a href="../syntax/index.html">Syntax</a>&nbsp;&gt;&nbsp;<a href="advanced-html.html">Advanced - HTML</a></div>
+                <div id="lastmodified">Last modified : 2014. 05. 24</div>
+            </div>
+            <article>
+            <h1 id="advancedhtml">Advanced - HTML</h1>
+<p>Text written in KARAS can include HTML. In many cases, KARAS outputs the appropriate result, but if the result is different from that you think, you can write HTML directly. This page describe rules about HTML.</p>
+<div class="note">
+<p>In few system, because of the security or output format, you may not able to insert HTML.</p>
+</div>
+<ul>
+<li><a href="#easiestsample">Easiest Sample</a></li>
+<li><a href="#beginltmark">Text beginning with &lt;</a></li>
+<li><a href="#blanklineinhtml">Blank line in HTML</a></li>
+<li><a href="#wornguse">Wrong Usage</a>
+<ul>
+<li><a href="#worngsamplea">Case - 1</a></li>
+<li><a href="#wrongsampleb">Case - 2</a></li>
+<li><a href="#wrongsamplec">Case - 3</a></li>
+</ul>
+<li><a href="#ltgtinprecodesamp">&lt; and &gt; mark in <i>pre</i>, <i>code</i>, <i>samp</i> element</a></li>
+</ul>
+<h2 id="easiestsample">Easiest Sample</h2>
+<p>For example, you can write HTML like this.</p>
+<figure>
+<figcaption>Input</figcaption>
+<pre class="karas"><code class="karas">This is &lt;mark&gt;sample&lt;/mark&gt; text.</code></pre>
+</figure>
+<figure>
+<figcaption>Output</figcaption>
+<pre class="html"><code class="html">&lt;p&gt;This is &lt;mark&gt;sample&lt;/mark&gt; text.&lt;/p&gt;</code></pre>
+</figure>
+<p>Like a following sample, you can write HTML in KARAS syntax, and also can write KARAS in HTML.</p>
+<figure>
+<figcaption>Input</figcaption>
+<pre class="karas"><code class="karas">= This is &lt;mark&gt;heading&lt;/mark&gt; sample.
+
+This is &lt;mark&gt;// sample //&lt;/mark&gt; text.</code></pre>
+</figure>
+<figure>
+<figcaption>Output</figcaption>
+<pre class="html"><code class="html">&lt;h1&gt;This is &lt;mark&gt;heading&lt;/mark&gt;sample.&lt;/h1&gt;
+
+&lt;p&gt;This is &lt;mark&gt;&lt;i&gt;sample&lt;/i&gt;&lt;/mark&gt; text.&lt;/p&gt;</code></pre>
+</figure>
+<h2 id="beginltmark">Text beginning with &lt;</h2>
+<p>Text beginning with single <code>&lt;</code> is regarded as HTML text. HTML text does not become a paragraph. Note, even if the text beginning with single <code>&lt;</code> is not HTML tag, it does not become a paragraph. Usually, &lt; and &gt; mark is written in <i>Character Reference</i> like <code>&amp;lt;</code> and <code>&amp;gt;</code>.</p>
+<p>For example, when you write a text beginning with <i>mark</i> element, it does not become a paragraph.</p>
+<figure>
+<figcaption>Input</figcaption>
+<pre class="karas"><code class="karas">&lt;mark&gt;This&lt;/mark&gt; sample text has wrong.
+
+&lt;This sample text has wrong.</code></pre>
+</figure>
+<figure>
+<figcaption>Output</figcaption>
+<pre class="html"><code class="html">&lt;mark&gt;This&lt;/mark&gt; sample text has wrong.
+
+&lt;This sample text has wrong.</code></pre>
+</figure>
+<p>Text following after the <i>mark</i> element is not closed with HTML element, so this output result(HTML) has wrong structure.</p>
+<p>In order to solve this problem, to write a <code>\</code> to escape, or, to write a correct HTML element directly. In here, <i>p</i> element.</p>
+<figure>
+<figcaption>Input</figcaption>
+<pre class="karas"><code class="karas">\&lt;mark&gt;This&lt;/mark&gt; sample text is correct.
+
+&lt;p&gt;&lt;mark&gt;This&lt;/mark&gt; sample text is correct.&lt;/p&gt;</code></pre>
+</figure>
+<figure>
+<figcaption>Output</figcaption>
+<pre class="html"><code class="html">&lt;p&gt;&lt;mark&gt;This&lt;/mark&gt; sample text is correct.&lt;/p&gt;
+ 
+&lt;p&gt;&lt;mark&gt;This&lt;/mark&gt; sample text is correct.&lt;/p&gt;</code></pre>
+</figure>
+<p><strong>Note, KARAS syntax in the text which beginning with single <code>&lt;</code> is not converted.</strong> For example, like a sample, KARAS syntax is not converted and outputted directly. In here, sample shows case of <i>p</i> element, but the <i>h1</i> or <i>div</i> element are also not converted.</p>
+<figure>
+<figcaption>Input</figcaption>
+<pre class="karas"><code class="karas">&lt;p&gt;This is &lt;mark&gt;// sample //&lt;/mark&gt; text.&lt;/p&gt;</code></pre>
+</figure>
+<figure>
+<figcaption>Output</figcaption>
+<pre class="html"><code class="html">&lt;p&gt;This is &lt;mark&gt;// sample //&lt;/mark&gt; text.&lt;/p&gt;</code></pre>
+</figure>
+<p>In KARAS, paragraph is separated with blank line or other KARAS syntax. The 2nd line in the next sample is beginning with <code>&lt;</code>, the text becomes a paragraph. Because the 1st line of the text is start position of the paragraph.</p>
+<figure>
+<figcaption>Input</figcaption>
+<pre class="karas"><code class="karas">This text become a paragraph.
+&lt;mark&gt;This&lt;/mark&gt; line included in paragraph.</code></pre>
+</figure>
+<figure>
+<figcaption>Output</figcaption>
+<pre class="html"><code class="html">&lt;p&gt;This text become a paragraph.
+&lt;mark&gt;This&lt;/mark&gt; line included in paragraph.&lt;/p&gt;</code></pre>
+</figure>
+<p>Inline group syntax using <code>&lt;&lt;</code> is not regarded as HTML, and converted. Text in following sample becomes a paragraph.</p>
+<figure>
+<figcaption>Input</figcaption>
+<pre class="karas"><code class="karas">&lt;&lt;sample::This&gt;&gt; text become a paragraph.</code></pre>
+</figure>
+<figure>
+<figcaption>Output</figcaption>
+<pre class="html"><code class="html">&lt;p&gt;&lt;span class=&#34;sample&#34;&gt;This&lt;/span&gt; text become a paragraph.&lt;/p&gt;</code></pre>
+</figure>
+<h2 id="blanklineinhtml">Blank line in HTML</h2>
+<p>Be careful when the blank line is included in HTML. KARAS divide a text with blank line. For example, when you write a text like a following sample, the output result has wrong structure.</p>
+<figure>
+<figcaption>Input</figcaption>
+<pre class="karas"><code class="karas">&lt;p&gt;This HTML is written by User.
+
+This line is enclosed with blank-line.
+
+&lt;/p&gt;</code></pre>
+</figure>
+<figure>
+<figcaption>Output</figcaption>
+<pre class="html"><code class="html">&lt;p&gt;This HTML is written by User. 
+&lt;p&gt;This line is enclosed with blank-line.&lt;/p&gt; 
+&lt;/p&gt;</code></pre>
+</figure>
+<p>Because there is a text beginning with blank line, KARAS convert the text to <i>p</i> element. In HTML, <i>p</i> element can not include other <i>p</i> element. So this result has wrong structure. This problem is not only to <i>p</i> element. All of HTML element which can not include <i>p</i> element has this problem.</p>
+<p>On the other hand, by using this rule, it is able to put KARAS syntax and the <i>p</i> element into HTML. For example, text in following sample becomes a correct result.</p>
+<figure>
+<figcaption>Input</figcaption>
+<pre class="karas"><code class="karas">&lt;div id=&#34;sample&#34;&gt;
+
+This line is enclosed with blank-line.
+
+&lt;/div&gt;</code></pre>
+</figure>
+<figure>
+<figcaption>Output</figcaption>
+<pre class="html"><code class="html">&lt;div id=&#34;sample&#34;&gt;
+&lt;p&gt;This line is enclosed with blank-line.&lt;/p&gt; 
+&lt;/div&gt;</code></pre>
+</figure>
+<h2 id="wornguse">Wrong Usage</h2>
+<p>When using combination of KARAS and HTML, be careful with wrong usage like following case. When you write a HTML, it is important to have correct knowledge about HTML.</p>
+<h3 id="worngsamplea">Case - 1</h3>
+<p>Because of the HTML text in KARAS document, outputted HTML may gets wrong structure. For example, following text has wrong.</p>
+<figure>
+<figcaption>Input</figcaption>
+<pre class="karas"><code class="karas">= &lt;h1&gt;Heading text&lt;/h1&gt;</code></pre>
+</figure>
+<figure>
+<figcaption>Output</figcaption>
+<pre class="html"><code class="html">&lt;h1&gt;&lt;h1&gt;Heading&lt;/h1&gt;&lt;/h1&gt;</code></pre>
+</figure>
+<p>In HTML, <i>h1-6</i> element can not include <i>h1-6</i> element. Therefore, this HTML has wrong structure.</p>
+<h3 id="wrongsampleb">Case - 2</h3>
+<p>KARAS regards continuous text as one block. Sometimes HTML elements are included in the block.</p>
+<p>Therefore, for example, be careful to not include HTML element which can not be included in <i>p</i> element into <i>p</i> element (paragraph). Following text has wrong structure. <i>p</i> element (paragraph) can not include <i>ul</i> element.</p>
+<figure>
+<figcaption>Input</figcaption>
+<pre class="karas"><code class="karas">This text become a paragraph.
+&lt;ul&gt;
+&lt;li&gt;This HTML element is written a user.&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+</figure>
+<figure>
+<figcaption>Output</figcaption>
+<pre class="html"><code class="html">&lt;p&gt;This text become a paragraph.
+&lt;ul&gt;
+&lt;li&gt;This HTML element is written a user.&lt;/li&gt;
+&lt;/ul&gt;&lt;/p&gt;</code></pre>
+</figure>
+<p>To solve this problem, insert blank line before the <i>ul</i> element.</p>
+<figure>
+<figcaption>Input</figcaption>
+<pre class="karas"><code class="karas">This text become a paragraph.
+
+&lt;ul&gt;
+&lt;li&gt;This HTML element is written a user.&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+</figure>
+<figure>
+<figcaption>Output</figcaption>
+<pre class="html"><code class="html">&lt;p&gt;This text become a paragraph.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;This HTML element is written a user.&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+</figure>
+<h3 id="wrongsamplec">Case - 3</h3>
+<p>There are also some pattern that can not be combined with HTML and KARAS syntax. For example, when you write a list, like a following sample. It looks like 2 li elements are included in ul element, but the output result is not to be so.</p>
+<figure>
+<figcaption>Input</figcaption>
+<pre class="karas"><code class="karas">- KARAS list
+&lt;li&gt; HTML list &lt;/li&gt;</code></pre>
+</figure>
+<figure>
+<figcaption>Output</figcaption>
+<pre class="html"><code class="html">&lt;ul&gt;
+&lt;li&gt;KARAS list
+&lt;li&gt; HTML list &lt;/li&gt;&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+</figure>
+<p>In here, sample shows <i>ul</i> and <i>li</i> case, but this is same in case of table or the other.</p>
+<h2 id="ltgtinprecodesamp">&lt; and &gt; mark in <i>pre</i>, <i>code</i>, <i>samp</i> element</h2>
+<p>KARAS has group syntax to output <i>pre</i>, <i>code</i>, and <i>samp</i> element. &lt; and &gt; marks in these group are converted to character reference. However, <strong>when <i>pre</i>, <i>code</i>, and <i>samp</i> element is written in HTML directly, &lt; and &gt; marks in these element is not converted. And the KARAS syntax in these element is also not converted.</strong></p>
+            </article>
+            <footer>
+<p><small><a href="http://lightweightmarkuplanguage.com">&copy; KARAS - Lightweight Markup Language</a></small></p>
+            </footer>
+        </div>
+    </div>
+</div>
+</body>
+</html>

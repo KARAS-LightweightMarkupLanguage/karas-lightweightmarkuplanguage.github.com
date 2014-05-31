@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="author" content="Daiki Umeda (XJINE)">
+<meta name="generator" content="BlackBoard">
+<meta name="generator" content="KARAS">
+<meta charset="UTF-8">
+<title>KARAS - System Requirements</title>
+<link rel="stylesheet" href="../../resource/default.css" type="text/css" media="all" charset="">
+<meta property="og:site_name" content="KARAS">
+<meta property="og:title" content="Lightweight Markup Language - KARAS">
+<meta property="og:url" content="http://lightweightmarkuplanguage.com/">
+<meta property="og:image" content="../../resource/ogpimg.jpg">
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-44157178-2', 'lightweightmarkuplanguage.com');
+ga('send', 'pageview');
+</script>
+</head>
+<body>
+<div id="outframe">
+    <header>
+        <a id="logo" href="../index.html" title="Top"></a>
+        <div id="pagetitle">
+            <h1><a href="../index.html">KARAS</a></h1>
+            <h1><a href="../index.html">Lightweight Markup Language</a></h1>
+        </div>
+        <div id="socialbutton">
+            <a href="http://twitter.com/share?text='Lightweight Markup Language - KARAS'&amp;url=http://lightweightmarkuplanguage.com"
+               title="Share on Twitter" 
+               onclick="javascript:window.open(this.href,'Twitter','menubar=no,toolbar=no,scrollbars=yes,resizable=yes,height=300,width=450');
+                        return false;">
+                <img src="../../resource/tw_35x.png" alt="Share on Twitter">
+            </a>
+            <a href="http://www.facebook.com/share.php?u=http://lightweightmarkuplanguage.com"
+               title="Share on Facebook" 
+               onclick="javascript:window.open(this.href,'Facebook','menubar=no,toolbar=no,scrollbars=yes,resizable=yes,height=300,width=450');
+                        return false;">
+                <img src="../../resource/fb_35x.png" alt="Share on Facebook">
+            </a>
+            <a href="https://plus.google.com/share?url=http://lightweightmarkuplanguage.com"
+               title="Share on Google+" 
+               onclick="javascript:window.open(this.href,'Google+','menubar=no,toolbar=no,scrollbars=yes,resizable=yes,height=600,width=600');
+                        return false;">
+                <img src="../../resource/gp_35x.png" alt="Share on Google+">
+            </a>
+            <a href="https://github.com/KARAS-LightweightMarkupLanguage"
+               title="Go to GitHub" target="_blank">
+                <img src="../../resource/gh_35x.png" alt="Go to GitHub">
+            </a>
+        </div>
+    </header>
+    <div id="contents">
+        <div id="sidebar">
+            <ul class="menu">
+                <li><a href="../syntax/index.html" title="Syntax">Syntax</a></li>
+                <li><a href="../download.html" title="Download">Download</a></li>
+                <li><a href="../license.html" title="License">License</a></li>
+                <li><a href="../development/index.html" title="Development">Development</a></li>
+                <li><a href="../donation.html" title="Donation">Donation</a></li>
+                <li><a href="../information.html" title="Donation">Information</a></li>
+            </ul>
+            <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+            <!-- KARAS_Side_160x600 -->
+            <ins class="adsbygoogle"
+                 style="display:inline-block;width:160px;height:600px"
+                 data-ad-client="ca-pub-9133526697051515"
+                 data-ad-slot="6825762586"></ins>
+            <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+        <div id="maincolumn">
+            <div id="pageinfo">
+                <div id ="topicpath"><a href="../index.html">Top</a>&nbsp;&gt;&nbsp;<a href="../development/index.html">Development</a>&nbsp;&gt;&nbsp;<a href="systemrequirements.html">System Requirements</a></div>
+                <div id="lastmodified">Last modified : 2014. 05. 29</div>
+            </div>
+            <article>
+            <h1 id="requirements">System Requirements</h1>
+<p>このページでは KARAS を導入するシステムが満たすべき条件と、推奨する条件について解説します。</p>
+<ul>
+<li><a href="#charaencoding">文字エンコ―ディング</a></li>
+<li><a href="#medialink">メディアリンクの処理</a></li>
+<li><a href="#security">セキュリティの問題</a>
+<ul>
+<li><a href="#cautionplugin">Plugin に注意する</a></li>
+<li><a href="#securityhint">セキュリティのヒント</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="charaencoding">文字エンコ―ディング</h2>
+<p>KARAS の標準のコンバータは、UTF-8 環境で利用するように設計されています。それ以外の文字エンコーディングは考慮していません。したがって、標準のコンバータを用いて KARAS を導入する場合には、システムの文字エンコ―ディングを UTF-8 に設定する必要があります。</p>
+<p>もしも UTF-8 以外のエンコーディングで動作しても、他の異なる環境で、動作することは保障されません。特にマルチバイト文字を使う場合には、不具合を起こす可能性があります。</p>
+<h2 id="medialink">メディアリンクの処理</h2>
+<p>KARAS のコンバータは、画像、音声、動画、などのメディアを出力するためのリンクを適切な形式に変換する必要があります。KARAS を導入するシステムの開発者は、この仕組みを実装する必要があります。またその出力結果の例は、そのシステムのユーザに示されるべきです。特に、標準のコンバータが出力する結果と異なる結果を出力するときはより重要です。</p>
+<p>例えば、標準のコンバータは、 <i>video</i> や <i>audio</i> 要素を使います。あなたは、それを <i>Flash</i> を利用する形式に変更することができます。ただし、その出力結果の例をユーザに示すことが必要です。</p>
+<p>KARAS によって書かれるドキュメントの最終的なフォーマットや、そのドキュメントを読むための環境は定義されていません。　例えば、EPUB かもしれないし、PDF かもしれません。システムの開発者は、それぞれの環境で、それぞれのメディアに対して最適なプレイヤを出力できるように、システムを開発する必要があります。</p>
+<h2 id="security">セキュリティの問題</h2>
+<p>KARAS の標準的な出力フォーマットは HTML です。HTML は Javascript などの任意のスクリプトを実行する機能を持っています。また <i>object</i> 要素や、 <i>iframe</i> 要素のような、外部のプログラムやページを実行する機能も持っています。Wiki のような不明瞭で権限のないユーザがページを編集できるようなシステムでは、悪意のあるユーザが、悪質なスクリプトやタグ、URL を埋め込む危険性があります。KARAS を導入するシステムの開発者は、この点に十分に注意する必要があります。</p>
+<p>許可されたユーザのみが KARAS を利用するときは、HTML を挿入するための仕組みは大変便利です。しかしながら、不特定多数のユーザが KARAS を利用するようなシステムは、サニタイズ (sanitize/sanitization) が必要です。サニタイズに関する技術的な詳細はここでは解説しません。</p>
+<p>また、オプションを持つ構文に注意してください。例えばリンク構文、グループ構文などで、特にプラグイン構文には注意が必要です。オプションを利用することで、ユーザは任意のコードを埋め込むことができます。</p>
+<h3 id="cautionplugin">Plugin に注意する</h3>
+<p>プラグインの開発や導入には注意が必要です。プラグインの開発者は、そのプラグインが任意の(悪意ある)コードを挿入できる場合には、そのことを示さなければいけません。配布されるプラグインを導入する場合には、そのプラグインが悪意のあるコードを出力するかどうか確認したほうが良いでしょう。また未知のユーザが利用するようなシステムの場合には、そのプラグインによって悪意のあるコードを埋め込むことができるかどうか、検証する必要があります。</p>
+<h3 id="securityhint">セキュリティのヒント</h3>
+<p>KARAS を Wiki などのパブリックなシステムで使うとき、次のようなセキュリティ対策が考えられます。セキュリティレベルが高いほど、セキュリティは強くなります。</p>
+<ol>
+<li>ユーザに一部の HTML 要素を挿入させない。
+<ul>
+<li>挿入された HTML テキストをエスケープする。</li>
+<li>挿入された HTML テキストを削除する。</li>
+</ul>
+</li>
+<li>ユーザにすべての HTML を挿入させない。
+<ul>
+<li>挿入された HTML をエスケープする。</li>
+<li>挿入された HTML を削除する。</li>
+</ul>
+</li>
+<li>リンクを持ったすべての HTML を削除する。
+<ul>
+<li>KARAS の構文を使ったリンクの出力もそれに含まれる。</li>
+<li>a, img, video, object, embed, etc…</li>
+</ul>
+</li>
+</ol>
+<p>またこれらの処理に加えて、Javascript などの危険なテキストの埋め込みを回避する必要があります。</p>
+            </article>
+            <footer>
+<p><small><a href="http://lightweightmarkuplanguage.com">&copy; KARAS - Lightweight Markup Language</a></small></p>
+            </footer>
+        </div>
+    </div>
+</div>
+</body>
+</html>

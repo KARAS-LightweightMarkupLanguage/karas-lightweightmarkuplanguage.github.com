@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="author" content="Daiki Umeda (XJINE)">
+<meta name="generator" content="BlackBoard">
+<meta name="generator" content="KARAS">
+<meta charset="UTF-8">
+<title>KARAS - Plugin</title>
+<link rel="stylesheet" href="../../resource/default.css" type="text/css" media="all" charset="">
+<meta property="og:site_name" content="KARAS">
+<meta property="og:title" content="Lightweight Markup Language - KARAS">
+<meta property="og:url" content="http://lightweightmarkuplanguage.com/">
+<meta property="og:image" content="../../resource/ogpimg.jpg">
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-44157178-2', 'lightweightmarkuplanguage.com');
+ga('send', 'pageview');
+</script>
+</head>
+<body>
+<div id="outframe">
+    <header>
+        <a id="logo" href="../index.html" title="Top"></a>
+        <div id="pagetitle">
+            <h1><a href="../index.html">KARAS</a></h1>
+            <h1><a href="../index.html">Lightweight Markup Language</a></h1>
+        </div>
+        <div id="socialbutton">
+            <a href="http://twitter.com/share?text='Lightweight Markup Language - KARAS'&amp;url=http://lightweightmarkuplanguage.com"
+               title="Share on Twitter" 
+               onclick="javascript:window.open(this.href,'Twitter','menubar=no,toolbar=no,scrollbars=yes,resizable=yes,height=300,width=450');
+                        return false;">
+                <img src="../../resource/tw_35x.png" alt="Share on Twitter">
+            </a>
+            <a href="http://www.facebook.com/share.php?u=http://lightweightmarkuplanguage.com"
+               title="Share on Facebook" 
+               onclick="javascript:window.open(this.href,'Facebook','menubar=no,toolbar=no,scrollbars=yes,resizable=yes,height=300,width=450');
+                        return false;">
+                <img src="../../resource/fb_35x.png" alt="Share on Facebook">
+            </a>
+            <a href="https://plus.google.com/share?url=http://lightweightmarkuplanguage.com"
+               title="Share on Google+" 
+               onclick="javascript:window.open(this.href,'Google+','menubar=no,toolbar=no,scrollbars=yes,resizable=yes,height=600,width=600');
+                        return false;">
+                <img src="../../resource/gp_35x.png" alt="Share on Google+">
+            </a>
+            <a href="https://github.com/KARAS-LightweightMarkupLanguage"
+               title="Go to GitHub" target="_blank">
+                <img src="../../resource/gh_35x.png" alt="Go to GitHub">
+            </a>
+        </div>
+    </header>
+    <div id="contents">
+        <div id="sidebar">
+            <ul class="menu">
+                <li><a href="../syntax/index.html" title="Syntax">Syntax</a></li>
+                <li><a href="../download.html" title="Download">Download</a></li>
+                <li><a href="../license.html" title="License">License</a></li>
+                <li><a href="../development/index.html" title="Development">Development</a></li>
+                <li><a href="../donation.html" title="Donation">Donation</a></li>
+                <li><a href="../information.html" title="Donation">Information</a></li>
+            </ul>
+            <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+            <!-- KARAS_Side_160x600 -->
+            <ins class="adsbygoogle"
+                 style="display:inline-block;width:160px;height:600px"
+                 data-ad-client="ca-pub-9133526697051515"
+                 data-ad-slot="6825762586"></ins>
+            <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+        <div id="maincolumn">
+            <div id="pageinfo">
+                <div id ="topicpath"><a href="../index.html">Top</a>&nbsp;&gt;&nbsp;<a href="../development/index.html">Development</a>&nbsp;&gt;&nbsp;<a href="plugin.html">Plugin</a></div>
+                <div id="lastmodified">Last modified : 2014. 05. 28</div>
+            </div>
+            <article>
+            <h1 id="plugin">Plugin</h1>
+<p>This page describe development of Plugin syntax.</p>
+<ul>
+<li><a href="#directoryfile">Directory and File</a></li>
+<li><a href="#pluginsyntax">Plugin Syntax</a></li>
+<li><a href="#developplugin">How to Develop a Plugin</a></li>
+<li><a href="#convertplugin">Convert type Plugin</a></li>
+<li><a href="#actionplugin">Action type Plugin</a></li>
+<li><a href="#othertips">Other tips</a>
+<ul>
+<li><a href="#psyntaxmars">[[ and ]] in Plugin Syntax</a></li>
+<li><a href="#tofastconvert">To Fast Conversion</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="directoryfile">Directory and File</h2>
+<p>It is recommended that the name of plugin directory is <code>plugins</code>. And the plugin directory should be set at the same directory of executable file of KARAS. However, if your system settings conflict with these rules, it can be changed. In default converter, to change the directory name or that path, needs to modify the source code directly.</p>
+<p>The name of the plugin must be same as the plugin's <i>class</i> or <i>module</i> name. It is considered that the name of the plugin is written in upper or lower case. For example, when the plugin's name is <i>Sample</i>, the file name must be <i>Sample.ext</i>. Then, the <i>class</i> or <i>module</i> is <i>Sample</i>. If your system has a problem which caused by these rules, it can be changed. In default converter, to change the naming rule, needs to modify the source code directly.</p>
+<div class="note">
+<p>This does not apply to namespace of Javascript ver. To avoid the algorithm become complicated, the namespace is defined with lower case. For more information, please read the source code of the Javascript ver. plugin.</p>
+</div>
+<h2 id="pluginsyntax">Plugin Syntax</h2>
+<p>In KARAS, plugin syntax is defined like this.</p>
+<figure>
+<figcaption>Convert type plugin (Level1)</figcaption>
+<pre class="karas"><code class="karas">[[ PluginName :: option1 :: option2... :: markedupText]]</code></pre>
+</figure>
+<figure>
+<figcaption>Action type plugin (Level2)</figcaption>
+<pre class="karas"><code class="karas">[[[ PluginName :: option1 :: option2...]]]</code></pre>
+</figure>
+<ul>
+<li><strong><code>PluginName</code> must ignore the case.</strong> Even if it is written in upper case or lower case, it must call same plugin.</li>
+<li>Option must be divided with <code>::</code>.  It is not recommended to divide with <code>,</code> or any other.</li>
+<li>The value of <code>option1-optionX</code> must ignore the case, when it is used in order to change the process.
+<ul>
+<li>For example, when using <code>true</code> / <code>false</code>, the result must be same as when using <code>TRUE</code>/ <code>FALSE</code>.</li>
+</ul>
+</li>
+<li>When set the markedup text as option which is not parameter, it must be set at the end of the options.</li>
+</ul>
+<h2 id="developplugin">How to Develop a Plugin</h2>
+<p>In default converter, plugin syntax will be converted before any other KARAS syntax will be. This is because that there are non-KARAS syntax in plugin text. For example, LaTeX is one of sample. Usually, system is developed like this. However, you can change the order of the conversion process if you need. When implementing plugin, the way of implementation is not limited. You have only to keep the format of Plugin syntax.</p>
+<h2 id="convertplugin">Convert type Plugin</h2>
+<p>Convert type plugin is a plugin to output a new text from the marked up text.</p>
+<figure>
+<figcaption>Syntax</figcaption>
+<pre class="karas"><code class="karas">[[PluginName::markedupText :: options0 :: options1 :: ･･･]]</code></pre>
+</figure>
+<figure>
+<figcaption>Implement</figcaption>
+<pre class="csharp"><code class="csharp">public static Convert(markedupText, options)
+return string</code></pre>
+</figure>
+<p>Args <code>markedupText</code> is string type text which is marked up in the plugin syntax. Args <code>options</code> is array of string type which is marked up as option in the plugin syntax. Therefore, for example, when specify the value type option, it have to be converted to value type in the plugin. The return value is a new text which replaced the marked up text.</p>
+<h2 id="actionplugin">Action type Plugin</h2>
+<p>Action type plugin is a plugin to output a new text with whole of the text. For example, you can develop a plugin to search all heading in the text and list them.</p>
+<figure>
+<figcaption>Syntax</figcaption>
+<pre class="karas"><code class="karas">[[[PluginName::options0 :: options1 :: ･･･]]]</code></pre>
+</figure>
+<figure>
+<figcaption>Implement</figcaption>
+<pre class="csharp"><code class="csharp">public static string Action(text, options)
+return string</code></pre>
+</figure>
+<p>Args <code>text</code> is whole of the text which has the Action type plugin text. Args <code>options</code> is array of string type which is marked up as option in the plugin syntax. Therefore, for example, when specify the value type option, it have to be converted to value type in the plugin. The return value is a new text which replaced the marked up text.</p>
+<h2 id="othertips">Other tips</h2>
+<h3 id="psyntaxmars">[[ and ]] in Plugin Syntax</h3>
+<p>It is not allow you to write <kbd>[[</kbd> and <kbd>]]</kbd> marks (not as plugin) in plugin syntax. This is an unsolvable problem. In order to avoid this problem, you can escape these marks with <code>\</code>. Or, avoid by the implementation process of the plugin.</p>
+<h3 id="tofastconvert">To Fast Conversion</h3>
+<p>If need fast conversion, it is important to pre compile the plugin. For example, when using plugin in system like Wiki, it is good way to compile all of the plugin once when the system start. Or, it is also good to cache the converted HTML.</p>
+<p>In language such as C# or Java, run-time compilation is very slow. In such case, you may use pre compiled plugins. However, need to be care when using it. You can not read the source code of the pre compiled plugins. Therefore, when using pre compiled plugin which developed by other than you, it may output a malicious code in the result.</p>
+<p>In order to solve this problem, plugin's souce code must be open, and need to be compiled by the user. Developers must be careful about how to publish.</p>
+            </article>
+            <footer>
+<p><small><a href="http://lightweightmarkuplanguage.com">&copy; KARAS - Lightweight Markup Language</a></small></p>
+            </footer>
+        </div>
+    </div>
+</div>
+</body>
+</html>

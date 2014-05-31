@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="author" content="Daiki Umeda (XJINE)">
+<meta name="generator" content="BlackBoard">
+<meta name="generator" content="KARAS">
+<meta charset="UTF-8">
+<title>KARAS - Source Code</title>
+<link rel="stylesheet" href="../../resource/default.css" type="text/css" media="all" charset="">
+<meta property="og:site_name" content="KARAS">
+<meta property="og:title" content="Lightweight Markup Language - KARAS">
+<meta property="og:url" content="http://lightweightmarkuplanguage.com/">
+<meta property="og:image" content="../../resource/ogpimg.jpg">
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-44157178-2', 'lightweightmarkuplanguage.com');
+ga('send', 'pageview');
+</script>
+</head>
+<body>
+<div id="outframe">
+    <header>
+        <a id="logo" href="../index.html" title="Top"></a>
+        <div id="pagetitle">
+            <h1><a href="../index.html">KARAS</a></h1>
+            <h1><a href="../index.html">Lightweight Markup Language</a></h1>
+        </div>
+        <div id="socialbutton">
+            <a href="http://twitter.com/share?text='Lightweight Markup Language - KARAS'&amp;url=http://lightweightmarkuplanguage.com"
+               title="Share on Twitter" 
+               onclick="javascript:window.open(this.href,'Twitter','menubar=no,toolbar=no,scrollbars=yes,resizable=yes,height=300,width=450');
+                        return false;">
+                <img src="../../resource/tw_35x.png" alt="Share on Twitter">
+            </a>
+            <a href="http://www.facebook.com/share.php?u=http://lightweightmarkuplanguage.com"
+               title="Share on Facebook" 
+               onclick="javascript:window.open(this.href,'Facebook','menubar=no,toolbar=no,scrollbars=yes,resizable=yes,height=300,width=450');
+                        return false;">
+                <img src="../../resource/fb_35x.png" alt="Share on Facebook">
+            </a>
+            <a href="https://plus.google.com/share?url=http://lightweightmarkuplanguage.com"
+               title="Share on Google+" 
+               onclick="javascript:window.open(this.href,'Google+','menubar=no,toolbar=no,scrollbars=yes,resizable=yes,height=600,width=600');
+                        return false;">
+                <img src="../../resource/gp_35x.png" alt="Share on Google+">
+            </a>
+            <a href="https://github.com/KARAS-LightweightMarkupLanguage"
+               title="Go to GitHub" target="_blank">
+                <img src="../../resource/gh_35x.png" alt="Go to GitHub">
+            </a>
+        </div>
+    </header>
+    <div id="contents">
+        <div id="sidebar">
+            <ul class="menu">
+                <li><a href="../syntax/index.html" title="Syntax">Syntax</a></li>
+                <li><a href="../download.html" title="Download">Download</a></li>
+                <li><a href="../license.html" title="License">License</a></li>
+                <li><a href="../development/index.html" title="Development">Development</a></li>
+                <li><a href="../donation.html" title="Donation">Donation</a></li>
+                <li><a href="../information.html" title="Donation">Information</a></li>
+            </ul>
+            <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+            <!-- KARAS_Side_160x600 -->
+            <ins class="adsbygoogle"
+                 style="display:inline-block;width:160px;height:600px"
+                 data-ad-client="ca-pub-9133526697051515"
+                 data-ad-slot="6825762586"></ins>
+            <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+        <div id="maincolumn">
+            <div id="pageinfo">
+                <div id ="topicpath"><a href="../index.html">Top</a>&nbsp;&gt;&nbsp;<a href="../development/index.html">Development</a>&nbsp;&gt;&nbsp;<a href="sourcecode.html">Source Code</a></div>
+                <div id="lastmodified">Last modified : 2014. 05. 29</div>
+            </div>
+            <article>
+            <h1 id="sourcecode">Source Code</h1>
+<p>Default converter of KARAS is coded to share the algorithm and the code between any language. Therefore, it is not optimized for each language and each environment. These codes have a not a few redundancy. In other words, source code is written with simplest way, and it can be quickly changed when it needs.</p>
+<p>This page describe some coding rule of default converter of KARAS.</p>
+<div class="note">
+<p>There are possibility that the algorithm is improved in future. But optimization for each language and each environment are not.</p>
+</div>
+<ul>
+<li><a href="#codecolumn">Code Column</a></li>
+<li><a href="#namingrule">Naming Rule</a></li>
+<li><a href="#operator">Operator</a></li>
+<li><a href="#regex">Regex</a></li>
+<li><a href="#others">Others</a></li>
+</ul>
+<h2 id="codecolumn">Code Column</h2>
+<p>As long as there is no restriction of language and the standard class library, code column is limited to 100 characters in a single line. Break position is depending on the situation.</p>
+<h2 id="namingrule">Naming Rule</h2>
+<p>As long as there is no restriction of language and the standard class library, class name and the others are named with following rule.</p>
+<ul>
+<li>Namespace, class, and constant are named with UpperCamel(Pascal) case.
+<ul>
+<li>If it is restricted, named with lowerCamel case.</li>
+</ul>
+</li>
+<li>function, instance, and local value are named with lowerCamel case.</li>
+</ul>
+<p>I know that some language such as Ruby is using snake_case by convention, but all of the code of KARAS is not using it.</p>
+<p>In Javascript, all of the class name is named with lowercase, because the way of including external file is restricted.</p>
+<h2 id="operator">Operator</h2>
+<p><code>++</code> and <code>--</code> are not using to increment or decrement. Because Ruby does not support this way.</p>
+<p>When checking the value by using <code>if</code>, it have to use <code>==</code>. And in Ruby, it must not use <code>unless</code>.</p>
+<h2 id="regex">Regex</h2>
+<p>Because ECMAscript(Javascript) does not have a lookbehind feature in the Regex, KARAS does not use it. For the same reason, named capture groupe is also does not.</p>
+<h2 id="others">Others</h2>
+<p>Enum, lambda and anonymous class are not used. These can be used to implement efficient processing and more secure design. However, default code never use these features.</p>
+<p>Code-block marks <code>{</code> and <code>}</code> which using with <code>if</code>, <code>for</code>, <code>try</code>, or any other cannot be omitted in any case.</p>
+            </article>
+            <footer>
+<p><small><a href="http://lightweightmarkuplanguage.com">&copy; KARAS - Lightweight Markup Language</a></small></p>
+            </footer>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="author" content="Daiki Umeda (XJINE)">
+<meta name="generator" content="BlackBoard">
+<meta name="generator" content="KARAS">
+<meta charset="UTF-8">
+<title>KARAS - Basic Syntax</title>
+<link rel="stylesheet" href="../../resource/default.css" type="text/css" media="all" charset="">
+<meta property="og:site_name" content="KARAS">
+<meta property="og:title" content="Lightweight Markup Language - KARAS">
+<meta property="og:url" content="http://lightweightmarkuplanguage.com/">
+<meta property="og:image" content="../../resource/ogpimg.jpg">
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-44157178-2', 'lightweightmarkuplanguage.com');
+ga('send', 'pageview');
+</script>
+</head>
+<body>
+<div id="outframe">
+    <header>
+        <a id="logo" href="../index.html" title="Top"></a>
+        <div id="pagetitle">
+            <h1><a href="../index.html">KARAS</a></h1>
+            <h1><a href="../index.html">Lightweight Markup Language</a></h1>
+        </div>
+        <div id="socialbutton">
+            <a href="http://twitter.com/share?text='Lightweight Markup Language - KARAS'&amp;url=http://lightweightmarkuplanguage.com"
+               title="Share on Twitter" 
+               onclick="javascript:window.open(this.href,'Twitter','menubar=no,toolbar=no,scrollbars=yes,resizable=yes,height=300,width=450');
+                        return false;">
+                <img src="../../resource/tw_35x.png" alt="Share on Twitter">
+            </a>
+            <a href="http://www.facebook.com/share.php?u=http://lightweightmarkuplanguage.com"
+               title="Share on Facebook" 
+               onclick="javascript:window.open(this.href,'Facebook','menubar=no,toolbar=no,scrollbars=yes,resizable=yes,height=300,width=450');
+                        return false;">
+                <img src="../../resource/fb_35x.png" alt="Share on Facebook">
+            </a>
+            <a href="https://plus.google.com/share?url=http://lightweightmarkuplanguage.com"
+               title="Share on Google+" 
+               onclick="javascript:window.open(this.href,'Google+','menubar=no,toolbar=no,scrollbars=yes,resizable=yes,height=600,width=600');
+                        return false;">
+                <img src="../../resource/gp_35x.png" alt="Share on Google+">
+            </a>
+            <a href="https://github.com/KARAS-LightweightMarkupLanguage"
+               title="Go to GitHub" target="_blank">
+                <img src="../../resource/gh_35x.png" alt="Go to GitHub">
+            </a>
+        </div>
+    </header>
+    <div id="contents">
+        <div id="sidebar">
+            <ul class="menu">
+                <li><a href="../syntax/index.html" title="Syntax">Syntax</a></li>
+                <li><a href="../download.html" title="Download">Download</a></li>
+                <li><a href="../license.html" title="License">License</a></li>
+                <li><a href="../development/index.html" title="Development">Development</a></li>
+                <li><a href="../donation.html" title="Donation">Donation</a></li>
+                <li><a href="../information.html" title="Donation">Information</a></li>
+            </ul>
+            <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+            <!-- KARAS_Side_160x600 -->
+            <ins class="adsbygoogle"
+                 style="display:inline-block;width:160px;height:600px"
+                 data-ad-client="ca-pub-9133526697051515"
+                 data-ad-slot="6825762586"></ins>
+            <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+        <div id="maincolumn">
+            <div id="pageinfo">
+                <div id ="topicpath"><a href="../index.html">Top</a>&nbsp;&gt;&nbsp;<a href="../syntax/index.html">Syntax</a>&nbsp;&gt;&nbsp;<a href="basicsyntax.html">Basic Syntax</a></div>
+                <div id="lastmodified">Last modified : 2014. 05. 31</div>
+            </div>
+            <article>
+            <h1 id="basicsyntax">Basic Syntax</h1>
+<p>This page describe the basic syntax of KARAS.</p>
+<ul>
+<li><a href="#aboutlevel">About <i>Level</i></a></li>
+<li><a href="#headinghr">Heading and Hr</a></li>
+<li><a href="#list">List</a>
+<ul>
+<li><a href="#unorderedlist">Unordered List</a></li>
+<li><a href="#orderedlist">Ordered List</a></li>
+<li><a href="#deflist">Definition List</a></li>
+</ul>
+<li><a href="#decandmean">Decoration and Meaning</a>
+<ul>
+<li><a href="#boldstrong">Bold and Strong</a></li>
+<li><a href="#italicemphasize">Italic and Emphasize</a></li>
+<li><a href="#underlineins">Underline and Insert</a></li>
+<li><a href="#strikedel">Strikeout and Delete</a></li>
+<li><a href="#defabbr">Defitnition Term</a></li>
+<li><a href="#kbdsamp">Input(kbd) and Output(samp)</a></li>
+<li><a href="#varcode">Variable and Code</a></li>
+<li><a href="#supruby">Superscript and Ruby</a></li>
+<li><a href="#subscript">Subscript</a></li>
+</ul>
+<li><a href="#quotecite">Quote and Cite</a>
+<ul>
+<li><a href="#cite">Cite</a></li>
+<li><a href="#inlinequote">Small(inline) Quote</a></li>
+<li><a href="#blockquote">Large(block) Quote</a></li>
+</ul>
+<li><a href="#link">Link</a></li>
+<li><a href="#table">Table</a></li>
+<li><a href="#others">Others</a>
+<ul>
+<li><a href="#ltgtmark"><i>&lt;</i> and <i>&gt;</i> marks</a></li>
+<li><a href="#paragraph">Paragraph</a></li>
+<li><a href="#commentout">Commentout</a></li>
+<li><a href="#escape">Escape</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="aboutlevel">About <i>Level</i></h2>
+<p>KARAS has a concept called <b><dfn>Level</dfn></b>. For example, in KARAS, you can output the heading elements <code>&lt;h1&gt;</code> with write a <code>=</code> mark at the beginning of a line. And when you write two marks like <code>==</code>, it outputs <code>&lt;h2&gt;</code>. In KARAS, units of output result change is defined as <i>Level</i>.</p>
+<h2 id="headinghr">Heading and Hr</h2>
+<p><b>When write a <code>=</code> at the beginning of the line, it outputs heading.</b> The maximum level is 6. Output level of heading is decreased when the syntax level is up. Text written after the <code>::</code> becomes <i>ID</i>.</p>
+<figure>
+<figcaption>Input</figcaption>
+<pre class="karas"><code class="karas">= Heading level 1
+== Heading level 2 :: ID
+=== Heading level 3
+==== Heading level 4
+===== Heading level 5
+====== Heading level 6</code></pre>
+</figure>
+<figure>
+<figcaption>Output</figcaption>
+<pre class="html"><code class="html">&lt;h1&gt;Heading level 1&lt;/h1&gt;
+&lt;h2 id=&#34;ID&#34;&gt;Heading level 2&lt;/h2&gt;
+&lt;h3&gt;Heading level 3&lt;/h3&gt;
+&lt;h4&gt;Heading level 4&lt;/h4&gt;
+&lt;h5&gt;Heading level 5&lt;/h5&gt;
+&lt;h6&gt;Heading level 6&lt;/h6&gt;</code></pre>
+</figure>
+<p><b>When write seven or more <code>=</code> at the beginning of the line, it outputs horizontal line.</b> Levels above 7, it always outputs a horizontal line. Then, text written after <code>=</code> is not output.</p>
+<figure>
+<figcaption>Input</figcaption>
+<pre class="karas"><code class="karas">=======
+======== 8</code></pre>
+</figure>
+<figure>
+<figcaption>Output</figcaption>
+<pre class="html"><code class="html">&lt;hr&gt;
+&lt;hr&gt;</code></pre>
+</figure>
+<h2 id="list">List</h2>
+<h3 id="unorderedlist">Unordered List</h3>
+<p><b>When write a <code>-</code> at the beginning of the line, it outputs unordered list.</b> The maximum level is undefined. Output list is nested when the syntax level is up.</p>
+<figure>
+<figcaption>Input</figcaption>
+<pre class="karas"><code class="karas">- Item 1
+- Item 2
+-- Item 2-1
+- Item 3</code></pre>
+</figure>
+<figure>
+<figcaption>Output</figcaption>
+<pre class="html"><code class="html">&lt;ul&gt;
+    &lt;li&gt;Item 1&lt;/li&gt;
+    &lt;li&gt;Item 2
+        &lt;ul&gt;
+            &lt;li&gt;Item 2-1&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/li&gt;
+    &lt;li&gt;Item 3&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+</figure>
+<h3 id="orderedlist">Ordered List</h3>
+<p><b>When write a <code>+</code> at the beginning of the line, it outputs ordered list.</b> The maximum level is undefined. Output list is nested when the syntax level is up.</p>
+<figure>
+<figcaption>Input</figcaption>
+<pre class="karas"><code class="karas">+ Item 1
+++ Item 2</code></pre>
+</figure>
+<figure>
+<figcaption>Output</figcaption>
+<pre class="html"><code class="html">&lt;ol&gt;
+    &lt;li&gt;Item 1
+        &lt;ol&gt;
+            &lt;li&gt;Item 2&lt;/li&gt;
+        &lt;/ol&gt;
+    &lt;/li&gt;
+&lt;/ol&gt;</code></pre>
+</figure>
+<p><b>To change the starting number of the list, write a <code>::</code>.</b> List which included in the same group as the list that you specify the starting number gets continuous number until it is changed again.</p>
+<figure>
+<figcaption>Input</figcaption>
+<pre class="karas"><code class="karas">+ Item 1
+++ Item 1-5 :: 5
+++ Item 1-6
++ Item 2
+++ Item 2-1</code></pre>
+</figure>
+<figure>
+<figcaption>Output</figcaption>
+<pre class="html"><code class="html"> &lt;ol&gt;
+    &lt;li&gt;Item 1
+        &lt;ol&gt;
+            &lt;li value=&#34;5&#34;&gt;Item 1-5&lt;/li&gt;
+            &lt;li&gt;Item 1-6&lt;/li&gt;
+        &lt;/ol&gt;
+    &lt;/li&gt;
+    &lt;li&gt;Item 2
+        &lt;ol&gt;
+            &lt;li&gt;Item 2-1&lt;/li&gt;
+        &lt;/ol&gt;
+    &lt;/li&gt;
+ &lt;/ol&gt;</code></pre>
+</figure>
+<h3 id="deflist">Definition List</h3>
+<p><b>When write a <code>;</code> at the beginning of the line, it outputs definition list.</b> The maximum level is 2. In level 1, outputs definition term. And in level 2, outputs definition description. You can add any number of definition term and the description.</p>
+<figure>
+<figcaption>Input</figcaption>
+<pre class="karas"><code class="karas">; Definition term
+;; Definition description 1
+;; Definition description 2</code></pre>
+</figure>
+<figure>
+<figcaption>Output</figcaption>
+<pre class="html"><code class="html">&lt;dl&gt;
+    &lt;dt&gt;Definition term&lt;/dt&gt;
+    &lt;dd&gt;Definition description 1&lt;/dd&gt;
+    &lt;dd&gt;Definition description 2&lt;/dd&gt;
+&lt;/dl&gt;</code></pre>
+</figure>
+<h2 id="decandmean">Decoration and Meaning</h2>
+<h3 id="boldstrong">Bold and Strong</h3>
+<p><b>Text closed with <code>**</code> becomes bold text.</b> The maximum level is 2. In level 1, text becomes bold text. In level 2, text gets a strong importance.</p>
+<figure>
+<figcaption>Input</figcaption>
+<pre class="karas"><code class="karas">** Bold text **
+*** Strong text ***</code></pre>
+</figure>
+<figure>
+<figcaption>Output</figcaption>
+<pre class="html"><code class="html">&lt;b&gt;Bold text&lt;/b&gt;
+&lt;strong&gt;Strong text&lt;/strong&gt;</code></pre>
+</figure>
+<h3 id="italicemphasize">Italic and Emphasize</h3>
+<p>**Text closed with  <code>//</code> becomes italic text. The maximum level is 2. In level 1, text becomes italic text. In level 2, text gets a stress emphasis.</p>
+<figure>
+<figcaption>Input</figcaption>
+<pre class="karas"><code class="karas">// Italic text //
+/// Emphasized text ///</code></pre>
+</figure>
+<figure>
+<figcaption>Output</figcaption>
+<pre class="html"><code class="html">&lt;i&gt;Italic text&lt;/i&gt;
+&lt;em&gt;Emphasized text&lt;/em&gt;</code></pre>
+</figure>
+<p>However, <strong>text which included in protocol like http:// or ftp:// is ignored.</strong></p>
+<h3 id="underlineins">Underline and Insert</h3>
+<p><b>Text closed with  <code>__</code> is outputted with underline.</b> The maximum level is 2. In level 1, text is decorated with underline. In level 2, text becomes inserted text.</p>
+<figure>
+<figcaption>Input</figcaption>
+<pre class="karas"><code class="karas">__ Underline text __
+___ Inserted text ___</code></pre>
+</figure>
+<figure>
+<figcaption>Output</figcaption>
+<pre class="html"><code class="html">&lt;u&gt;Underline text&lt;/u&gt;
+&lt;ins&gt;Inserted text&lt;/ins&gt;</code></pre>
+</figure>
+<h3 id="strikedel">Strikeout and Delete</h3>
+<p><b>Text closed with  <code>%%</code> becomes strikeout text.</b> The maximum level is 2. In level 1, text is decorated with strikeout-line. In level 2, text becomes deleted text.</p>
+<figure>
+<figcaption>Input</figcaption>
+<pre class="karas"><code class="karas">%% Striked text %%
+%%% Deleted text %%%</code></pre>
+</figure>
+<figure>
+<figcaption>Output</figcaption>
+<pre class="html"><code class="html">&lt;s&gt;Striked text&lt;/s&gt;
+&lt;del&gt;Deleted text&lt;/del&gt;</code></pre>
+</figure>
+<h3 id="defabbr">Defitnition Term</h3>
+<p><b>Text closed with  <code>??</code> becomes definition term.</b> The maximum level is 2. In level 1, text becomes definition term. In level 2, text becomes abbreviated definition term.</p>
+<figure>
+<figcaption>Input</figcaption>
+<pre class="karas"><code class="karas">?? Definition text ??
+??? Abbreviated definition text ???</code></pre>
+</figure>
+<figure>
+<figcaption>Output</figcaption>
+<pre class="html"><code class="html">&lt;dfn&gt;Definition text&lt;/dfn&gt;
+&lt;dfn&gt;&lt;abbr&gt;Abbreviated definition text&lt;/abbr&gt;&lt;dfn&gt;</code></pre>
+</figure>
+<h3 id="kbdsamp">Input(kbd) and Output(samp)</h3>
+<p><b>Text closed with  <code>$$</code> indicate user input or output.</b> The maximum level is 2. In level 1, text indicate user input. In level 2, text indicate output. &lt; and &gt; marks included in marked up text whith this syntax are converted to <i>character reference</i>.</p>
+<figure>
+<figcaption>Input</figcaption>
+<pre class="karas"><code class="karas">$$ &lt; Keyboard text &gt; $$
+$$$ &gt; Sample text $$$</code></pre>
+</figure>
+<figure>
+<figcaption>Output</figcaption>
+<pre class="html"><code class="html">&lt;kbd&gt;&amp;lt; Keyboard text &amp;gt;&lt;/kbd&gt;
+&lt;samp&gt;&amp;gt; Sample text&lt;/samp&gt;</code></pre>
+</figure>
+<h3 id="varcode">Variable and Code</h3>
+<p><b>Text closed with  <code>``</code> indicate variable or code.</b> The maximum level is 2. In level 1, text indicate variable. In level 2, text indicate code. &lt; and &gt; marks included in marked up text whith this syntax are converted to <i>character reference</i>.</p>
+<figure>
+<figcaption>Input</figcaption>
+<pre class="karas"><code class="karas">`` &lt;Variable text&gt; ``
+``` &gt; Code text ```</code></pre>
+</figure>
+<figure>
+<figcaption>Output</figcaption>
+<pre class="html"><code class="html">&lt;var&gt;&amp;lt;Variable text&amp;gt;&lt;/var&gt;
+&lt;code&gt;&amp;gt; Code text&lt;/code&gt;</code></pre>
+</figure>
+<div class="note">
+<p>Variable elements (level 1) can use for indicate formula or the other. Code elements (level 2) can use for indicate XML or file path.</p>
+</div>
+<h3 id="supruby">Superscript and Ruby</h3>
+<p><b>Text closed with  <code>&#39;&#39;</code> becomes superscript text.</b> The maximum level is 2. In level 1, text becomes superscript text. In level 2, text becomes ruby.</p>
+<figure>
+<figcaption>Input</figcaption>
+<pre class="karas"><code class="karas">&#39;&#39;Superscript text&#39;&#39;</code></pre>
+</figure>
+<figure>
+<figcaption>Output</figcaption>
+<pre class="html"><code class="html">&lt;sup&gt;Superscript text&lt;/sup&gt;</code></pre>
+</figure>
+<p>To write a ruby-text by using level 2 syntax, split each word and each ruby by option syntax <code>::</code>.</p>
+<figure>
+<figcaption>Input</figcaption>
+<pre class="karas"><code class="karas">&#39;&#39;&#39;KANJI::ruby&#39;&#39;&#39;
+&#39;&#39;&#39;KAN::ru::JI::by&#39;&#39;&#39;</code></pre>
+</figure>
+<figure>
+<figcaption>Output</figcaption>
+<pre class="html"><code class="html">&lt;ruby&gt;KANJI&lt;rp&gt; (&lt;/rp&gt;&lt;rt&gt;ruby&lt;/rt&gt;&lt;rp&gt; )&lt;/rp&gt;&lt;/ruby&gt;
+&lt;ruby&gt;KAN&lt;rp&gt; (&lt;/rp&gt;&lt;rt&gt;ru&lt;/rt&gt;&lt;rp&gt; )&lt;/rp&gt;JI&lt;rp&gt; (&lt;/rp&gt;&lt;rt&gt;by&lt;/rt&gt;&lt;rp&gt; )&lt;/rp&gt;&lt;/ruby&gt;</code></pre>
+</figure>
+<h3 id="subscript">Subscript</h3>
+<p><b>Text closed with  <code>,,</code> becomes subscript text.</b> The maximum level is 1.</p>
+<figure>
+<figcaption>Input</figcaption>
+<pre class="karas"><code class="karas">,, Subscript text ,,</code></pre>
+</figure>
+<figure>
+<figcaption>Output</figcaption>
+<pre class="html"><code class="html">&lt;sub&gt;Subscript text&lt;/sub&gt;</code></pre>
+</figure>
+<h2 id="quotecite">Quote and Cite</h2>
+<h3 id="cite">Cite</h3>
+<p><b>Text closed with  <code>@@</code> indicate title or cite.</b> The maximum level is 2. In level 1, text indicate title or cite. In level 2, text indicate bylaws (like disclaimer or copyright).</p>
+<figure>
+<figcaption>Input</figcaption>
+<pre class="karas"><code class="karas">@@ Cite text @@
+@@@ features disclaimers, caveats, legal restrictions, or copyrights @@@</code></pre>
+</figure>
+<figure>
+<figcaption>Output</figcaption>
+<pre class="html"><code class="html">&lt;cite&gt;Cite text&lt;/cite&gt;
+&lt;small&gt;features disclaimers, caveats, legal restrictions, or copyrights&lt;/small&gt;</code></pre>
+</figure>
+<h3 id="inlinequote">Small(inline) Quote</h3>
+<p><b>Text closed with  <code>&#34;&#34;</code> indicate quoted text.</b> The maximum level is 1.</p>
+<figure>
+<figcaption>Input</figcaption>
+<pre class="karas"><code class="karas">&#34;&#34; Quoted text &#34;&#34;</code></pre>
+</figure>
+<figure>
+<figcaption>Output</figcaption>
+<pre class="html"><code class="html">&lt;q&gt;Quoted text&lt;/q&gt;</code></pre>
+</figure>
+<h3 id="blockquote">Large(block) Quote</h3>
+<p><b>When write a <code>&gt;</code> at the beginning of the line, it outputs blockquote text.</b> The maximum level is undefined. Output list is nested when the syntax level is up. When your quoted text include line-break, use this syntax.</p>
+<figure>
+<figcaption>Input</figcaption>
+<pre class="karas"><code class="karas">&gt; Blockquote text,
+2nd line.
+&gt;&gt; Blockquote text in Blockquote.
+&gt;&gt;&gt; Blockquote text in Blockquote.</code></pre>
+</figure>
+<figure>
+<figcaption>Output</figcaption>
+<pre class="html"><code class="html">&lt;blockquote&gt;
+&lt;p&gt;Blockquote text,
+ 2nd line.&lt;/p&gt;
+    &lt;blockquote&gt;
+    &lt;p&gt;Blockquote text in Blockquote.&lt;/p&gt;
+        &lt;blockquote&gt;
+        &lt;p&gt;Blockquote text in Blockquote.&lt;/p&gt;
+        &lt;/blockquote&gt;
+    &lt;/blockquote&gt;
+&lt;/blockquote&gt;</code></pre>
+</figure>
+<h2 id="link">Link</h2>
+<p><b>Text closed with  <code>((</code> and <code>))</code> becomes link (anchor) text.</b> The maximum level is 2. In level 1, text becomes default link text. In level 2, text becomes embedded media link.</p>
+<p>To make a text link(called alias), write the text after the option syntax.</p>
+<p>Text after option syntax <code>::</code>  becomes link alias.</p>
+<figure>
+<figcaption>Input</figcaption>
+<pre class="karas"><code class="karas">(( URL ))
+(( ImageURL.jpg ))
+(( URL :: Alias text ))</code></pre>
+</figure>
+<figure>
+<figcaption>Output</figcaption>
+<pre class="html"><code class="html">&lt;a href=&#34;URL&#34;&gt;URL&lt;/a&gt;
+&lt;a href=&#34;ImageURL.jpg&#34;&gt;ImageURL.jpg&lt;/a&gt;
+&lt;a href=&#34;URL&#34;&gt;Alias text&lt;/a&gt;</code></pre>
+</figure>
+<p><strong>Output of the level 2 syntax depends on specified URL.</strong> When the file extension at bottom of the url shows image file, the output result becomes optimized format to show the image.　It is same as audio, or video. When adding the parameter to these media, write the option text after option syntax <code>::</code>.</p>
+<div class="note">
+<p>In default converter, text after option syntax <code>::</code> is added to the result as option with no changes. And, to the nested element such as <i>obj</i>, these text are added after converted to the optimized parameter. Option text is splitted and analyzed whether it is reserved or not.</p>
+</div>
+<p>When the URL shows image file.</p>
+<figure>
+<figcaption>Input</figcaption>
+<pre class="karas"><code class="karas">((( ImageURL.jpg )))
+((( ImageURL.jpg :: alt=&#34;white image&#34; width=&#34;100&#34; height=&#34;100&#34; )))</code></pre>
+</figure>
+<figure>
+<figcaption>Outut</figcaption>
+<pre><code>&lt;img src=&#34;ImageURL.jpg&#34;&gt;
+&lt;img src=&#34;ImageURL.jpg&#34; alt=&#34;white image&#34; width=&#34;100&#34; height=&#34;100&#34;&gt;</code></pre>
+</figure>
+<p>When the URL shows video file.</p>
+<figure>
+<figcaption>Input</figcaption>
+<pre class="karas"><code class="karas">((( VideoURL.mp4 )))
+((( VideoURL.mp4, width=&#34;100&#34; height=&#34;100&#34; loop controls )))</code></pre>
+</figure>
+<figure>
+<figcaption>Output</figcaption>
+<pre class="html"><code class="html">&lt;video src=&#34;VideoURL.mp4&#34;&gt;
+    &lt;object data=&#34;VideoURL.mp4&#34;&gt;
+        &lt;embed src=&#34;VideoURL.mp4&#34;&gt;
+    &lt;/object&gt;
+&lt;/video&gt;
+&lt;video src=&#34;VideoURL.mp4&#34; width=&#34;100&#34; height=&#34;100&#34; controls&gt;
+    &lt;object data=&#34;VideoURL.mp4&#34; width=&#34;100&#34; height=&#34;100&#34;&gt;
+        &lt;param name=&#34;controls&#34; value=&#34;true&#34;&gt;
+        &lt;embed src=&#34;VideoURL.mp4&#34; width=&#34;100&#34; height=&#34;100&#34; controls=&#34;true&#34;&gt;
+    &lt;/object&gt;
+&lt;/video&gt;</code></pre>
+</figure>
+<p>When the URL shows audio file.</p>
+<figure>
+<figcaption>Input</figcaption>
+<pre class="karas"><code class="karas">((( AudioURL.mp3 )))
+((( AudioURL.mp3 :: loop )))</code></pre>
+</figure>
+<figure>
+<figcaption>Output</figcaption>
+<pre class="html"><code class="html">&lt;audio src=&#34;AudioURL.mp3&#34;&gt;
+    &lt;object data=&#34;AudioURL.mp3&#34;&gt;
+        &lt;embed src=&#34;AudioURL.mp3&#34;&gt;
+    &lt;/object&gt;
+&lt;/audio&gt;
+&lt;audio src=&#34;AudioURL.mp3&#34; loop&gt;
+    &lt;object data=&#34;AudioURL.mp3&#34;&gt;
+        &lt;param name=&#34;loop&#34; value=&#34;true&#34;&gt;
+        &lt;embed src=&#34;AudioURL.mp3&#34; loop=&#34;true&#34;&gt;
+    &lt;/object&gt;
+&lt;/audio&gt;</code></pre>
+</figure>
+<p>When the URL shows other type file. For example, FLASH (.swf) is one of sample.</p>
+<figure>
+<figcaption>Input</figcaption>
+<pre class="karas"><code class="karas">(((UndefURL.swf)))
+(((UndefURL.swf :: width=&#34;100&#34; height=&#34;100&#34; allowfullscreen)))</code></pre>
+</figure>
+<figure>
+<figcaption>Output</figcaption>
+<pre class="html"><code class="html">&lt;object data=&#34;UndefURL.swf&#34;&gt;
+    &lt;embed src=&#34;UndefURL.swf&#34;&gt;
+&lt;/object&gt;
+&lt;object data=&#34;UndefURL.swf&#34; width=&#34;100&#34; height=&#34;100&#34;&gt;
+    &lt;param name=&#34;allowfullscreen&#34; value=&#34;true&#34;&gt;
+    &lt;embed src=&#34;UndefURL.swf&#34; width=&#34;100&#34; height=&#34;100&#34; allowfullscreen=&#34;true&#34;&gt;
+&lt;/object&gt;</code></pre>
+</figure>
+<div class="note">
+<p>Output format is depends on the system which introduce KARAS. This page shows the result of when using default onverter. If you need the exact information, please refer to the example of the conversion result provided by the system. Developers have to develop the system which is able to output the optimized result for the media, when using syntax level 2.</p>
+</div>
+<h2 id="table">Table</h2>
+<p><b>When write a <code>||</code> at the beginning of the line, it outputs table.</b> To output the next cell, write a <code>||</code> in the same line. Table row is controlled with line-break.</p>
+<p>There is no need to align the <code>||</code> or space. However, When there are much cells, or number of the characters in each cells have much difference, you should align them to save the readability.</p>
+<figure>
+<figcaption>Input</figcaption>
+<pre class="karas"><code class="karas">|| Cell 1 || Cell 2
+|| Cell 3 || Cell 4</code></pre>
+</figure>
+<figure>
+<figcaption>Output</figcaption>
+<pre class="html"><code class="html">&lt;table&gt;
+    &lt;tr&gt;&lt;td&gt;Cell 1&lt;/td&gt;&lt;td&gt;Cell 2&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;Cell 3&lt;/td&gt;&lt;td&gt;Cell 4&lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</code></pre>
+</figure>
+<p>To output header, change the left mark of the cell syntax like this <code>!|</code>.</p>
+<figure>
+<figcaption>Input</figcaption>
+<pre class="karas"><code class="karas">!| Cell 1 !| Cell 2
+|| Cell 3 || Cell 4</code></pre>
+</figure>
+<figure>
+<figcaption>Output</figcaption>
+<pre class="html"><code class="html">&lt;table&gt;
+    &lt;tr&gt;&lt;th&gt;Cell 1&lt;/th&gt;&lt;th&gt;Cell 2&lt;/th&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;Cell 3&lt;/td&gt;&lt;td&gt;Cell 4&lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</code></pre>
+</figure>
+<p>To output left-aligned cell, change the right mark of the cell syntax like this <code>|&lt;</code>. To output right-aligned cell, like this <code>|&gt;</code>. To output center-aligned cell, like this <code>|=</code>. And to output right-aligned header cell, like this <code>!&gt;</code>.</p>
+<div class="note">
+<p>Default align of cell might be changed in your system or layout function like CSS.</p>
+</div>
+<figure>
+<figcaption>Input</figcaption>
+<pre class="karas"><code class="karas">!| Cell 1 !&gt; Cell 2
+|&lt; Cell 3 |= Cell 4</code></pre>
+</figure>
+<figure>
+<figcaption>Output</figcaption>
+<pre class="html"><code class="html">&lt;table&gt;
+    &lt;tr&gt;
+        &lt;th&gt;Cell 1&lt;/th&gt;
+        &lt;th style=&#34;text-align:right;&#34;&gt;Cell 2&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td style=&#34;text-align:left;&#34;&gt;Cell 3&lt;/td&gt;
+        &lt;td style=&#34;text-align:center;&#34;&gt;Cell 4&lt;/td&gt;
+    &lt;/tr&gt;
+&lt;/table&gt;</code></pre>
+</figure>
+<p>To merge cells in a row, write only <code>::</code> in the cell. Cell which has <code>::</code> is merged to the left side cell. To merge cells in a column, write only <code>:::</code> in the cell. Cell which has <code>:::</code> is merged to the upper cell.</p>
+<figure>
+<figcaption>Input</figcaption>
+<pre class="karas"><code class="karas">|| Cell 1 ||  ::    || Cell 2 || Cell 3
+|| Cell 4 || Cell 5 ||  :::   || Cell 6
+||  :::   || Cell 7 ||  :::   || Cell 8</code></pre>
+</figure>
+<figure>
+<figcaption>Output</figcaption>
+<pre class="html"><code class="html">&lt;table&gt;
+    &lt;tr&gt;
+        &lt;td colspan=&#34;2&#34;&gt;Cell 1&lt;/td&gt;
+        &lt;td rowspan=&#34;3&#34;&gt;Cell 2&lt;/td&gt;
+        &lt;td&gt;Cell 3&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td rowspan=&#34;2&#34;&gt;Cell 4&lt;/td&gt;
+        &lt;td&gt;Cell 5&lt;/td&gt;
+        &lt;td&gt;Cell 6&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;Cell 7&lt;/td&gt;
+        &lt;td&gt;Cell 8&lt;/td&gt;
+    &lt;/tr&gt;
+&lt;/table&gt;</code></pre>
+</figure>
+<h2 id="others">Others</h2>
+<h3 id="ltgtmark"><i>&lt;</i> and <i>&gt;</i> marks</h3>
+<p>In order to write &lt; or &gt; mark as non-syntax, you have to write the character reference like <code>&amp;lt;</code> or <code>&amp;gt;</code>.</p>
+<h3 id="paragraph">Paragraph</h3>
+<p>When the text has no special mark at the beginning of the line,　it becomes a paragraph. Special marks are <code>= + - ; &lt; &gt;</code> and some combination <code>(( || |&gt; |&lt; |= !| !&gt; !&lt; !=</code>.</p>
+<figure>
+<figcaption>Input</figcaption>
+<pre class="karas"><code class="karas">This text become a paragraph. </code></pre>
+</figure>
+<figure>
+<figcaption>Output</figcaption>
+<pre class="html"><code class="html">&lt;p&gt;This text become a paragraph. &lt;/p&gt;</code></pre>
+</figure>
+<p>Text becomes a one paragraph even if it has line-break. If there is some blank-line between texts, it becomes each paragraph.</p>
+<figure>
+<figcaption>Input</figcaption>
+<pre class="karas"><code class="karas">This text become a paragraph.
+2nd line.
+ 
+Paragraph is divided by blank line.</code></pre>
+</figure>
+<figure>
+<figcaption>Output</figcaption>
+<pre class="html"><code class="html">&lt;p&gt;This text become a paragraph.
+2nd line.&lt;/p&gt;
+&lt;p&gt;Paragraph is divided by blank line.&lt;/p&gt;</code></pre>
+</figure>
+<p>When need a line-break in a paragraph, write a <code>~</code> before line-break. In order to write a blank-line in a paragraph, write only <code>~</code> in the line.</p>
+<figure>
+<figcaption>Input</figcaption>
+<pre class="karas"><code class="karas">This text become a paragraph. ~
+2nd line.
+
+This text become a paragraph.~
+~ 
+2nd line.</code></pre>
+</figure>
+<figure>
+<figcaption>Output</figcaption>
+<pre class="html"><code class="html">&lt;p&gt; This text become a paragraph.&lt;br&gt; 
+2nd line.&lt;/p&gt;
+ 
+&lt;p&gt;This text become a paragraph.&lt;br&gt;
+&lt;br&gt;
+2nd line.&lt;/p&gt;</code></pre>
+</figure>
+<h3 id="commentout">Commentout</h3>
+<p><b>Text closed with  <code>##</code> is not outputted.</b> The maximum level is 1.</p>
+<figure>
+<figcaption>Input</figcaption>
+<pre class="karas"><code class="karas">## Comment out text ##</code></pre>
+</figure>
+<figure>
+<figcaption>Output</figcaption>
+<pre class="html"><code class="html">Nothing is output.</code></pre>
+</figure>
+<h3 id="escape">Escape</h3>
+<p>Syntax of KARAS is able to invalidate by using escape mark <code>\</code>. For example, when you want to write a paragraph which start with <code>=</code>, write <code>\=</code>.</p>
+<figure>
+<figcaption>Input</figcaption>
+<pre class="karas"><code class="karas">\= This text become a paragraph.</code></pre>
+</figure>
+<figure>
+<figcaption>Output</figcaption>
+<pre class="html"><code class="html">&lt;p&gt;= This text become a paragraph.&lt;/p&gt;</code></pre>
+</figure>
+<p>Escape syntax ignores only one mark. And to write a escape mark <code>\</code>, write two escape marks.</p>
+<figure>
+<figcaption>Input</figcaption>
+<pre class="karas"><code class="karas">\***Bold text.**
+Write a \\ mark.</code></pre>
+</figure>
+<figure>
+<figcaption>Output</figcaption>
+<pre class="html"><code class="html">*&lt;b&gt;Bold text.&lt;/b&gt;
+Write a \ mark.</code></pre>
+</figure>
+            </article>
+            <footer>
+<p><small><a href="http://lightweightmarkuplanguage.com">&copy; KARAS - Lightweight Markup Language</a></small></p>
+            </footer>
+        </div>
+    </div>
+</div>
+</body>
+</html>

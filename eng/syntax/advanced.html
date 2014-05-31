@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="author" content="Daiki Umeda (XJINE)">
+<meta name="generator" content="BlackBoard">
+<meta name="generator" content="KARAS">
+<meta charset="UTF-8">
+<title>KARAS - Advanced</title>
+<link rel="stylesheet" href="../../resource/default.css" type="text/css" media="all" charset="">
+<meta property="og:site_name" content="KARAS">
+<meta property="og:title" content="Lightweight Markup Language - KARAS">
+<meta property="og:url" content="http://lightweightmarkuplanguage.com/">
+<meta property="og:image" content="../../resource/ogpimg.jpg">
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-44157178-2', 'lightweightmarkuplanguage.com');
+ga('send', 'pageview');
+</script>
+</head>
+<body>
+<div id="outframe">
+    <header>
+        <a id="logo" href="../index.html" title="Top"></a>
+        <div id="pagetitle">
+            <h1><a href="../index.html">KARAS</a></h1>
+            <h1><a href="../index.html">Lightweight Markup Language</a></h1>
+        </div>
+        <div id="socialbutton">
+            <a href="http://twitter.com/share?text='Lightweight Markup Language - KARAS'&amp;url=http://lightweightmarkuplanguage.com"
+               title="Share on Twitter" 
+               onclick="javascript:window.open(this.href,'Twitter','menubar=no,toolbar=no,scrollbars=yes,resizable=yes,height=300,width=450');
+                        return false;">
+                <img src="../../resource/tw_35x.png" alt="Share on Twitter">
+            </a>
+            <a href="http://www.facebook.com/share.php?u=http://lightweightmarkuplanguage.com"
+               title="Share on Facebook" 
+               onclick="javascript:window.open(this.href,'Facebook','menubar=no,toolbar=no,scrollbars=yes,resizable=yes,height=300,width=450');
+                        return false;">
+                <img src="../../resource/fb_35x.png" alt="Share on Facebook">
+            </a>
+            <a href="https://plus.google.com/share?url=http://lightweightmarkuplanguage.com"
+               title="Share on Google+" 
+               onclick="javascript:window.open(this.href,'Google+','menubar=no,toolbar=no,scrollbars=yes,resizable=yes,height=600,width=600');
+                        return false;">
+                <img src="../../resource/gp_35x.png" alt="Share on Google+">
+            </a>
+            <a href="https://github.com/KARAS-LightweightMarkupLanguage"
+               title="Go to GitHub" target="_blank">
+                <img src="../../resource/gh_35x.png" alt="Go to GitHub">
+            </a>
+        </div>
+    </header>
+    <div id="contents">
+        <div id="sidebar">
+            <ul class="menu">
+                <li><a href="../syntax/index.html" title="Syntax">Syntax</a></li>
+                <li><a href="../download.html" title="Download">Download</a></li>
+                <li><a href="../license.html" title="License">License</a></li>
+                <li><a href="../development/index.html" title="Development">Development</a></li>
+                <li><a href="../donation.html" title="Donation">Donation</a></li>
+                <li><a href="../information.html" title="Donation">Information</a></li>
+            </ul>
+            <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+            <!-- KARAS_Side_160x600 -->
+            <ins class="adsbygoogle"
+                 style="display:inline-block;width:160px;height:600px"
+                 data-ad-client="ca-pub-9133526697051515"
+                 data-ad-slot="6825762586"></ins>
+            <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+        <div id="maincolumn">
+            <div id="pageinfo">
+                <div id ="topicpath"><a href="../index.html">Top</a>&nbsp;&gt;&nbsp;<a href="../syntax/index.html">Syntax</a>&nbsp;&gt;&nbsp;<a href="advanced.html">Advanced</a></div>
+                <div id="lastmodified">Last modified : 2014. 05. 31</div>
+            </div>
+            <article>
+            <h1 id="advanced">Advanced</h1>
+<p>This pages describe about the advanced usage or wrong usage of KARAS. Please read to write a good document by KARAS.</p>
+<ul>
+<li><a href="#continuoustext">Continuous Text</a></li>
+<li><a href="#linebreaklooks">Appearance of Line-break</a></li>
+<li><a href="#cellcantbreakline">Cell Text Can't Break the Line.</a></li>
+<li><a href="#medialinkformat">Output format of Link</a></li>
+<li><a href="#syntaxcombination">Syntax Combination</a></li>
+<li><a href="#nestedsyntax">Syntax Nest</a>
+<ul>
+<li><a href="#wrongnest">Wrong Nest</a></li>
+</ul>
+<li><a href="#specialnest">Special Nest</a>
+<ul>
+<li><a href="#nestedlink">Nested link</a></li>
+<li><a href="#nestedigroup">Nested Inling Group</a></li>
+<li><a href="#nestedbgroup">Nested Block Group</a></li>
+</ul>
+<li><a href="#footnote">Linked Note & Footnote</a></li>
+<li><a href="#citeandbq">Don't put a Cite into Blockquote</a></li>
+<li><a href="#quotemark">Don't write a 'Quote mark' to Quoted text</a></li>
+</ul>
+<h2 id="continuoustext">Continuous Text</h2>
+<p>In KARAS, continuous text which has no blank line is considered as a one text. For example, even if the heading text has line-breaks, all of the lines become a heading.</p>
+<figure>
+<figcaption>Input</figcaption>
+<pre class="karas"><code class="karas">= The 2nd line of this text
+is included in Heading</code></pre>
+</figure>
+<figure>
+<figcaption>Output</figcaption>
+<pre class="html"><code class="html">&lt;h1&gt;The 2nd line of this text
+is included in Heading&lt;/h1&gt;</code></pre>
+</figure>
+<p>List, blockquote or any other syntax also has this rule.</p>
+<h2 id="linebreaklooks">Appearance of Line-break</h2>
+<p>User agent like browser render line-break as white-space. Some language like Japanese has a problem caused by this rule. Language that not separate each words by space has this problem.</p>
+<p>KARAS not remove the line-break. For example, following text which is not separated by white-space gets a problem.</p>
+<figure>
+<figcaption>Input</figcaption>
+<pre class="karas"><code class="karas">ABCDEFGHIJK
+LMNOPQRSTU</code></pre>
+</figure>
+<figure>
+<figcaption>On user agent</figcaption>
+<pre class="text"><code class="text">ABCDEFGHIJK LMNOPQRSTU</code></pre>
+</figure>
+<p>Like this, there is a space between K and L. If this text is written in a language that not separate each words by space, this space is not good. When you use KARAS in such language, be careful with line-break position to avoid this problem.</p>
+<h2 id="cellcantbreakline">Cell Text Can't Break the Line.</h2>
+<p>Text in table cell can't break the line. Because the table row is defined by line-break. If line-break is needed in the cell text, you should reconsider the text first.</p>
+<p>If absolutely necessary, write a <code>&lt;br&gt;</code> element directly to break the line. In KARAS, the text enable to include HTML tag. However, in some system, you may not insert HTML tag because of the security. In such case, you can not break the line in cell.</p>
+<h2 id="medialinkformat">Output format of Link</h2>
+<p>Link has 2 pattern. One of it, there are link and the other text. And the other case, there is only link. In KARAS, when the continuous text consisted of only link, each links becomes a independent content. (It means the link is outputted as flow content in HTML.) When the text consisted of link and the other text, it becomes paragraph, and the link is included in it. (It means the link is outputted as phrasing content in HTML.)</p>
+<figure>
+<figcaption>Input</figcaption>
+<pre class="karas"><code class="karas">((URL::This link text)) become a paragraph. 
+
+((URL::Independent link text))</code></pre>
+</figure>
+<figure>
+<figcaption>Output</figcaption>
+<pre class="html"><code class="html">&lt;p&gt;&lt;a href=&#34;URL&#34;&gt;This link text&lt;/a&gt; become a paragraph.&lt;/p&gt;
+
+&lt;a href=&#34;URL&#34;&gt;Independent link text&lt;/a&gt;</code></pre>
+</figure>
+<p>This rule is enabled even if the link shows media, like image.</p>
+<figure>
+<figcaption>Input</figcaption>
+<pre class="karas"><code class="karas">This (((ImageURL.jpg))) is included in paragraph. 
+
+(((IndependentImageURL.jpg)))</code></pre>
+</figure>
+<figure>
+<figcaption>Output</figcaption>
+<pre class="html"><code class="html">&lt;p&gt;This &lt;img src=&#34;ImageURL.jpg&#34; alt=&#34;ImageURL.jpg&#34;&gt; is included in paragraph.&lt;/p&gt;
+
+&lt;img src=&#34;IndependentImageURL.jpg&#34; alt=&#34;IndependentImageURL.jpg&#34;&gt;</code></pre>
+</figure>
+<h2 id="syntaxcombination">Syntax Combination</h2>
+<p>KARAS syntax can be used with the other KARAS syntax. Following sample is one of it, link in heading, and heading in blockquote. There are lot of combination pattern, so can not describe all.</p>
+<figure>
+<figcaption>Input</figcaption>
+<pre><code>= (( URL :: Heading with Link ))
+
+&gt; = Heading in blockquote</code></pre>
+</figure>
+<figure>
+<figcaption>Output</figcaption>
+<pre class="html"><code class="html">&lt;h1&gt;&lt;a href=&#34;URL&#34;&gt;Heading with Link&lt;/a&gt;&lt;/h1&gt;
+
+&lt;blockquote&gt;
+&lt;h1&gt;Heading in blockquote&lt;/h1&gt;
+&lt;/blockquote&gt;</code></pre>
+</figure>
+<h2 id="nestedsyntax">Syntax Nest</h2>
+<p>Syntax can be nested. For example, following sample shows bold and italic text.</p>
+<figure>
+<figcaption>Input</figcaption>
+<pre class="karas"><code class="karas">** //Blod and italic text.// **</code></pre>
+</figure>
+<figure>
+<figcaption>Output</figcaption>
+<pre class="html"><code class="html">&lt;b&gt;&lt;i&gt;Bold and italic text.&lt;/i&gt;&lt;/b&gt;</code></pre>
+</figure>
+<h3 id="wrongnest">Wrong Nest</h3>
+<p>Some patterns can not be nested. Syntax using same mark can not be nested. For example, bold and strong syntax can not be nested each other.</p>
+<figure>
+<figcaption>Input</figcaption>
+<pre class="karas"><code class="karas">**This text has ***strong importance***.**</code></pre>
+</figure>
+<figure>
+<figcaption>Output</figcaption>
+<pre class="html"><code class="html">&lt;b&gt;This text has &lt;/b&gt;*strong importance&lt;b&gt;*.&lt;/b&gt;</code></pre>
+</figure>
+<p>And, it is impossible to write staggered syntax, like a following sample.</p>
+<figure>
+<figcaption>Input</figcaption>
+<pre class="karas"><code class="karas">**// Bold and italic text **//</code></pre>
+</figure>
+<figure>
+<figcaption>Output</figcaption>
+<pre class="html"><code class="html">&lt;b&gt;// Bold and italic text&lt;/b&gt;//</code></pre>
+</figure>
+<h2 id="specialnest">Special Nest</h2>
+<p>Syntax which start and end mark are different can be nested. Link, Inline group, Block group can be nested.</p>
+<h3 id="nestedlink">Nested link</h3>
+<p>Link can be nested. For example, following sample shows image and video which has link.</p>
+<figure>
+<figcaption>Input</figcaption>
+<pre class="karas"><code class="karas">((URL::(((ImageURL.jpg)))))
+((URL::(((VideoURL.mp4)))))</code></pre>
+</figure>
+<figure>
+<figcaption>Output</figcaption>
+<pre class="html"><code class="html">&lt;a href=&#34;URL&#34;&gt;&lt;img src=&#34;ImageURL.jpg&#34; alt=&#34;ImageURL.jpg&#34;&gt;&lt;/a&gt;
+&lt;a href=&#34;URL&#34;&gt;&lt;video src=&#34;VideoURL.mp4…&lt;/video&gt;&lt;/a&gt;</code></pre>
+</figure>
+<p>And, when the URL and Media-URL are same, write like this.</p>
+<figure>
+<figcaption>Input</figcaption>
+<pre class="karas"><code class="karas">(((((ImageURL.jpg)))))</code></pre>
+</figure>
+<figure>
+<figcaption>Output</figcaption>
+<pre class="html"><code class="html">&lt;a href=&#34;ImageURL.jpg&#34;&gt;&lt;img src=&#34;ImageURL.jpg&#34; alt=&#34;ImageURL.jpg&#34;&gt;&lt;/a&gt;</code></pre>
+</figure>
+<p>Be careful with wrong nest. Usually, it does not allow you to give a link in the media. It outputs the text which has wrong structure.</p>
+<figure>
+<figcaption>Input</figcaption>
+<pre class="karas"><code class="karas">(((MediaURL :: ((URL)))))</code></pre>
+</figure>
+<figure>
+<figcaption>Output</figcaption>
+<pre class="html"><code class="html">&lt;img src=&#34;ImageURL.jpg&#34; alt=&#34;ImageURL.jpg&#34; &lt;a href=&#34;URL&#34;&gt;URL&lt;/a&gt;&gt;</code></pre>
+</figure>
+<h3 id="nestedigroup">Nested Inling Group</h3>
+<p>Also inline group can be nested. You can nest <i>class</i> group into <i>id</i> group, and the opposite is also true.</p>
+<figure>
+<figcaption>Input</figcaption>
+<pre class="karas"><code class="karas">&lt;&lt;smplcls::cls grp &lt;&lt;smplcls::cls grp in cls grp&gt;&gt;&gt;&gt;
+&lt;&lt;&lt;smplid::id grp &lt;&lt;smplcls::cls grp in id grp&gt;&gt;&gt;&gt;&gt;</code></pre>
+</figure>
+<figure>
+<figcaption>Output</figcaption>
+<pre class="html"><code class="html">&lt;span class=&#34;smplcls&#34;&gt;cls grp &lt;span class=&#34;smplcls&#34;&gt;cls grp in cls grp&lt;/span&gt;&lt;/span&gt;
+&lt;span id=&#34;smplid&#34;&gt;id grp &lt;span class=&#34;smplcls&#34;&gt;cls grp in id grp&lt;/span&gt;&lt;/span&gt;</code></pre>
+</figure>
+<p>Inline group which has 3 or more <code>&lt;</code> and <code>&gt;</code> marks becomes <i>id</i> group.</p>
+<figure>
+<figcaption>Input</figcaption>
+<pre class="karas"><code class="karas">&lt;&lt;&lt;&lt;&lt;sampleid :: id group&gt;&gt;&gt;&gt;&gt;</code></pre>
+</figure>
+<figure>
+<figcaption>Output</figcaption>
+<pre class="html"><code class="html">&lt;span id=&#34;sampleid&#34;&gt;id group&lt;/span&gt;</code></pre>
+</figure>
+<h3 id="nestedbgroup">Nested Block Group</h3>
+<p>Block group can be nested in block group.</p>
+<figure>
+<figcaption>Input</figcaption>
+<pre class="karas"><code class="karas">{{parentgroup 
+Contents in parent group.
+{{childgroup
+Contents in child group.
+}}
+}}</code></pre>
+</figure>
+<figure>
+<figcaption>Output</figcaption>
+<pre class="html"><code class="html">&lt;div class=&#34;parentgroup&#34;&gt;
+&lt;p&gt;Contents in parent group.&lt;/p&gt;
+&lt;div class=&#34;childgroup&#34;&gt;
+&lt;p&gt;Contents in child group.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+</figure>
+<p>However, block group can not be nested in <i>pre</i>, <i>code</i>, <i>kbd</i>, <i>samp</i> group. Block group syntax is not converted.</p>
+<figure>
+<figcaption>Input</figcaption>
+<pre class="karas"><code class="karas">{{code
+{{childgroup 
+Contents in child group.
+}}
+}}</code></pre>
+</figure>
+<figure>
+<figcaption>Output</figcaption>
+<pre class="html"><code class="html">&lt;code&gt;
+{{childgroup
+Contents in child group.
+}}
+&lt;/code&gt;</code></pre>
+</figure>
+<h2 id="footnote">Linked Note & Footnote</h2>
+<p>Lot of lightweight markup language and the system have a syntax to write a footnote, but KARAS does not have. However, by using inline group and link syntax, you can output a linked note (like footnote).</p>
+<figure>
+<figcaption>Input</figcaption>
+<pre class="karas"><code class="karas">KARAS &#39;&#39;((#fn1::*1))&#39;&#39; is lightweight markup language.
+
+Some paragraphs...
+
+&lt;&lt;&lt;fn1::*1&gt;&gt;&gt; Footnote text.</code></pre>
+</figure>
+<figure>
+<figcaption>Output</figcaption>
+<pre class="html"><code class="html">KARAS &lt;sup&gt;&lt;a href=&#34;#fn1&#34;&gt;*1&lt;/a&gt;&lt;/sup&gt; is lightweight markup language.
+
+Some paragraphs...
+
+&lt;span id=&#34;fn1&#34;&gt;*1&lt;/span&gt; Footnote text.</code></pre>
+</figure>
+<h2 id="citeandbq">Don't put a Cite into Blockquote</h2>
+<p><i>Blockquote</i> should be used to indicate the contents is quoted. Therefore, I think, the <i>cite</i> element in <i>blockquote</i> must been shown as the quoted <i>cite</i> element.</p>
+<p>If you want to group <i>blockquote</i> and the <i>cite</i> (or original url, etc...), you should use <i>block group</i> syntax. For example, write like a following sample. Because the characters 'blockquote' is not reserved name by <i>block group</i> syntax, it becomes class name of <i>div</i> element. Or, you can simply name it 'quote'.</p>
+<figure>
+<figcaption>Input</figcaption>
+<pre class="karas"><code class="karas">{{blockquote
+&gt; This is quote text.
+@@Title@@
+}}</code></pre>
+</figure>
+<figure>
+<figcaption>Output</figcaption>
+<pre class="html"><code class="html">&lt;div class=&#34;blockquote&#34;&gt;
+&lt;blockquote&gt;
+&lt;p&gt;This is quote text.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;cite&gt;Title&lt;/cite&gt;
+&lt;/div&gt;</code></pre>
+</figure>
+<h2 id="quotemark">Don't write a 'Quote mark' to Quoted text</h2>
+<p>Text enclosed with <code>&#34;&#34;</code> becomes quoted text, but you don't have to write quote marks like <code>&#34;</code>, <code>&#39;</code>, or <code>&lt;&lt;&gt;&gt;</code> in it. Lot of user agent (like browser) automatically insert quote marks to it. For example, following text has wrong.</p>
+<figure>
+<figcaption>Input</figcaption>
+<pre class="karas"><code class="karas">&#34;&#34; &#34;This is quoted text.&#34; &#34;&#34;</code></pre>
+</figure>
+<figure>
+<figcaption>On user agent</figcaption>
+<pre class="text"><code class="text">&#34;&#34;This is quoted text.&#34;&#34;</code></pre>
+</figure>
+<p>However, that this shall not apply to the case that the output format of KARAS converter is not HTML. And, few user agent may not support this feature.</p>
+            </article>
+            <footer>
+<p><small><a href="http://lightweightmarkuplanguage.com">&copy; KARAS - Lightweight Markup Language</a></small></p>
+            </footer>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="author" content="Daiki Umeda (XJINE)">
+<meta name="generator" content="BlackBoard">
+<meta name="generator" content="KARAS">
+<meta charset="UTF-8">
+<title>KARAS - Basic Syntax</title>
+<link rel="stylesheet" href="../../resource/default.css" type="text/css" media="all" charset="">
+<meta property="og:site_name" content="KARAS">
+<meta property="og:title" content="Lightweight Markup Language - KARAS">
+<meta property="og:url" content="http://lightweightmarkuplanguage.com/">
+<meta property="og:image" content="../../resource/ogpimg.jpg">
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-44157178-2', 'lightweightmarkuplanguage.com');
+ga('send', 'pageview');
+</script>
+</head>
+<body>
+<div id="outframe">
+    <header>
+        <a id="logo" href="../index.html" title="Top"></a>
+        <div id="pagetitle">
+            <h1><a href="../index.html">KARAS</a></h1>
+            <h1><a href="../index.html">Lightweight Markup Language</a></h1>
+        </div>
+        <div id="socialbutton">
+            <a href="http://twitter.com/share?text='Lightweight Markup Language - KARAS'&amp;url=http://lightweightmarkuplanguage.com"
+               title="Share on Twitter" 
+               onclick="javascript:window.open(this.href,'Twitter','menubar=no,toolbar=no,scrollbars=yes,resizable=yes,height=300,width=450');
+                        return false;">
+                <img src="../../resource/tw_35x.png" alt="Share on Twitter">
+            </a>
+            <a href="http://www.facebook.com/share.php?u=http://lightweightmarkuplanguage.com"
+               title="Share on Facebook" 
+               onclick="javascript:window.open(this.href,'Facebook','menubar=no,toolbar=no,scrollbars=yes,resizable=yes,height=300,width=450');
+                        return false;">
+                <img src="../../resource/fb_35x.png" alt="Share on Facebook">
+            </a>
+            <a href="https://plus.google.com/share?url=http://lightweightmarkuplanguage.com"
+               title="Share on Google+" 
+               onclick="javascript:window.open(this.href,'Google+','menubar=no,toolbar=no,scrollbars=yes,resizable=yes,height=600,width=600');
+                        return false;">
+                <img src="../../resource/gp_35x.png" alt="Share on Google+">
+            </a>
+            <a href="https://github.com/KARAS-LightweightMarkupLanguage"
+               title="Go to GitHub" target="_blank">
+                <img src="../../resource/gh_35x.png" alt="Go to GitHub">
+            </a>
+        </div>
+    </header>
+    <div id="contents">
+        <div id="sidebar">
+            <ul class="menu">
+                <li><a href="../syntax/index.html" title="Syntax">Syntax</a></li>
+                <li><a href="../download.html" title="Download">Download</a></li>
+                <li><a href="../license.html" title="License">License</a></li>
+                <li><a href="../development/index.html" title="Development">Development</a></li>
+                <li><a href="../donation.html" title="Donation">Donation</a></li>
+                <li><a href="../information.html" title="Donation">Information</a></li>
+            </ul>
+            <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+            <!-- KARAS_Side_160x600 -->
+            <ins class="adsbygoogle"
+                 style="display:inline-block;width:160px;height:600px"
+                 data-ad-client="ca-pub-9133526697051515"
+                 data-ad-slot="6825762586"></ins>
+            <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+        <div id="maincolumn">
+            <div id="pageinfo">
+                <div id ="topicpath"><a href="../index.html">Top</a>&nbsp;&gt;&nbsp;<a href="../syntax/index.html">Syntax</a>&nbsp;&gt;&nbsp;<a href="basicsyntax.html">Basic Syntax</a></div>
+                <div id="lastmodified">Last modified : 2014. 05. 31</div>
+            </div>
+            <article>
+            <h1 id="basicsyntax">Basic Syntax</h1>
+<p>このページでは KARAS の基本の構文について解説します。</p>
+<ul>
+<li><a href="#aboutlevel">レベル について</a></li>
+<li><a href="#headinghr">見出しと区切り</a></li>
+<li><a href="#list">リスト</a>
+<ul>
+<li><a href="#unorderedlist">標準のリスト</a></li>
+<li><a href="#orderedlist">順序付きのリスト</a></li>
+<li><a href="#deflist">定義リスト</a></li>
+</ul>
+<li><a href="#inlinemarkup">装飾と意味の追加</a>
+<ul>
+<li><a href="#boldstrong">太字と重要性</a></li>
+<li><a href="#italicemphasize">斜体と強調</a></li>
+<li><a href="#underlineins">下線と追加</a></li>
+<li><a href="#strikedel">打消しと削除</a></li>
+<li><a href="#defabbr">定義用語</a></li>
+<li><a href="#kbdsamp">入力と出力</a></li>
+<li><a href="#varcode">変数とコード</a></li>
+<li><a href="#supruby">上付き文字とルビ</a></li>
+<li><a href="#subscript">下付き文字</a></li>
+</ul>
+<li><a href="#quotecite">引用と出典</a>
+<ul>
+<li><a href="#cite">作品タイトル</a></li>
+<li><a href="#inlinequote">小さな引用</a></li>
+<li><a href="#blockquote">大きな引用</a></li>
+</ul>
+<li><a href="#link">リンク</a></li>
+<li><a href="#table">テーブル</a></li>
+<li><a href="#others">その他</a>
+<ul>
+<li><a href="#ltgtmark"><i>&lt;</i> と <i>&gt;</i> 記号</a></li>
+<li><a href="#paragraph">パラグラフ</a></li>
+<li><a href="#commentout">コメントアウト</a></li>
+<li><a href="#escape">エスケープ</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="aboutlevel">レベル について</h2>
+<p>KARAS は <b><dfn>レベル(Level)</dfn></b> という概念を持っています。例えば、KARAS では行頭に <code>=</code> を書くと見出し要素 <code>&lt;h1&gt;</code> を出力しますが、<code>==</code> のように記号を2つ書くと、 <code>&lt;h2&gt;</code> を出力します。 <code>=</code> が1つの時を<i>レベル1</i>、<code>=</code> が2つの時を<i>レベル2</i>と呼びます。 KARAS では、このように出力結果が変わる単位を<i>レベル</i>と定義しています。</p>
+<h2 id="headinghr">見出しと区切り</h2>
+<p><b>行頭に <code>=</code> を書くと見出しを出力します。</b>最大レベルは 6 です。構文のレベルが上がるごとに出力される見出しのレベルは1つ下がります。また <code>::</code> の後に続いて書かれたテキストは <i>ID</i> として出力されます。</p>
+<figure>
+<figcaption>Input</figcaption>
+<pre class="karas"><code class="karas">= Heading level 1
+== Heading level 2 :: ID
+=== Heading level 3
+==== Heading level 4
+===== Heading level 5
+====== Heading level 6</code></pre>
+</figure>
+<figure>
+<figcaption>Output</figcaption>
+<pre class="html"><code class="html">&lt;h1&gt;Heading level 1&lt;/h1&gt;
+&lt;h2 id=&#34;ID&#34;&gt;Heading level 2&lt;/h2&gt;
+&lt;h3&gt;Heading level 3&lt;/h3&gt;
+&lt;h4&gt;Heading level 4&lt;/h4&gt;
+&lt;h5&gt;Heading level 5&lt;/h5&gt;
+&lt;h6&gt;Heading level 6&lt;/h6&gt;</code></pre>
+</figure>
+<p><b>行頭に7つ以上 <code>=</code> を書くと水平線を出力します。</b>7より上のレベルは、すべて水平線を出力します。<code>=</code> の後に続くテキストは出力されません。</p>
+<figure>
+<figcaption>Input</figcaption>
+<pre class="karas"><code class="karas">=======
+======== 8</code></pre>
+</figure>
+<figure>
+<figcaption>Output</figcaption>
+<pre class="html"><code class="html">&lt;hr&gt;
+&lt;hr&gt;</code></pre>
+</figure>
+<h2 id="list">リスト</h2>
+<h3 id="unorderedlist">標準のリスト</h3>
+<p><b>行頭に <code>-</code> を書くとリストを出力します。</b>最大レベルはありません。レベルが上がるとリストはネストされます。</p>
+<figure>
+<figcaption>Input</figcaption>
+<pre class="karas"><code class="karas">- Item 1
+- Item 2
+-- Item 2-1
+- Item 3</code></pre>
+</figure>
+<figure>
+<figcaption>Output</figcaption>
+<pre class="html"><code class="html">&lt;ul&gt;
+    &lt;li&gt;Item 1&lt;/li&gt;
+    &lt;li&gt;Item 2
+        &lt;ul&gt;
+            &lt;li&gt;Item 2-1&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/li&gt;
+    &lt;li&gt;Item 3&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+</figure>
+<h3 id="orderedlist">順序付きのリスト</h3>
+<p><b>行頭に <code>+</code> を書くと順序付きのリストを出力します。</b>最大レベルはありません。レベルが上がるとリストはネストされます。</p>
+<figure>
+<figcaption>Input</figcaption>
+<pre class="karas"><code class="karas">+ Item 1
+++ Item 2</code></pre>
+</figure>
+<figure>
+<figcaption>Output</figcaption>
+<pre class="html"><code class="html">&lt;ol&gt;
+    &lt;li&gt;Item 1
+        &lt;ol&gt;
+            &lt;li&gt;Item 2&lt;/li&gt;
+        &lt;/ol&gt;
+    &lt;/li&gt;
+&lt;/ol&gt;</code></pre>
+</figure>
+<p><b>リストの開始番号を変更するためには <code>::</code> を使用します。</b>開始番号を指定したリストと同じグループのリストは、再び開始番号が変更されるまで、番号が変更されます。</p>
+<figure>
+<figcaption>Input</figcaption>
+<pre class="karas"><code class="karas">+ Item 1
+++ Item 1-5 :: 5
+++ Item 1-6
++ Item 2
+++ Item 2-1</code></pre>
+</figure>
+<figure>
+<figcaption>Output</figcaption>
+<pre class="html"><code class="html"> &lt;ol&gt;
+    &lt;li&gt;Item 1
+        &lt;ol&gt;
+            &lt;li value=&#34;5&#34;&gt;Item 1-5&lt;/li&gt;
+            &lt;li&gt;Item 1-6&lt;/li&gt;
+        &lt;/ol&gt;
+    &lt;/li&gt;
+    &lt;li&gt;Item 2
+        &lt;ol&gt;
+            &lt;li&gt;Item 2-1&lt;/li&gt;
+        &lt;/ol&gt;
+    &lt;/li&gt;
+ &lt;/ol&gt;</code></pre>
+</figure>
+<h3 id="deflist">定義リスト</h3>
+<p><b>行頭に <code>;</code> を書くと定義リストを出力します。</b>最大レベルは 2 です。レベル1では定義用語を、レベル2では定義を書きます。定義用語と定義はいくつでも追加することができます。</p>
+<figure>
+<figcaption>Input</figcaption>
+<pre class="karas"><code class="karas">; Definition term
+;; Definition description 1
+;; Definition description 2</code></pre>
+</figure>
+<figure>
+<figcaption>Output</figcaption>
+<pre class="html"><code class="html">&lt;dl&gt;
+    &lt;dt&gt;Definition term&lt;/dt&gt;
+    &lt;dd&gt;Definition description 1&lt;/dd&gt;
+    &lt;dd&gt;Definition description 2&lt;/dd&gt;
+&lt;/dl&gt;</code></pre>
+</figure>
+<h2 id="inlinemarkup">装飾と意味の追加</h2>
+<h3 id="boldstrong">太字と重要性</h3>
+<p><b>テキストを <code>**</code> で閉じると太字として出力します。</b>最大レベルは 2 です。レベル1では、テキストは太字として区別されたテキストになります。レベル2では、テキストは強い重要性を持ちます。</p>
+<figure>
+<figcaption>Input</figcaption>
+<pre class="karas"><code class="karas">** Bold text **
+*** Strong text ***</code></pre>
+</figure>
+<figure>
+<figcaption>Output</figcaption>
+<pre class="html"><code class="html">&lt;b&gt;Bold text&lt;/b&gt;
+&lt;strong&gt;Strong text&lt;/strong&gt;</code></pre>
+</figure>
+<h3 id="italicemphasize">斜体と強調</h3>
+<p><b>テキストを <code>//</code> で閉じると斜体として出力します。</b>最大レベルは 2 です。レベル1では、テキストは区別されたテキストになります。レベル2では、テキストは<i>強調されていることを(stress emphasis)</i>を示します。</p>
+<figure>
+<figcaption>Input</figcaption>
+<pre class="karas"><code class="karas">// Italic text //
+/// Emphasized text ///</code></pre>
+</figure>
+<figure>
+<figcaption>Output</figcaption>
+<pre class="html"><code class="html">&lt;i&gt;Italic text&lt;/i&gt;
+&lt;em&gt;Emphasized text&lt;/em&gt;</code></pre>
+</figure>
+<p>ただし、<strong>http:// や ftp:// などの (プロトコルを表す) テキストに含まれる <code>//</code> は無視されます。</strong></p>
+<h3 id="underlineins">下線と追加</h3>
+<p><b>テキストを <code>__</code> で閉じると下線付きで出力します。</b>最大レベルは 2 です。レベル1では装飾だけ持ちます。レベル2では<i>追加されたテキスト</i>の示します。</p>
+<figure>
+<figcaption>Input</figcaption>
+<pre class="karas"><code class="karas">__ Underline text __
+___ Inserted text ___</code></pre>
+</figure>
+<figure>
+<figcaption>Output</figcaption>
+<pre class="html"><code class="html">&lt;u&gt;Underline text&lt;/u&gt;
+&lt;ins&gt;Inserted text&lt;/ins&gt;</code></pre>
+</figure>
+<h3 id="strikedel">打消しと削除</h3>
+<p><b>テキストを <code>%%</code> で閉じると打消し線付きで出力します。</b>最大レベルは 2 です。レベル1では装飾だけ適用されます。レベル2では<i>削除されたテキスト</i>を示します。</p>
+<figure>
+<figcaption>Input</figcaption>
+<pre class="karas"><code class="karas">%% Striked text %%
+%%% Deleted text %%%</code></pre>
+</figure>
+<figure>
+<figcaption>Output</figcaption>
+<pre class="html"><code class="html">&lt;s&gt;Striked text&lt;/s&gt;
+&lt;del&gt;Deleted text&lt;/del&gt;</code></pre>
+</figure>
+<h3 id="defabbr">定義用語</h3>
+<p><b>テキストを <code>??</code> で閉じると定義用語として出力します。</b>最大レベルは 2 です。レベル1では定義用語として出力されます。レベル2では定義用語の略語として出力されます。</p>
+<figure>
+<figcaption>Input</figcaption>
+<pre class="karas"><code class="karas">?? Definition text ??
+??? Abbreviated definition text ???</code></pre>
+</figure>
+<figure>
+<figcaption>Output</figcaption>
+<pre class="html"><code class="html">&lt;dfn&gt;Definition text&lt;/dfn&gt;
+&lt;dfn&gt;&lt;abbr&gt;Abbreviated definition text&lt;/abbr&gt;&lt;dfn&gt;</code></pre>
+</figure>
+<h3 id="kbdsamp">入力と出力</h3>
+<p><b>テキストを <code>$$</code> で閉じると入力や出力を示すテキストを出力します。</b>最大レベルは 2 です。レベル1では、テキストは入力として出力されます。レベル2では、テキストは改行を含まない短い出力として出力されます。この構文でマークアップされたテキストに含まれる &lt; や &gt; などの特定の文字は文字参照に変換されます。</p>
+<figure>
+<figcaption>Input</figcaption>
+<pre class="karas"><code class="karas">$$ &lt; Keyboard text &gt; $$
+$$$ &gt; Sample text $$$</code></pre>
+</figure>
+<figure>
+<figcaption>Output</figcaption>
+<pre class="html"><code class="html">&lt;kbd&gt;&amp;lt; Keyboard text &amp;gt;&lt;/kbd&gt;
+&lt;samp&gt;&amp;gt; Sample text&lt;/samp&gt;</code></pre>
+</figure>
+<h3 id="varcode">変数とコード</h3>
+<p><b>テキストを <code>``</code> で閉じると変数やコードとして出力します。</b>最大レベルは 2 です。レベル1では、テキストは変数 (var) として出力されます。レベル2では、テキストは改行を含まない短いコード (code) として出力されます。この構文でマークアップされたテキストに含まれる &lt; や &gt; などの特定の文字は文字参照に変換されます。</p>
+<figure>
+<figcaption>Input</figcaption>
+<pre class="karas"><code class="karas">`` &lt;Variable text&gt; ``
+``` &gt; Code text ```</code></pre>
+</figure>
+<figure>
+<figcaption>Output</figcaption>
+<pre class="html"><code class="html">&lt;var&gt;&amp;lt;Variable text&amp;gt;&lt;/var&gt;
+&lt;code&gt;&amp;gt; Code text&lt;/code&gt;</code></pre>
+</figure>
+<div class="note">
+<p>レベル1の var 要素は、数式やソースコードの変数、定数などを記述することができます。レベル2の code 要素は XML の要素名や、ソースコードのほかに、ファイル名などを記述することができます。</p>
+</div>
+<h3 id="supruby">上付き文字とルビ</h3>
+<p><b>テキストを <code>&#39;&#39;</code> で閉じると上付き文字として出力します。</b>最大レベルは 2 です。レベル1のときは上付き文字を出力します。レベル2のときはルビを出力します。</p>
+<figure>
+<figcaption>Input</figcaption>
+<pre class="karas"><code class="karas">&#39;&#39;Superscript text&#39;&#39;</code></pre>
+</figure>
+<figure>
+<figcaption>Output</figcaption>
+<pre class="html"><code class="html">&lt;sup&gt;Superscript text&lt;/sup&gt;</code></pre>
+</figure>
+<p>ルビの構文はとても特殊な構文です。レベル2の構文を使ってルビを書くときは、それぞれの単語とルビをオプションの構文 <code>::</code> で区切ります。</p>
+<figure>
+<figcaption>Input</figcaption>
+<pre class="karas"><code class="karas">&#39;&#39;&#39;KANJI::ruby&#39;&#39;&#39;
+&#39;&#39;&#39;KAN::ru::JI::by&#39;&#39;&#39;</code></pre>
+</figure>
+<figure>
+<figcaption>Output</figcaption>
+<pre class="html"><code class="html">&lt;ruby&gt;KANJI&lt;rp&gt; (&lt;/rp&gt;&lt;rt&gt;ruby&lt;/rt&gt;&lt;rp&gt; )&lt;/rp&gt;&lt;/ruby&gt;
+&lt;ruby&gt;KAN&lt;rp&gt; (&lt;/rp&gt;&lt;rt&gt;ru&lt;/rt&gt;&lt;rp&gt; )&lt;/rp&gt;JI&lt;rp&gt; (&lt;/rp&gt;&lt;rt&gt;by&lt;/rt&gt;&lt;rp&gt; )&lt;/rp&gt;&lt;/ruby&gt;</code></pre>
+</figure>
+<h3 id="subscript">下付き文字</h3>
+<p><b>テキストを <code>,,</code> で閉じると上付き文字として出力します。</b>最大レベルは 1 です。</p>
+<figure>
+<figcaption>Input</figcaption>
+<pre class="karas"><code class="karas">,, Subscript text ,,</code></pre>
+</figure>
+<figure>
+<figcaption>Output</figcaption>
+<pre class="html"><code class="html">&lt;sub&gt;Subscript text&lt;/sub&gt;</code></pre>
+</figure>
+<h2 id="quotecite">引用と出典</h2>
+<h3 id="cite">作品タイトル</h3>
+<p><b>テキストを <code>@@</code> で閉じると、作品タイトルを出力します。</b>最大レベルは 2 です。レベル1では作品のタイトルを出力します。レベル2では細則 (例えば著作者や免責事項) を出力します。</p>
+<figure>
+<figcaption>Input</figcaption>
+<pre class="karas"><code class="karas">@@ Cite text @@
+@@@ features disclaimers, caveats, legal restrictions, or copyrights @@@</code></pre>
+</figure>
+<figure>
+<figcaption>Output</figcaption>
+<pre class="html"><code class="html">&lt;cite&gt;Cite text&lt;/cite&gt;
+&lt;small&gt;features disclaimers, caveats, legal restrictions, or copyrights&lt;/small&gt;</code></pre>
+</figure>
+<h3 id="inlinequote">小さな引用</h3>
+<p><b>テキストを <code>&#34;&#34;</code> で閉じると、引用したテキストとして出力します。</b>最大レベルは 1 です。テキスト中に、セリフや短いテキストを引用するときに使います。</p>
+<figure>
+<figcaption>Input</figcaption>
+<pre class="karas"><code class="karas">&#34;&#34; Quoted text &#34;&#34;</code></pre>
+</figure>
+<figure>
+<figcaption>Output</figcaption>
+<pre class="html"><code class="html">&lt;q&gt;Quoted text&lt;/q&gt;</code></pre>
+</figure>
+<h3 id="blockquote">大きな引用</h3>
+<p><b>行頭に <code>&gt;</code> を書くと引用したテキストのブロックを出力します。</b> 最大レベルはありません。レベルが上がると引用テキストはネストされます。改行を含むなどする大きな1つの文章を引用テキストとするときはこの方法を使用します。</p>
+<figure>
+<figcaption>Input</figcaption>
+<pre class="karas"><code class="karas">&gt; Blockquote text,
+2nd line.
+&gt;&gt; Blockquote text in Blockquote.
+&gt;&gt;&gt; Blockquote text in Blockquote.</code></pre>
+</figure>
+<figure>
+<figcaption>Output</figcaption>
+<pre class="html"><code class="html">&lt;blockquote&gt;
+&lt;p&gt;Blockquote text,
+ 2nd line.&lt;/p&gt;
+    &lt;blockquote&gt;
+    &lt;p&gt;Blockquote text in Blockquote.&lt;/p&gt;
+        &lt;blockquote&gt;
+        &lt;p&gt;Blockquote text in Blockquote.&lt;/p&gt;
+        &lt;/blockquote&gt;
+    &lt;/blockquote&gt;
+&lt;/blockquote&gt;</code></pre>
+</figure>
+<h2 id="link">リンク</h2>
+<p><b>テキストを <code>((</code> と <code>))</code> で閉じると、リンクとして出力します。</b>最大レベルは 2 です。レベル1では一般的なリンクとして出力されます。レベル2では埋め込まれたメディアとして出力されます。</p>
+<p>テキストリンク (alias) を書くときは、 オプション構文 <code>::</code> の後に、そのテキストを書きます。</p>
+<figure>
+<figcaption>Input</figcaption>
+<pre class="karas"><code class="karas">(( URL ))
+(( ImageURL.jpg ))
+(( URL :: Alias text ))</code></pre>
+</figure>
+<figure>
+<figcaption>Output</figcaption>
+<pre class="html"><code class="html">&lt;a href=&#34;URL&#34;&gt;URL&lt;/a&gt;
+&lt;a href=&#34;ImageURL.jpg&#34;&gt;ImageURL.jpg&lt;/a&gt;
+&lt;a href=&#34;URL&#34;&gt;Alias text&lt;/a&gt;</code></pre>
+</figure>
+<p><strong>レベル2の出力結果は、指定された URL に依存します。</strong>URL の末尾の拡張子が画像ファイルを示すときは、出力結果は画像を表示するために最適な形式になります。音声と動画の場合も同じです。これらのメディアにパラメータを追加するときは、 オプションの構文 <code>::</code> の後に書きます。</p>
+<div class="note">
+<p>標準のコンバータでは、 オプションの構文 <code>::</code> に続いて書かれたテキストは、一切変更されずにオプションとして追加されます。 また <i>obj</i> などのネストされた要素に対しては、適切なパラメータに変換してから追加します。オプションのテキストは、分割されて、予約されたオプションかどうか解析されます。</p>
+</div>
+<p>画像の場合です。</p>
+<figure>
+<figcaption>Input</figcaption>
+<pre class="karas"><code class="karas">((( ImageURL.jpg )))
+((( ImageURL.jpg :: alt=&#34;white image&#34; width=&#34;100&#34; height=&#34;100&#34; )))</code></pre>
+</figure>
+<figure>
+<figcaption>Outut</figcaption>
+<pre><code>&lt;img src=&#34;ImageURL.jpg&#34;&gt;
+&lt;img src=&#34;ImageURL.jpg&#34; alt=&#34;white image&#34; width=&#34;100&#34; height=&#34;100&#34;&gt;</code></pre>
+</figure>
+<p>動画の場合です。</p>
+<figure>
+<figcaption>Input</figcaption>
+<pre class="karas"><code class="karas">((( VideoURL.mp4 )))
+((( VideoURL.mp4, width=&#34;100&#34; height=&#34;100&#34; loop controls )))</code></pre>
+</figure>
+<figure>
+<figcaption>Output</figcaption>
+<pre class="html"><code class="html">&lt;video src=&#34;VideoURL.mp4&#34;&gt;
+    &lt;object data=&#34;VideoURL.mp4&#34;&gt;
+        &lt;embed src=&#34;VideoURL.mp4&#34;&gt;
+    &lt;/object&gt;
+&lt;/video&gt;
+&lt;video src=&#34;VideoURL.mp4&#34; width=&#34;100&#34; height=&#34;100&#34; controls&gt;
+    &lt;object data=&#34;VideoURL.mp4&#34; width=&#34;100&#34; height=&#34;100&#34;&gt;
+        &lt;param name=&#34;controls&#34; value=&#34;true&#34;&gt;
+        &lt;embed src=&#34;VideoURL.mp4&#34; width=&#34;100&#34; height=&#34;100&#34; controls=&#34;true&#34;&gt;
+    &lt;/object&gt;
+&lt;/video&gt;</code></pre>
+</figure>
+<p>音声の場合です。</p>
+<figure>
+<figcaption>Input</figcaption>
+<pre class="karas"><code class="karas">((( AudioURL.mp3 )))
+((( AudioURL.mp3 :: loop )))</code></pre>
+</figure>
+<figure>
+<figcaption>Output</figcaption>
+<pre class="html"><code class="html">&lt;audio src=&#34;AudioURL.mp3&#34;&gt;
+    &lt;object data=&#34;AudioURL.mp3&#34;&gt;
+        &lt;embed src=&#34;AudioURL.mp3&#34;&gt;
+    &lt;/object&gt;
+&lt;/audio&gt;
+&lt;audio src=&#34;AudioURL.mp3&#34; loop&gt;
+    &lt;object data=&#34;AudioURL.mp3&#34;&gt;
+        &lt;param name=&#34;loop&#34; value=&#34;true&#34;&gt;
+        &lt;embed src=&#34;AudioURL.mp3&#34; loop=&#34;true&#34;&gt;
+    &lt;/object&gt;
+&lt;/audio&gt;</code></pre>
+</figure>
+<p>その他の場合です。例えば FLASH(.swf) はその1つです。</p>
+<figure>
+<figcaption>Input</figcaption>
+<pre class="karas"><code class="karas">(((UndefURL.swf)))
+(((UndefURL.swf :: width=&#34;100&#34; height=&#34;100&#34; allowfullscreen)))</code></pre>
+</figure>
+<figure>
+<figcaption>Output</figcaption>
+<pre class="html"><code class="html">&lt;object data=&#34;UndefURL.swf&#34;&gt;
+    &lt;embed src=&#34;UndefURL.swf&#34;&gt;
+&lt;/object&gt;
+&lt;object data=&#34;UndefURL.swf&#34; width=&#34;100&#34; height=&#34;100&#34;&gt;
+    &lt;param name=&#34;allowfullscreen&#34; value=&#34;true&#34;&gt;
+    &lt;embed src=&#34;UndefURL.swf&#34; width=&#34;100&#34; height=&#34;100&#34; allowfullscreen=&#34;true&#34;&gt;
+&lt;/object&gt;</code></pre>
+</figure>
+<div class="note">
+<p>出力形式は KARAS が導入されるシステムに依存します。このページでは、KARAS の標準的なコンバータによる変換結果を示しています。正確な情報が必要なときは、そのシステムが提供する変換結果の例を参照してください。開発者は、レベル2の構文が使われるときに、そのメディアに最適化された結果を出力することができるシステムを開発する必要があります。</p>
+</div>
+<h2 id="table">テーブル</h2>
+<p><b>行頭に <code>||</code> を書くとテーブルを出力します。</b>同じ行に <code>||</code> を書くと、次のセルを出力します。テーブルの行は、改行によって制御されます。</p>
+<p>スペースの数や <code>||</code> の位置を揃える必要はありません。ただしセルの数が多かったり、セルの中の文字の数がそれぞれ大きく異なるときは可読性のために揃えることを推奨します。</p>
+<figure>
+<figcaption>Input</figcaption>
+<pre class="karas"><code class="karas">|| Cell 1 || Cell 2
+|| Cell 3 || Cell 4</code></pre>
+</figure>
+<figure>
+<figcaption>Output</figcaption>
+<pre class="html"><code class="html">&lt;table&gt;
+    &lt;tr&gt;&lt;td&gt;Cell 1&lt;/td&gt;&lt;td&gt;Cell 2&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;Cell 3&lt;/td&gt;&lt;td&gt;Cell 4&lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</code></pre>
+</figure>
+<p>ヘッダを出力するときは、セル構文の左側の記号を変更して <code>!|</code> と書きます。</p>
+<figure>
+<figcaption>Input</figcaption>
+<pre class="karas"><code class="karas">!| Cell 1 !| Cell 2
+|| Cell 3 || Cell 4</code></pre>
+</figure>
+<figure>
+<figcaption>Output</figcaption>
+<pre class="html"><code class="html">&lt;table&gt;
+    &lt;tr&gt;&lt;th&gt;Cell 1&lt;/th&gt;&lt;th&gt;Cell 2&lt;/th&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;Cell 3&lt;/td&gt;&lt;td&gt;Cell 4&lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</code></pre>
+</figure>
+<p>左揃えされたセルにするときは、セルの構文の右側の記号を変更して <code>|&lt;</code> と書きます。右揃えのセルにするときは <code>|&gt;</code> と書きます。中央揃えのセルにするときは <code>|=</code> と書きます。また右揃えのヘッダにするときは <code>!&gt;</code> と書きます。</p>
+<div class="note">
+<p>標準のセルの文字の整列方向は、システムか、あるいは、CSS のようなレイアウト機能よって変更される可能性があります。</p>
+</div>
+<figure>
+<figcaption>Input</figcaption>
+<pre class="karas"><code class="karas">!| Cell 1 !&gt; Cell 2
+|&lt; Cell 3 |= Cell 4</code></pre>
+</figure>
+<figure>
+<figcaption>Output</figcaption>
+<pre class="html"><code class="html">&lt;table&gt;
+    &lt;tr&gt;
+        &lt;th&gt;Cell 1&lt;/th&gt;
+        &lt;th style=&#34;text-align:right;&#34;&gt;Cell 2&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td style=&#34;text-align:left;&#34;&gt;Cell 3&lt;/td&gt;
+        &lt;td style=&#34;text-align:center;&#34;&gt;Cell 4&lt;/td&gt;
+    &lt;/tr&gt;
+&lt;/table&gt;</code></pre>
+</figure>
+<p>セルを水平方向に結合するには、セルの中に <code>::</code> だけを書きます。<code>::</code> が書かれたセルは左側のセルに結合されます。セルを垂直方向に結合するには、セルの中に <code>:::</code> だけを書きます。<code>:::</code> が書かれたセルは上のセルに結合されます。</p>
+<figure>
+<figcaption>Input</figcaption>
+<pre class="karas"><code class="karas">|| Cell 1 ||  ::    || Cell 2 || Cell 3
+|| Cell 4 || Cell 5 ||  :::   || Cell 6
+||  :::   || Cell 7 ||  :::   || Cell 8</code></pre>
+</figure>
+<figure>
+<figcaption>Output</figcaption>
+<pre class="html"><code class="html">&lt;table&gt;
+    &lt;tr&gt;
+        &lt;td colspan=&#34;2&#34;&gt;Cell 1&lt;/td&gt;
+        &lt;td rowspan=&#34;3&#34;&gt;Cell 2&lt;/td&gt;
+        &lt;td&gt;Cell 3&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td rowspan=&#34;2&#34;&gt;Cell 4&lt;/td&gt;
+        &lt;td&gt;Cell 5&lt;/td&gt;
+        &lt;td&gt;Cell 6&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;Cell 7&lt;/td&gt;
+        &lt;td&gt;Cell 8&lt;/td&gt;
+    &lt;/tr&gt;
+&lt;/table&gt;</code></pre>
+</figure>
+<h2 id="others">その他</h2>
+<h3 id="ltgtmark"><i>&lt;</i> と <i>&gt;</i> 記号</h3>
+<p>構文としてではなく、記号 <i>&lt;</i> と <i>&gt;</i> を書くためには、<code>&amp;lt;</code> や <code>&amp;gt;</code>のように、文字参照として書く必要があります。</p>
+<h3 id="paragraph">パラグラフ</h3>
+<p>テキストが特別な記号を行頭に持たないときは、そのテキストは1つのパラグラフとして出力されます。特別な記号は、 <code>= + - ; &lt; &gt;</code> と、記号の組み合わせ <code>(( || |&gt; |&lt; |= !| !&gt; !&lt; !=</code> です。</p>
+<figure>
+<figcaption>Input</figcaption>
+<pre class="karas"><code class="karas">This text become a paragraph. </code></pre>
+</figure>
+<figure>
+<figcaption>Output</figcaption>
+<pre class="html"><code class="html">&lt;p&gt;This text become a paragraph. &lt;/p&gt;</code></pre>
+</figure>
+<p>テキストは改行されても1つのパラグラフとして出力されます。1つ以上の空行がテキストの間あるときは、それぞれ異なるパラグラフになります。</p>
+<figure>
+<figcaption>Input</figcaption>
+<pre class="karas"><code class="karas">This text become a paragraph.
+2nd line.
+ 
+Paragraph is divided by blank line.</code></pre>
+</figure>
+<figure>
+<figcaption>Output</figcaption>
+<pre class="html"><code class="html">&lt;p&gt;This text become a paragraph.
+2nd line.&lt;/p&gt;
+&lt;p&gt;Paragraph is divided by blank line.&lt;/p&gt;</code></pre>
+</figure>
+<p>パラグラフの中で改行が必要なときは、改行の前に <code>~</code> を書きます。1つのパラグラフに空行を入れるときは、その行に <code>~</code> だけを書きます。</p>
+<figure>
+<figcaption>Input</figcaption>
+<pre class="karas"><code class="karas">This text become a paragraph. ~
+2nd line.
+
+This text become a paragraph.~
+~ 
+2nd line.</code></pre>
+</figure>
+<figure>
+<figcaption>Output</figcaption>
+<pre class="html"><code class="html">&lt;p&gt; This text become a paragraph.&lt;br&gt; 
+2nd line.&lt;/p&gt;
+ 
+&lt;p&gt;This text become a paragraph.&lt;br&gt;
+&lt;br&gt;
+2nd line.&lt;/p&gt;</code></pre>
+</figure>
+<h3 id="commentout">コメントアウト</h3>
+<p><b><code>##</code> で閉じられたテキストは出力されません。</b>最大レベルは1です。</p>
+<figure>
+<figcaption>Input</figcaption>
+<pre class="karas"><code class="karas">## Comment out text ##</code></pre>
+</figure>
+<figure>
+<figcaption>Output</figcaption>
+<pre class="html"><code class="html">Nothing is output.</code></pre>
+</figure>
+<h3 id="escape">エスケープ</h3>
+<p><b>KARAS の構文は、エスケープ <code>\</code> (バックスラッシュ / 円マーク) によって無効にすることができます。</b>例えば <code>=</code> から始まるパラグラフを書くときは、<code>\=</code> と書きます。</p>
+<figure>
+<figcaption>Input</figcaption>
+<pre class="karas"><code class="karas">\= This text become a paragraph.</code></pre>
+</figure>
+<figure>
+<figcaption>Output</figcaption>
+<pre class="html"><code class="html">&lt;p&gt;= This text become a paragraph.&lt;/p&gt;</code></pre>
+</figure>
+<p>エスケープは記号を1つだけ無視します。また、エスケープ記号 <code>\</code> を書きたいときは、エスケープを2つ書きます。</p>
+<figure>
+<figcaption>Input</figcaption>
+<pre class="karas"><code class="karas">\***Bold text.**
+Write a \\ mark.</code></pre>
+</figure>
+<figure>
+<figcaption>Output</figcaption>
+<pre class="html"><code class="html">*&lt;b&gt;Bold text.&lt;/b&gt;
+Write a \ mark.</code></pre>
+</figure>
+            </article>
+            <footer>
+<p><small><a href="http://lightweightmarkuplanguage.com">&copy; KARAS - Lightweight Markup Language</a></small></p>
+            </footer>
+        </div>
+    </div>
+</div>
+</body>
+</html>

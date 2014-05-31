@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="author" content="Daiki Umeda (XJINE)">
+<meta name="generator" content="BlackBoard">
+<meta name="generator" content="KARAS">
+<meta charset="UTF-8">
+<title>KARAS - Plugin Syntax</title>
+<link rel="stylesheet" href="../../resource/default.css" type="text/css" media="all" charset="">
+<meta property="og:site_name" content="KARAS">
+<meta property="og:title" content="Lightweight Markup Language - KARAS">
+<meta property="og:url" content="http://lightweightmarkuplanguage.com/">
+<meta property="og:image" content="../../resource/ogpimg.jpg">
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-44157178-2', 'lightweightmarkuplanguage.com');
+ga('send', 'pageview');
+</script>
+</head>
+<body>
+<div id="outframe">
+    <header>
+        <a id="logo" href="../index.html" title="Top"></a>
+        <div id="pagetitle">
+            <h1><a href="../index.html">KARAS</a></h1>
+            <h1><a href="../index.html">Lightweight Markup Language</a></h1>
+        </div>
+        <div id="socialbutton">
+            <a href="http://twitter.com/share?text='Lightweight Markup Language - KARAS'&amp;url=http://lightweightmarkuplanguage.com"
+               title="Share on Twitter" 
+               onclick="javascript:window.open(this.href,'Twitter','menubar=no,toolbar=no,scrollbars=yes,resizable=yes,height=300,width=450');
+                        return false;">
+                <img src="../../resource/tw_35x.png" alt="Share on Twitter">
+            </a>
+            <a href="http://www.facebook.com/share.php?u=http://lightweightmarkuplanguage.com"
+               title="Share on Facebook" 
+               onclick="javascript:window.open(this.href,'Facebook','menubar=no,toolbar=no,scrollbars=yes,resizable=yes,height=300,width=450');
+                        return false;">
+                <img src="../../resource/fb_35x.png" alt="Share on Facebook">
+            </a>
+            <a href="https://plus.google.com/share?url=http://lightweightmarkuplanguage.com"
+               title="Share on Google+" 
+               onclick="javascript:window.open(this.href,'Google+','menubar=no,toolbar=no,scrollbars=yes,resizable=yes,height=600,width=600');
+                        return false;">
+                <img src="../../resource/gp_35x.png" alt="Share on Google+">
+            </a>
+            <a href="https://github.com/KARAS-LightweightMarkupLanguage"
+               title="Go to GitHub" target="_blank">
+                <img src="../../resource/gh_35x.png" alt="Go to GitHub">
+            </a>
+        </div>
+    </header>
+    <div id="contents">
+        <div id="sidebar">
+            <ul class="menu">
+                <li><a href="../syntax/index.html" title="Syntax">Syntax</a></li>
+                <li><a href="../download.html" title="Download">Download</a></li>
+                <li><a href="../license.html" title="License">License</a></li>
+                <li><a href="../development/index.html" title="Development">Development</a></li>
+                <li><a href="../donation.html" title="Donation">Donation</a></li>
+                <li><a href="../information.html" title="Donation">Information</a></li>
+            </ul>
+            <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+            <!-- KARAS_Side_160x600 -->
+            <ins class="adsbygoogle"
+                 style="display:inline-block;width:160px;height:600px"
+                 data-ad-client="ca-pub-9133526697051515"
+                 data-ad-slot="6825762586"></ins>
+            <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+        <div id="maincolumn">
+            <div id="pageinfo">
+                <div id ="topicpath"><a href="../index.html">Top</a>&nbsp;&gt;&nbsp;<a href="../syntax/index.html">Syntax</a>&nbsp;&gt;&nbsp;<a href="pluginsyntax.html">Plugin Syntax</a></div>
+                <div id="lastmodified">Last modified : 2014. 05. 23</div>
+            </div>
+            <article>
+            <h1>Plugin Syntax</h1>
+<p>KARAS has a special syntax different from basic syntax. These syntax are called 'Plugin Syntax'. Plugin syntax enable to do special functions not to markup.</p>
+<div class="note">
+<p>Plugin syntax is enabled only on the system which has the plugin.</p>
+</div>
+<ul>
+<li><a href="#description">Description</a></li>
+<li><a href="#sampleplugin">Sample plugin</a>
+<ul>
+<li><a href="#nowediting">NowEditiong</a></li>
+<li><a href="#mark">Mark</a></li>
+<li><a href="#tableofc">TOC (Table Of Contents)</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="description">Description</h2>
+<p>In order to write a plugin syntax, enclose the text with <code>[[</code> and ```]]. Plugin syntax has 2 types. Level 1 plugin syntax is called 'Convert type'. And level 2 plugin syntax is called 'Action type'.</p>
+<dl>
+<dt><b>Convert type plugin (Level1)</b></dt>
+<dd><pre class="karas"><code class="karas">[[ PluginName :: option1 :: option2... :: markedupText]]</code></pre></dd>
+<dt><b>Action type plugin (Level2)</b></dt>
+<dd><pre class="karas"><code class="karas">[[[ PluginName :: option1 :: option2...]]]</code></pre></dd>
+</dl>
+<p>In order to use plugin syntax, specify the name with ignore case at the first option. Each option is separated with <code>::</code>. By plugin name that you specified, the the process will change.</p>
+<p>Convert type plugin is used to decorate or convert the text. For example, to convert the text written in other format. In convert type plugin,convert text must be specified as the last option.</p>
+<p>Action type plugin is used to get the result which using all of the text. For example, to get the TOC(Table of Contents).
+Or, you can use it in order to command the system. For example, to insert comment field, or to hide the page.</p>
+<h2 id="sampleplugin">Sample plugin</h2>
+<p>In here, describe about the plugin in default KARAS converter.</p>
+<h3 id="nowediting">NowEditiong</h3>
+<p><i>NowEditing</i> plugin is the plugin to remove the text and insert "Now Editing". In level 1(Convert type), it remove the text specified as option. In level 2(Action type), all of the text is removed from the result.</p>
+<figure>
+<figcaption>Input</figcaption>
+<pre class="karas"><code class="karas">[[nowediting :: sample text.]]
+[[[nowediting]]]</code></pre>
+</figure>
+<figure>
+<figcaption>Output</figcaption>
+<pre class="html"><code class="html">&lt;b&gt; Now Editing. &lt;/b&gt;
+&lt;p&gt;&lt;span style=\&#34;font-size:300%;\&#34;&gt;&lt;b&gt; Now Editing. &lt;/b&gt;&lt;/span&gt;&lt;/p&gt;</code></pre>
+</figure>
+<h3 id="mark">Mark</h3>
+<p><i>Mark</i> plugin is the plugin to enclose the text with <i>Mark</i> tag. <i>Mark</i> plugin only has level 1 syntax(Convert type). If used as level 2(Action type), it returns error text. You can specify the markup color as 1st option, when there are 2 options.</p>
+<div class="note">
+<p>KARAS has no syntax to output <i>Mark</i> element.</p>
+</div>
+<figure>
+<figcaption>Input</figcaption>
+<pre class="karas"><code class="karas">[[mark :: markedup text.]]
+[[mark :: red :: markedup text.]]</code></pre>
+</figure>
+<figure>
+<figcaption>Output</figcaption>
+<pre class="html"><code class="html">&lt;mark&gt;markedupText&lt;/mark&gt;
+&lt;mark style=&#34;background-color:red;&#34;&gt;markedupText&lt;/mark&gt;</code></pre>
+</figure>
+<h3 id="tableofc">TOC (Table Of Contents)</h3>
+<p><i>TOC</i> plugin is the plugin to output the heading list in the page. <i>TOC</i> plugin only has level 2 syntax(Action type). If used as level 1(Convert type), it returns error text. You can specify the minimum level of listed headings as 1st option. For example, if set '2' as 1st option, level 1 headings will be not included in the output list. You can also specify the maximum level of listed headings as 2nd option. For example, if set '3' as 2nd option, level 4,5,6 headings will be not included in the output list.</p>
+<figure>
+<figcaption>Input</figcaption>
+<pre class="karas"><code class="karas">= Level1
+== Level2
+=== Level3 :: idoption
+==== Level4
+
+[[[toc]]]
+
+[[[toc::2::3]]]</code></pre>
+</figure>
+<figure>
+<figcaption>Output</figcaption>
+<pre class="html"><code class="html">&lt;h1&gt;Level1&lt;/h1&gt;
+&lt;h2 id=&#34;idoption&#34;&gt;Level2&lt;/h2&gt;
+&lt;h3&gt;Level3&lt;/h3&gt;
+&lt;h4&gt;Level4&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Level1
+	&lt;ul&gt;&lt;li&gt;Level2
+		&lt;ul&gt;&lt;li&gt;&lt;a href=&#34;#idoption&#34;&gt;Level3&lt;/a&gt;
+			&lt;ul&gt;&lt;li&gt;Level4&lt;/li&gt;&lt;/ul&gt;
+		&lt;/li&gt;&lt;/ul&gt;
+	&lt;/li&gt;&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Level2
+&lt;ul&gt;&lt;li&gt;&lt;a href=&#34;#idoption&#34;&gt;Level3&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+</figure>
+            </article>
+            <footer>
+<p><small><a href="http://lightweightmarkuplanguage.com">&copy; KARAS - Lightweight Markup Language</a></small></p>
+            </footer>
+        </div>
+    </div>
+</div>
+</body>
+</html>

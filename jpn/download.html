@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="author" content="Daiki Umeda (XJINE)">
+<meta name="generator" content="BlackBoard">
+<meta name="generator" content="KARAS">
+<meta charset="UTF-8">
+<title>KARAS - Download</title>
+<link rel="stylesheet" href="../resource/default.css" type="text/css" media="all" charset="">
+<meta property="og:site_name" content="KARAS">
+<meta property="og:title" content="Lightweight Markup Language - KARAS">
+<meta property="og:url" content="http://lightweightmarkuplanguage.com/">
+<meta property="og:image" content="../resource/ogpimg.jpg">
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-44157178-2', 'lightweightmarkuplanguage.com');
+ga('send', 'pageview');
+</script>
+</head>
+<body>
+<div id="outframe">
+    <header>
+        <a id="logo" href="index.html" title="Top"></a>
+        <div id="pagetitle">
+            <h1><a href="index.html">KARAS</a></h1>
+            <h1><a href="index.html">Lightweight Markup Language</a></h1>
+        </div>
+        <div id="socialbutton">
+            <a href="http://twitter.com/share?text='Lightweight Markup Language - KARAS'&amp;url=http://lightweightmarkuplanguage.com"
+               title="Share on Twitter" 
+               onclick="javascript:window.open(this.href,'Twitter','menubar=no,toolbar=no,scrollbars=yes,resizable=yes,height=300,width=450');
+                        return false;">
+                <img src="../resource/tw_35x.png" alt="Share on Twitter">
+            </a>
+            <a href="http://www.facebook.com/share.php?u=http://lightweightmarkuplanguage.com"
+               title="Share on Facebook" 
+               onclick="javascript:window.open(this.href,'Facebook','menubar=no,toolbar=no,scrollbars=yes,resizable=yes,height=300,width=450');
+                        return false;">
+                <img src="../resource/fb_35x.png" alt="Share on Facebook">
+            </a>
+            <a href="https://plus.google.com/share?url=http://lightweightmarkuplanguage.com"
+               title="Share on Google+" 
+               onclick="javascript:window.open(this.href,'Google+','menubar=no,toolbar=no,scrollbars=yes,resizable=yes,height=600,width=600');
+                        return false;">
+                <img src="../resource/gp_35x.png" alt="Share on Google+">
+            </a>
+            <a href="https://github.com/KARAS-LightweightMarkupLanguage"
+               title="Go to GitHub" target="_blank">
+                <img src="../resource/gh_35x.png" alt="Go to GitHub">
+            </a>
+        </div>
+    </header>
+    <div id="contents">
+        <div id="sidebar">
+            <ul class="menu">
+                <li><a href="syntax/index.html" title="Syntax">Syntax</a></li>
+                <li><a href="download.html" title="Download">Download</a></li>
+                <li><a href="license.html" title="License">License</a></li>
+                <li><a href="development/index.html" title="Development">Development</a></li>
+                <li><a href="donation.html" title="Donation">Donation</a></li>
+                <li><a href="information.html" title="Donation">Information</a></li>
+            </ul>
+            <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+            <!-- KARAS_Side_160x600 -->
+            <ins class="adsbygoogle"
+                 style="display:inline-block;width:160px;height:600px"
+                 data-ad-client="ca-pub-9133526697051515"
+                 data-ad-slot="6825762586"></ins>
+            <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+        <div id="maincolumn">
+            <div id="pageinfo">
+                <div id ="topicpath"><a href="./index.html">Top</a>&nbsp;&gt;&nbsp;<a href="download.html">Download</a></div>
+                <div id="lastmodified">Last modified : 2014. 05. 27</div>
+            </div>
+            <article>
+            <h1>Download</h1>
+<p>このページでは KARAS の標準的なコンバータや、各システムで KARAS を使うためのプラグインをダウンロードすることができます。</p>
+<ul>
+<li><a href="#Plugins">Plugins</a>
+<ul>
+<li><a href="#karasForWordPress">KARAS for WordPress</a></li>
+<li><a href="#KarasForJekyll">KARAS for Jekyll</a></li>
+</ul>
+<li><a href="#Source code">Source code</a></li>
+</ul>
+<h2 id="Plugins">Plugins</h2>
+<p>KARAS は文字エンコ―ディング UTF-8 を対象としています。これ以外のエンコーディングをもったシステムでは、問題を起こす可能性があります。また、日本語などのマルチバイトの環境では、問題を起こす可能性があります。UTF-8 以外のマルチバイトのシステムでは、特に注意が必要です。</p>
+<h3 id="karasForWordPress">KARAS for WordPress</h3>
+<p>この WordPress プラグインはフィルタ (Filter) として <code>the_content</code> にフックして動作します。 <code>plugins</code> ディレクトリに、ダウンロードしたディレクトリを解凍して入れてください。</p>
+<p>記事投稿画面に KARAS のメタボックス (カスタムフィールド) が表示されます。チェックを入れると、記事の中にある、KARAS の構文が変換されます。</p>
+<figure>
+<img src="../resource/WordPressPost.png">
+</figure>
+<p>KARAS が適用されると、 <code>prepend_attachment</code> にフックされたフィルタ以外のすべてのフィルタが適用されなくなります。(KARAS よりも後にフックされたフィルタは適用されます。) フィルタを使って変換するようなプラグインを持っていない WordPress では、問題は起こりません。この動作を変更するためには、WordPress のプラグインを開発するための知識が必要です。</p>
+<p><span class="download"><b>Download</b> : <a href="https://github.com/KARAS-LightweightMarkupLanguage/KARAS_WordPress/archive/master.zip">KARAS for WordPress</a></span></p>
+<h3 id="KarasForJekyll">KARAS for Jekyll</h3>
+<p>コンバータ (Converter) として動作する Jekyll 向けのプラグインです。 <code>_plugins</code> ディレクトリにダウンロードしたディレクトリを展開してください。それ以外に設定を変更する必要はありません。拡張子 <code>.karas</code> をもつテキストファイルが、HTML ページへと変換されます。</p>
+<p>KARAS for Jekyll は1つの問題を持っています。Jekyll はテンプレートエンジン <i>Liquid</i> を持っています。KARAS の Block group の構文 <code>{{</code> と、Liquid の構文 <code>{{</code> は衝突します。 KARAS が最終的に出力する結果に <code>{{</code> 記号が含まれていなくても、Jekyll に含まれる Liquid は Exception を発生させます。この問題はプラグインから修正することが出来ないので、KARAS の Block group の構文をわずかに変更しています。</p>
+<p>KARAS for Jekyll で　Block group を書くためには、 <code>{{</code> と <code>}}</code> ではなく、 <code>{\{</code> と <code>}\}</code> を使います。残念なことに、これは KARAS の美しさを損ねてしまいますが、他にどうしようもありませんでした。もしも必要なら、HTML を直接書くことができます。</p>
+<div class="note">
+<p>この問題によって KARAS for Jekyll に含まれる <code>KARAS.rb</code> は、オリジナルの <code>KARAS.rb</code> とは異なリます。この問題は将来的に異なる方法で解決される可能性があります。</p>
+</div>
+<p><span class="download"><b>Download</b> : <a href="https://github.com/KARAS-LightweightMarkupLanguage/KARAS_Jekyll/archive/master.zip">KARAS for Jekyll</a></span></p>
+<h2 id="Source code">Source code</h2>
+<p>KARAS のソースコードは GitHub で公開しています。開発者の方は <a href="./Development/index.html">Development</a> のページを合わせて読むことを推奨します。</p>
+<ul>
+<li><a href="https://github.com/KARAS-LightweightMarkupLanguage">KARAS - Organization</a>
+<ul>
+<li><a href="https://github.com/KARAS-LightweightMarkupLanguage/KARAS_CSharp">KARAS_CSharp</a></li>
+<li><a href="https://github.com/KARAS-LightweightMarkupLanguage/KARAS_Javascript">KARAS_Javascript</a></li>
+<li><a href="https://github.com/KARAS-LightweightMarkupLanguage/KARAS_PHP">KARAS_PHP</a></li>
+<li><a href="https://github.com/KARAS-LightweightMarkupLanguage/KARAS_Ruby">KARAS_Ruby</a></li>
+<li><a href="https://github.com/KARAS-LightweightMarkupLanguage/KARAS_Jekyll">KARAS_Jekyll</a></li>
+<li><a href="https://github.com/KARAS-LightweightMarkupLanguage/KARAS_WordPress">KARAS_WordPress</a></li>
+</ul>
+</li>
+</ul>
+            </article>
+            <footer>
+<p><small><a href="http://lightweightmarkuplanguage.com">&copy; KARAS - Lightweight Markup Language</a></small></p>
+            </footer>
+        </div>
+    </div>
+</div>
+</body>
+</html>

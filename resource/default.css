@@ -1,0 +1,430 @@
+@charset "UTF-8";
+
+a
+{
+    color: #E03A50;
+    text-decoration: none;
+}
+
+a:hover
+{
+    color: #39DDDD;
+    text-decoration: underline;
+}
+
+html
+{
+    height: 100%;
+    overflow-y: scroll;
+}
+
+body
+{
+    margin: 0px;
+    height: 100%;
+    background-color: #282E36;
+    font-family: "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, "ＭＳ Ｐゴシック", sans-serif;
+    font-size: 15px;
+}
+
+div#outframe
+{
+    margin: 0px auto;
+    width: 950px;
+    height: 100%;
+    color: #E1E6F2;
+}
+
+header
+{
+    margin-top: 1em;
+    margin-left: 1em;
+    width: 100%;
+    height: 70px;
+    color: white;
+    font-family: verdana;
+}
+
+header a#logo
+{
+    display: block;
+    float: left;
+    padding: 0px;
+    width: 70px;
+    height: 70px;
+    background-image: url("./logo.png");
+    background-position: left top;
+    background-repeat: no-repeat;
+    background-size: 90%;
+}
+
+header div#pagetitle
+{
+    float: left;
+}
+
+header a
+{
+    color: white;
+}
+
+header a:hover
+{
+    color: white;
+    text-decoration: none;
+}
+
+header h1
+{
+    margin: 0em;
+    padding: 0px;
+    font-size: 2.2em;
+}
+
+header h1 + h1
+{
+    margin: 0px;
+    font-size: 1em;
+    font-weight: normal;
+}
+
+header div#socialbutton
+{
+    float: right;
+}
+
+header div#socialbutton a
+{
+    margin-left: 0.3em;
+}
+
+div#contents
+{
+    display: table;
+    width: 100%;/*for moz*/
+    height: 100%;
+    color: #E1E6F2;
+}
+
+div#sidebar
+{
+    display: table-cell;
+    padding: 1em;
+    width: 200px;
+    height: 100%;
+}
+
+div#sidebar ul
+{
+    padding-left: 0px;
+    padding-bottom: 2em;
+    margin: 0px;
+    list-style: none;
+}
+
+div#sidebar li:hover
+{
+    background-color: #51565D;
+}
+
+div#sidebar a
+{
+    display: block;
+    width: 100%;
+    height: 100%;
+    padding: 0.25em;
+    padding-left: 1em;
+    text-decoration: none;
+}
+
+div#sidebar a:hover
+{
+    color: #E03A50;
+    text-decoration: note;
+}
+
+div#maincolumn
+{
+    display: table-cell;
+    height: 100%;
+}
+
+div#lastmodified
+{
+    float: right;
+    position: relative;
+    top: 2em;
+}
+
+article
+{
+    width: 750px!important;
+    margin-top: 1em;
+    padding-bottom: 5em;
+}
+
+article h1
+{
+    margin: 0px;
+    padding-left: 0px;
+    border-bottom: 2px solid #CCCCCC;
+    color: white;
+    font-size: 2em;/*28px*/
+    font-weight: bold;
+}
+
+article h1 + h2
+{
+    margin-top: 15px;
+}
+
+article h2
+{
+    margin-top: 80px;
+    margin-bottom: 0;
+    padding-left: 0;
+    color: white;
+    font-size: 1.7em;
+}
+
+article h2 + h3
+{
+    margin-top: 15px;
+}
+
+article h3
+{
+    position: relative;
+    margin-top: 65px;
+    padding: 0px 25px;
+    color: white;
+    font-size: 1.5em;
+}
+
+article h3:before
+{
+    position: absolute;
+    top: 6px;
+    left: 0px;
+    height: 14px;
+    width: 14px;
+    content: "";
+    background-color:white;
+}
+
+article h4
+{
+    font-size: 1.2em;
+}
+
+article div.columns
+{
+    display: table;
+    width: 100%;
+}
+
+article div.columns > div.column
+{
+    display: table-cell;
+    width: 50%;
+}
+
+article code
+{   
+    margin: 0.2em;
+    padding: 0.1em 0.3em;
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -moz-border-radius: 3px;
+    color: #282E36;
+    font-family: Menlo, "Bitstream Vera Sans Mono", "DejaVu Sans Mono", Monaco, Consolas, monospace;
+    font-weight: bold;
+    background-color: #CBD4DB;
+}
+
+article div.note
+{
+    padding: 10px;
+    border: 1px solid gray;
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -moz-border-radius: 3px;
+}
+
+article div.note p:before
+{
+    content: "note ";
+    color: #FFC300;
+    font-style: italic;
+}
+
+article div.note p
+{
+    margin: 0px;
+}
+
+article figure
+{
+    width: 100%;
+    margin: 0px;
+}
+
+article figcaption
+{
+    padding: 0.3em 0em 0em 0.7em;
+    border-radius: 3px 3px 0px 0px;
+    -webkit-border-radius: 3px 3px 0px 0px;
+    -moz-border-radius: 3px 3px 0px 0px;
+    background-color: #1D2023;
+    font-weight: bold;
+}
+
+article figcaption + pre
+{
+    margin-top: 0px;
+}
+
+article figure.table figcaption
+{
+    text-align: center;
+}
+
+article figure + p, article p + figure,
+article figure + div.note, article div.note + figure,
+article div.note + ul, article ul + div.note
+{
+    margin-top: 2em;
+}
+
+article pre
+{
+    padding: 10px;
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    background-color: #1D2023;
+    color: #E1E6F2;
+    font-family: Menlo, "Bitstream Vera Sans Mono", "DejaVu Sans Mono", Monaco, Consolas, monospace;
+    line-break: strict;
+    word-break: break-all;
+    word-wrap: break-word;
+}
+
+article pre > code
+{
+    margin: 0px;
+    padding: 0px;
+    background-color: #1D2023;
+    color: #E1E6F2;
+    font-weight: normal;
+}
+
+article pre.license
+{
+    background-color: #CBD4DB;
+    color: #282E36;
+    font-weight: bold;
+    line-break: strict;
+    word-break: break-all;
+    word-wrap: break-word;
+}
+
+article ul, article ol
+{
+    margin-top:.5em;
+    margin-left: 22px;
+    margin-bottom:.5em;
+    padding-left: 22px;
+    line-height: 150%;
+}
+
+article dt
+{
+    margin-top: 1em;
+    font-weight: bold;
+}
+
+article dd
+{
+    margin-left:1em;
+}
+
+article table
+{
+    margin-left: auto;
+    margin-right: auto;
+    width: 90%;
+    border-spacing: 0.5em 0.1em;
+}
+
+article th, article td
+{
+    border-bottom: 1px solid #CBD4DB;
+}
+
+article th, article td
+{
+    padding-left: 0.7em;
+}
+
+img
+{
+    border: none;
+}
+
+article .download
+{
+    border-bottom: 1px dashed #CBD4DB;
+    font-size: 1.2em;
+}
+
+figure.cheatsheet figure figcaption
+{
+    margin-top: 1em;
+    margin-left: 0.5em;
+    padding: 0.2em 0.4em;   
+    border-radius: 0px;
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;    
+    background-color: #CBD4DB;
+    line-height: 1em;
+    color: #282E36;
+    font-family: Menlo, "Bitstream Vera Sans Mono", "DejaVu Sans Mono", Monaco, Consolas, monospace;
+    font-size: 1.2em;
+}
+
+article figure.cheatsheet table
+{
+    width: 100%;
+    font-family: Menlo, "Bitstream Vera Sans Mono", "DejaVu Sans Mono", Monaco, Consolas, monospace;
+    font-size: 1.1em;
+}
+
+article figure.cheatsheet p
+{
+    margin: 1em;
+    font-size: 0.9em;
+}
+
+article form.paypal table
+{
+    margin-left: 0px;
+    margin-right: 0px;
+    width: auto;
+}
+
+article form.paypal th,
+article form.paypal td
+{
+    border: none;
+    padding: 0px;
+}
+
+footer
+{
+    padding-bottom: 2em;
+}

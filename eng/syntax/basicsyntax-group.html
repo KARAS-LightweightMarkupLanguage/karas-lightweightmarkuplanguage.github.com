@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="author" content="Daiki Umeda (XJINE)">
+<meta name="generator" content="BlackBoard">
+<meta name="generator" content="KARAS">
+<meta charset="UTF-8">
+<title>KARAS - Basic Syntax - Group</title>
+<link rel="stylesheet" href="../../resource/default.css" type="text/css" media="all" charset="">
+<meta property="og:site_name" content="KARAS">
+<meta property="og:title" content="Lightweight Markup Language - KARAS">
+<meta property="og:url" content="http://lightweightmarkuplanguage.com/">
+<meta property="og:image" content="../../resource/ogpimg.jpg">
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-44157178-2', 'lightweightmarkuplanguage.com');
+ga('send', 'pageview');
+</script>
+</head>
+<body>
+<div id="outframe">
+    <header>
+        <a id="logo" href="../index.html" title="Top"></a>
+        <div id="pagetitle">
+            <h1><a href="../index.html">KARAS</a></h1>
+            <h1><a href="../index.html">Lightweight Markup Language</a></h1>
+        </div>
+        <div id="socialbutton">
+            <a href="http://twitter.com/share?text='Lightweight Markup Language - KARAS'&amp;url=http://lightweightmarkuplanguage.com"
+               title="Share on Twitter" 
+               onclick="javascript:window.open(this.href,'Twitter','menubar=no,toolbar=no,scrollbars=yes,resizable=yes,height=300,width=450');
+                        return false;">
+                <img src="../../resource/tw_35x.png" alt="Share on Twitter">
+            </a>
+            <a href="http://www.facebook.com/share.php?u=http://lightweightmarkuplanguage.com"
+               title="Share on Facebook" 
+               onclick="javascript:window.open(this.href,'Facebook','menubar=no,toolbar=no,scrollbars=yes,resizable=yes,height=300,width=450');
+                        return false;">
+                <img src="../../resource/fb_35x.png" alt="Share on Facebook">
+            </a>
+            <a href="https://plus.google.com/share?url=http://lightweightmarkuplanguage.com"
+               title="Share on Google+" 
+               onclick="javascript:window.open(this.href,'Google+','menubar=no,toolbar=no,scrollbars=yes,resizable=yes,height=600,width=600');
+                        return false;">
+                <img src="../../resource/gp_35x.png" alt="Share on Google+">
+            </a>
+            <a href="https://github.com/KARAS-LightweightMarkupLanguage"
+               title="Go to GitHub" target="_blank">
+                <img src="../../resource/gh_35x.png" alt="Go to GitHub">
+            </a>
+        </div>
+    </header>
+    <div id="contents">
+        <div id="sidebar">
+            <ul class="menu">
+                <li><a href="../syntax/index.html" title="Syntax">Syntax</a></li>
+                <li><a href="../download.html" title="Download">Download</a></li>
+                <li><a href="../license.html" title="License">License</a></li>
+                <li><a href="../development/index.html" title="Development">Development</a></li>
+                <li><a href="../donation.html" title="Donation">Donation</a></li>
+                <li><a href="../information.html" title="Donation">Information</a></li>
+            </ul>
+            <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+            <!-- KARAS_Side_160x600 -->
+            <ins class="adsbygoogle"
+                 style="display:inline-block;width:160px;height:600px"
+                 data-ad-client="ca-pub-9133526697051515"
+                 data-ad-slot="6825762586"></ins>
+            <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+        <div id="maincolumn">
+            <div id="pageinfo">
+                <div id ="topicpath"><a href="../index.html">Top</a>&nbsp;&gt;&nbsp;<a href="../syntax/index.html">Syntax</a>&nbsp;&gt;&nbsp;<a href="basicsyntax-group.html">Basic Syntax - Group</a></div>
+                <div id="lastmodified">Last modified : 2014. 05. 19</div>
+            </div>
+            <article>
+            <h1 id="groupsyntax">Basic Syntax - Group</h1>
+<p>This page describe the group syntax of KARAS.</p>
+<ul>
+<li><a href="#inlinegroup">Inline group </a></li>
+<li><a href="#blockgroup">Block group </a>
+<ul>
+<li><a href="#namedgroup">Named group </a></li>
+<li><a href="#specialgroup">Special group </a></li>
+<li><a href="#figuredetails"><i>figure</i>, <i>details</i> group</a></li>
+<li><a href="#precodekbdsamp"><i>pre</i>, <i>code</i>, <i>kbd</i>, <i>samp</i> group</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="inlinegroup">Inline group</h2>
+<p><b>Inline group syntax is the syntax to group some text or words.</b> (In other words, syntax to close the text with <i>span</i> element.)
+Text closed with <code>&lt;&lt;</code> and <code>&gt;&gt;</code> becomes inline group.</p>
+<figure>
+<figcaption>Input</figcaption>
+<pre class="karas"><code class="karas">&lt;&lt;Sample&gt;&gt; text.</code></pre>
+</figure>
+<figure>
+<figcaption>Output</figcaption>
+<pre class="html"><code class="html"> &lt;span&gt;Sample&lt;/span&gt; text.</code></pre>
+</figure>
+<p>Inline group enable to add the name with option syntax <code>::</code>. The maximum level of inline group is 2. ** In level 1, outputs <i>class</i> group. And in level 2, outputs <i>id</i> group. Usually group has name, and the id should be uniquely defined in the document.</p>
+<figure>
+<figcaption>Input</figcaption>
+<pre class="karas"><code class="karas">&lt;&lt;group::Sample&gt;&gt; text.
+&lt;&lt;&lt;group::Sample&gt;&gt;&gt; text.</code></pre>
+</figure>
+<figure>
+<figcaption>Output</figcaption>
+<pre class="html"><code class="html">&lt;span class=&#34;group&#34;&gt;Sample&lt;/span&gt; text.
+&lt;span id=&#34;group&#34;&gt;Sample&lt;/span&gt; text.</code></pre>
+</figure>
+<h2 id="blockgroup">Block group</h2>
+<p><b>Block group syntax is the syntax to group everything like heading, list, table, text or the other.</b> (In other words, syntax to close the text with <i>div</i> element or the other.) When write a <code>{{</code> at the beginning of the line, it becomes the start of the group. And, when write a <code>}}</code> at the beginning of the line, it becomes the end of the group. Heading, text, and the others between start and end will be grouped.</p>
+<figure>
+<figcaption>Input</figcaption>
+<pre class="karas"><code class="karas">{{
+ = Heading
+ 
+ Some paragraphs. 
+ 
+ - Some lists.
+ -- 2nd item.
+}}</code></pre>
+</figure>
+<figure>
+<figcaption>Output</figcaption>
+<pre class="html"><code class="html">&lt;div&gt;
+&lt;h1&gt;Heading&lt;/h1&gt;
+&lt;p&gt;Some paragraphs&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt; Some lists.
+&lt;ul&gt;&lt;li&gt;2nd item.&lt;/li&gt;&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;</code></pre>
+</figure>
+<h3 id="namedgroup">Named group</h3>
+<p>Following text after the syntax of the block group start <code>{{</code> becomes group name. (In other words, it becomes class name of div element.) Note, the group name cannot break the line.</p>
+<figure>
+<figcaption>Input</figcaption>
+<pre class="karas"><code class="karas">{{groupname
+Contents in group.
+}}</code></pre>
+</figure>
+<figure>
+<figcaption>Output</figcaption>
+<pre class="html"><code class="html">&lt;div class=&#34;groupname&#34;&gt;
+&lt;p&gt;Contents in group.&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+</figure>
+<h3 id="specialgroup">Special group</h3>
+<p>Following names cannot use as group name. When these names are set, the group becomes special group.</p>
+<div class="note">
+<p>In other words, the group becomes that name element. If you need more information about these group, please search and read document about HTML element.</p>
+</div>
+<figure class="table">
+<table>
+<tr><th>div</th><td>Nothing have special mean.</td></tr>
+<tr><th>header</th><td>Represent header of contents.</td></tr>
+<tr><th>footer</th><td>Represent footer of contents.</td></tr>
+<tr><th>nav</th><td>Represent menu or structure of contents.</td></tr>
+<tr><th>article</th><td>Represent article. (same topic contents).</td></tr>
+<tr><th>section</th><td>Represent section (smaller than article).</td></tr>
+<tr><th>aside</th><td>Represent not main subject.</td></tr>
+<tr><th>address</th><td>Represent author info of contents.</td></tr>
+<tr><th>details</th><td>Repesent additional info, detail info.</td></tr>
+<tr><th>figure</th><td>Represent figure, table.</td></tr>
+<tr><th>pre</th><td>Reperesent preformatted contents.</td></tr>
+<tr><th>code</th><td>Represent source code or path.</td></tr>
+<tr><th>kbd</th><td>Represent user input.</td></tr>
+<tr><th>samp</th><td>Reperesent output. Like sample.</td></tr>
+</table>
+</figure>
+<p>For example, the group named 'header' is output as <i>header</i> element.</p>
+<figure>
+<figcaption>Input</figcaption>
+<pre class="karas"><code class="karas">{{header
+Contents in header.
+}}</code></pre>
+</figure>
+<figure>
+<figcaption>Output</figcaption>
+<pre class="html"><code class="html">&lt;header&gt;
+Contents in header.
+&lt;/header&gt;</code></pre>
+</figure>
+<p>In order to add the name to <i>header</i> group, use option syntax <code>::</code>. The following text becomes the group name.</p>
+<figure>
+<figcaption>Input</figcaption>
+<pre class="karas"><code class="karas">{{header::groupname
+Contents in header.
+}}</code></pre>
+</figure>
+<figure>
+<figcaption>Output</figcaption>
+<pre class="html"><code class="html">&lt;header class=&#34;groupname&#34;&gt;
+Contents in header.
+&lt;/header&gt;</code></pre>
+</figure>
+<p>In order to name 'header' to the <i>div</i> group, use 'div' as group name, and add the 'header' as option.</p>
+<figure>
+<figcaption>Input</figcaption>
+<pre class="karas"><code class="karas">{{div::header
+Contents in div group.
+}}</code></pre>
+</figure>
+<figure>
+<figcaption>Output</figcaption>
+<pre class="html"><code class="html">&lt;div class=&#34;header&#34;&gt;
+Contents in div group.
+&lt;/div&gt;</code></pre>
+</figure>
+<h3 id="figuredetails"><i>figure</i>, <i>details</i> group</h3>
+<p><i>figure</i> and <i>details</i> group have a special function. Heading syntax <code>=</code> in <i>figure</i> group is output as <i>figcaption</i>. You can write heading syntax at anywhere in the <i>figure</i> group. However, usually at the top or bottom of <i>figure</i> group.</p>
+<figure>
+<figcaption>Input</figcaption>
+<pre class="karas"><code class="karas">{{figure
+= Caption text.
+
+!|table head || table item
+!|table head || table item
+}}</code></pre>
+</figure>
+<figure>
+<figcaption>Output</figcaption>
+<pre class="html"><code class="html">&lt;figure&gt;
+&lt;figcaption&gt;Caption text.&lt;/figcaption&gt;
+&lt;table&gt;
+&lt;tr&gt;&lt;th&gt;table head&lt;/th&gt;&lt;td&gt;table item&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;th&gt;table head&lt;/th&gt;&lt;td&gt;table item&lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt; 
+&lt;/figure&gt;</code></pre>
+</figure>
+<p>Heading syntax <code>=</code> in <i>details</i> group is output as <i>summary</i>. You can write heading syntax at anywhere in the <i>details</i> group. However, usually at the top of <i>details</i> group.</p>
+<figure>
+<figcaption>Input</figcaption>
+<pre class="karas"><code class="karas">{{details
+= Summary text.
+ 
+;detail-1
+;;More detail.
+;detail-2
+;;more detail.
+}}</code></pre>
+</figure>
+<figure>
+<figcaption>Output</figcaption>
+<pre class="html"><code class="html">&lt;details&gt;
+&lt;summary&gt;Summary text.&lt;/summary&gt;
+&lt;dl&gt;
+&lt;dt&gt;detail-1&lt;/dt&gt;
+&lt;dd&gt;More details.&lt;/dd&gt;
+&lt;dt&gt;detail-2&lt;/dt&gt;
+&lt;dd&gt;More details.&lt;/dd&gt;
+&lt;/dl&gt;
+&lt;/details&gt;</code></pre>
+</figure>
+<h3 id="precodekbdsamp"><i>pre</i>, <i>code</i>, <i>kbd</i>, <i>samp</i> group</h3>
+<p><i>pre</i>, <i>code</i>, <i>kbd</i>, and <i>samp</i>, group have a special function. Text in these group enable to break the line without using syntax <code>~</code> to linebreak. In addition, KARAS syntax in the text is not converted, and the special marks like <i>&lt;</i> or <i>&gt;</i> are convert to the character reference.</p>
+<figure>
+<figcaption>Input</figcaption>
+<pre class="karas"><code class="karas">{{pre
+Preformatted text.
+2nd line.
+&lt;tag&gt;Text in tag.&lt;/tag&gt;
+}}</code></pre>
+</figure>
+<figure>
+<figcaption>Output</figcaption>
+<pre class="html"><code class="html">&lt;pre&gt;
+Preformatted text.
+2nd line.
+&amp;lt;tag&amp;gt;Text in tag.&amp;lt;/tag&amp;gt;
+&lt;/pre&gt;</code></pre>
+</figure>
+<p><i>code</i>, <i>kbd</i> and <i>sample</i> group is output along with <i>pre</i> group(element). Group name added as option added to the both <i>pre</i> and <i>code</i> (<i>kbd</i>, <i>samp</i>) group.</p>
+<figure>
+<figcaption>Input</figcaption>
+<pre class="karas"><code class="karas">{{code :: lang-c
+int main()
+{
+    printf(&#34;Unyalder!&#34;);
+    return 0;
+}
+}}
+ 
+{{samp :: terminal
+$echo Unyalder!
+Unyalder!
+}}</code></pre>
+</figure>
+<figure>
+<figcaption>Output</figcaption>
+<pre class="html"><code class="html">&lt;pre class=&#34;lang-c&#34;&gt;
+&lt;code class=&#34;lang-c&#34;&gt;
+int main()
+{
+    printf(&#34;Unyalder!&#34;);
+    return 0;
+}
+&lt;/code&gt;
+&lt;/pre&gt;
+
+&lt;pre class=&#34;terminal&#34;&gt;
+&lt;samp class=&#34;terminal&#34;&gt;
+$echo Unyalder!
+Unyalder!
+&lt;/samp&gt;
+&lt;/pre&gt;</code></pre>
+</figure>
+            </article>
+            <footer>
+<p><small><a href="http://lightweightmarkuplanguage.com">&copy; KARAS - Lightweight Markup Language</a></small></p>
+            </footer>
+        </div>
+    </div>
+</div>
+</body>
+</html>
