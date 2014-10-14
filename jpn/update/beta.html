@@ -5,7 +5,7 @@
 <meta name="generator" content="BlackBoard">
 <meta name="generator" content="KARAS">
 <meta charset="UTF-8">
-<title>KARAS - Syntax</title>
+<title>KARAS - Update</title>
 <link rel="stylesheet" href="../../resource/default.css" type="text/css" media="all" charset="">
 <meta property="og:site_name" content="KARAS">
 <meta property="og:title" content="Lightweight Markup Language - KARAS">
@@ -76,21 +76,67 @@ ga('send', 'pageview');
          </div>
         <div id="maincolumn">
             <div id="pageinfo">
-                <nav id ="topicpath"><a href="../index.html">Top</a>&nbsp;&gt;&nbsp;<a href="index.html">Syntax</a></nav>
+                <nav id ="topicpath"><a href="../index.html">Top</a>&nbsp;&gt;&nbsp;<a href="../update/index.html">index.karas</a>&nbsp;&gt;&nbsp;<a href="beta.html">Update</a></nav>
                 <div id="lastmodified">Last modified : 2014. 10. 13</div>
             </div>
             <article>
-            <h1 id="syntax">Syntax</h1>
-<p>These pages describe the syntax of KARAS. If you are a beginner, please read in order from the top of these.</p>
-<h2 id="pages">Pages</h2>
-<ol>
-<li><a href="./basicsyntax.html">Basic Syntax</a></li>
-<li><a href="./basicsyntax-group.html">Basic Syntax - Group</a></li>
-<li><a href="./advanced.html">Advanced</a></li>
-<li><a href="./advanced-html.html">Advanced - HTML</a></li>
-<li><a href="./pluginsyntax.html">Plugin Syntax</a></li>
-<li><a href="./cheatsheet.html">Cheat Sheet</a></li>
-</ol>
+            <h1 id="update">Update</h1>
+<h2>2014.10.13 KARAS β ver.</h2>
+<h3>見出しのレベルを指定するように変更しました。</h3>
+<p>WordPress などのようなブログシステムを構築するとき、
+あるテキストのタイトルはそのテキストの本文中に書かれないことがあります。
+そのようなシステムの開発に対応するため、　<code>=</code> の出力を <code>&lt;h2&gt;</code> や <code>&lt;h3&gt;</code> に変更できるようにしました。</p>
+<figure>
+<figcaption>New Code</figcaption>
+<pre><code>function convert($text, $pluginDirectory, $startLevelOfHeading)</code></pre>
+</figure>
+<p><var>startLevelOfHeading</var> に 2 を指定するとき、<code>=</code> は <code>&lt;h2&gt;</code> となります。</p>
+<h3>Inline Group の構文の挙動が変更されました。</h3>
+<p>1つだけテキストが書かれた InlineGroup は class あるいは id として出力されます。
+現実的に、class も id も指定しない span 要素は使われません。
+一方で、class や id だけが書かれた span 要素を使うことはあるので、このように変更しました。</p>
+<figure>
+<figcaption>Input</figcaption>
+<pre><code>&lt;&lt;sample&gt;&gt;
+&lt;&lt;::sample&gt;&gt;</code></pre>
+</figure>
+<figure>
+<figcaption>Before</figcaption>
+<pre><code>&lt;span class=&#34;&#34;&gt;sample&lt;/span&gt;
+&lt;span class=&#34;&#34;&gt;sample&lt;/span&gt;</code></pre>
+</figure>
+<figure>
+<figcaption>After</figcaption>
+<pre><code>&lt;span class=&#34;sample&#34;&gt;&lt;/span&gt;
+&lt;span&gt;sample&lt;/span&gt;</code></pre>
+</figure>
+<h3>Plugin構文と実装方法が変更されました。</h3>
+<p>オプションではないマークアップされたテキストを示すときは、<code>:::</code> を使います。
+<code>:::</code> 以降の <var>::</var> はプラグインのオプションとして見做されません。
+これによって、オプション中に、オプション付きのリンク構文などが書けるようになりました。
+また、action タイプのプラグインでも、markedupText 引数を持つようになりました。</p>
+<figure>
+<figcaption>Before</figcaption>
+<pre><code>[[convert::option1::option2…::markedupText]]
+[[[[action::option1::option2…]]]]</code></pre>
+</figure>
+<figure>
+<figcaption>After</figcaption>
+<pre><code>[[convert::option1::option2・・・・:::markedupText]]
+[[action::option1::option2・・・・:::markedupText]]</code></pre>
+</figure>
+<p>構文の変更に伴い、プラグインの関数の引数がわずかに変更されました。
+引数の順序を構文に合わせることでより直感的になりました。</p>
+<figure>
+<figcaption>Before</figcaption>
+<pre><code>    public static function convert($markedupText, $options)
+    public static function action($text, $options)</code></pre>
+</figure>
+<figure>
+<figcaption>After</figcaption>
+<pre><code>    public static function convert($options, $markedupText)
+    public static function action($options, $markedupText, $text)</code></pre>
+</figure>
             </article>
             <footer>
 <p><small><a href="http://lightweightmarkuplanguage.com">&copy; KARAS - Lightweight Markup Language</a></small></p>

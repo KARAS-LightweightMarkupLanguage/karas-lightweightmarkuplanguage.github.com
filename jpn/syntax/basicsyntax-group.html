@@ -62,7 +62,7 @@ ga('send', 'pageview');
                 <li><a href="../license.html" title="License">License</a></li>
                 <li><a href="../development/index.html" title="Development">Development</a></li>
                 <li><a href="../donation.html" title="Donation">Donation</a></li>
-                <li><a href="../information.html" title="Donation">Information</a></li>
+                <li><a href="../information.html" title="Information">Information</a></li>
             </ul>
             <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
             <!-- KARAS_Side_160x600 -->
@@ -73,11 +73,11 @@ ga('send', 'pageview');
             <script>
             (adsbygoogle = window.adsbygoogle || []).push({});
             </script>
-        </div>
+         </div>
         <div id="maincolumn">
             <div id="pageinfo">
-                <div id ="topicpath"><a href="../index.html">Top</a>&nbsp;&gt;&nbsp;<a href="../syntax/index.html">Syntax</a>&nbsp;&gt;&nbsp;<a href="basicsyntax-group.html">Basic Syntax - Group</a></div>
-                <div id="lastmodified">Last modified : 2014. 06. 13</div>
+                <nav id ="topicpath"><a href="../index.html">Top</a>&nbsp;&gt;&nbsp;<a href="../syntax/index.html">Syntax</a>&nbsp;&gt;&nbsp;<a href="basicsyntax-group.html">Basic Syntax - Group</a></nav>
+                <div id="lastmodified">Last modified : 2014. 10. 13</div>
             </div>
             <article>
             <h1 id="groupsyntax">Basic Syntax - Group</h1>
@@ -94,16 +94,22 @@ ga('send', 'pageview');
 </li>
 </ul>
 <h2 id="inlinegroup">インライングループ</h2>
-<p><b>インライングループ構文は、ある文章や単語をグループにするための構文です。</b> (言い換えれば <i>span</i> 要素によって閉じるための構文です。) テキストを <code>&lt;&lt;</code> と <code>&gt;&gt;</code> によって閉じると、インライングループになります。</p>
+<p><b>インライングループ構文は、ある文章や単語をグループにするための構文です。</b>
+(言い換えれば <i>span</i> 要素によって閉じるための構文です。)
+テキストを <code>&lt;&lt;</code> と <code>&gt;&gt;</code> によって閉じると、インライングループになります。
+オプションを指定しないときは、空のグループが作成されます。</p>
 <figure>
 <figcaption>Input</figcaption>
-<pre class="karas"><code class="karas">&lt;&lt;Sample&gt;&gt; text.</code></pre>
+<pre class="karas"><code class="karas">&lt;&lt;group&gt;&gt; text.</code></pre>
 </figure>
 <figure>
 <figcaption>Output</figcaption>
-<pre class="html"><code class="html"> &lt;span&gt;Sample&lt;/span&gt; text.</code></pre>
+<pre class="html"><code class="html">&lt;span class=&#34;group&#34;&gt;&lt;/span&gt; text.</code></pre>
 </figure>
-<p>インライングループは、オプションの構文 <code>::</code> を使って、名前をつけることができます。インライングループ構文の最大レベルは2です。レベル1では <i>class</i> グループとして出力されます。レベル2では <i>id</i> グループとして出力されます。ふつうは、必ずグループ名を付け、 <i>id</i> はあるドキュメントの中で一意に定められるべきです。</p>
+<p>インライングループはオプションの構文 <code>::</code> を使ってテキストを追加することができます。
+インライングループ構文の最大レベルは2です。レベル1では <i>class</i> グループとして出力されます。
+レベル2では <i>id</i> グループとして出力されます。
+ふつうは、必ずグループ名を付け、 <i>id</i> はあるドキュメントの中で一意に定められるべきです。</p>
 <figure>
 <figcaption>Input</figcaption>
 <pre class="karas"><code class="karas">&lt;&lt;group::Sample&gt;&gt; text.
@@ -115,7 +121,10 @@ ga('send', 'pageview');
 &lt;span id=&#34;group&#34;&gt;Sample&lt;/span&gt; text.</code></pre>
 </figure>
 <h2 id="blockgroup">ブロックグループ</h2>
-<p><b>ブロックグループ構文は、見出し・リスト・テーブル・テキストなどのあらゆる要素をグループにするための構文です。</b> (言い換えれば、 <i>div</i> 要素によって閉じるための構文です。) 行頭に <code>{{</code> を書くとグループの開始位置となります。行頭に <code>}}</code> を書くとグループの終了位置となります。グループの開始位置と終了位置の間にある見出しやテキストがグループとなります。</p>
+<p><b>ブロックグループ構文は、見出し・リスト・テーブル・テキストなどのあらゆる要素をグループにするための構文です。</b> 
+(言い換えれば、 <i>div</i> 要素によって閉じるための構文です。)
+行頭に <code>{{</code> を書くとグループの開始位置となります。行頭に <code>}}</code> を書くとグループの終了位置となります。
+グループの開始位置と終了位置の間にある見出しやテキストがグループとなります。</p>
 <figure>
 <figcaption>Input</figcaption>
 <pre class="karas"><code class="karas">{{
@@ -140,7 +149,10 @@ ga('send', 'pageview');
 &lt;/div&gt;</code></pre>
 </figure>
 <h3 id="namedgroup">名前付きのグループ</h3>
-<p>グループには名前をつけることができます。グループの開始位置を表す構文 <code>{{</code> に続いて書かれたテキストは、グループの名前となります。 (言い換えれば <i>div</i> 要素のクラス名となります。) グループ名は改行することができない点に注意してください。</p>
+<p>グループには名前をつけることができます。グループの開始位置を表す構文
+<code>{{</code> に続いて書かれたテキストは、グループの名前となります。
+(言い換えれば <i>div</i> 要素のクラス名となります。)
+グループ名は改行することができない点に注意してください。</p>
 <figure>
 <figcaption>Input</figcaption>
 <pre class="karas"><code class="karas">{{groupname
@@ -154,9 +166,12 @@ Contents in group.
 &lt;/div&gt;</code></pre>
 </figure>
 <h3 id="specialgroup">特別なグループ</h3>
-<p>次のいくつかの名前は、グループ名として使うことができません。それらの名前をつけるとき、グループは特別なグループになります。</p>
+<p>次のいくつかの名前は、グループ名として使うことができません。
+それらの名前をつけるとき、グループは特別なグループになります。</p>
 <div class="note">
-<p>言い換えれば、その名前の HTML 要素になります。グループが示す内容についての詳細が必要なときは、HTML に関するドキュメントを読むことを推奨します。</p>
+<p>言い換えれば、その名前の HTML 要素になります。
+グループが示す内容についての詳細が必要なときは、
+HTML に関するドキュメントを読むことを推奨します。</p>
 </div>
 <figure class="table">
 <table>
@@ -202,7 +217,8 @@ Contents in header.
 Contents in header.
 &lt;/header&gt;</code></pre>
 </figure>
-<p><i>div</i> グループに "header" という名前 (クラス名) をつけるときは、グループ名を "div" として、 オプションとして "header" を追加します。</p>
+<p><i>div</i> グループに "header" という名前 (クラス名) をつけるときは、
+グループ名を "div" として、 オプションとして "header" を追加します。</p>
 <figure>
 <figcaption>Input</figcaption>
 <pre class="karas"><code class="karas">{{div::header
@@ -216,7 +232,11 @@ Contents in div group.
 &lt;/div&gt;</code></pre>
 </figure>
 <h3 id="figuredetails"><i>figure</i>, <i>details</i> グループ</h3>
-<p><i>figure</i> と <i>details</i> グループは、特別な機能を持っています。 <i>figure</i> グループ内に書かれた見出しの構文 <code>=</code> は、<i>figcaption</i> (図の見出し)として出力されます。見出しの構文を書く位置は、 <i>figure</i> グループ内のどこでもよいです。しかしながら、一般には、 <i>figure</i> グループの一番上か一番下に書きます。</p>
+<p><i>figure</i> と <i>details</i> グループは、特別な機能を持っています。 
+<i>figure</i> グループ内に書かれた見出しの構文 <code>=</code> は、
+<i>figcaption</i> (図の見出し)として出力されます。
+見出しの構文を書く位置は、 <i>figure</i> グループ内のどこでも良いです。
+しかしながら、一般には、 <i>figure</i> グループの一番上か一番下に書きます。</p>
 <figure>
 <figcaption>Input</figcaption>
 <pre class="karas"><code class="karas">{{figure
@@ -237,7 +257,8 @@ Contents in div group.
 &lt;/figure&gt;</code></pre>
 </figure>
 <p><i>detalis</i> グループ内に書かれた見出しの構文 <code>=</code> は <i>summary</i> (要約)として出力されます。
-見出しの構文を書く位置は、 <i>details</i> グループ内のどこでもよいです。しかしながら、一般には、 <i>details</i> グループの一番上に書きます。</p>
+見出しの構文を書く位置は、 <i>details</i> グループ内のどこでも良いです。
+しかしながら、一般には、 <i>details</i> グループの一番上に書きます。</p>
 <figure>
 <figcaption>Input</figcaption>
 <pre class="karas"><code class="karas">{{details
@@ -262,7 +283,9 @@ Contents in div group.
 &lt;/details&gt;</code></pre>
 </figure>
 <h3 id="precodekbdsamp"><i>pre</i>, <i>code</i>, <i>kbd</i>, <i>samp</i> グループ</h3>
-<p><i>pre</i>, <i>code</i>, <i>kbd</i>, <i>samp</i> グループは、特別な機能を持つグループです。これらのグループ内にあるテキストは、改行するための構文 <code>~</code> を使わなくても、そのまま改行されます。また、テキストに含まれる KARAS の構文は変換されず、 <i>&lt;</i> や <i>&gt;</i> などの特定の文字は文字参照に変換されます。</p>
+<p><i>pre</i>, <i>code</i>, <i>kbd</i>, <i>samp</i> グループは、特別な機能を持つグループです。
+これらのグループ内にあるテキストは、改行するための構文 <code>~</code> を使わなくても、そのまま改行されます。
+また、テキストに含まれる KARAS の構文は変換されず、 <i>&lt;</i> や <i>&gt;</i> などの特定の文字は文字参照に変換されます。</p>
 <figure>
 <figcaption>Input</figcaption>
 <pre class="karas"><code class="karas">{{pre
@@ -279,7 +302,8 @@ Preformatted text.
 &amp;lt;tag&amp;gt;Text in tag.&amp;lt;/tag&amp;gt;
 &lt;/pre&gt;</code></pre>
 </figure>
-<p><i>code</i>, <i>kbd</i>, <i>samp</i> グループの出力は、 <i>pre</i> グループ(要素)が合わせて出力されます。オプションで追加したグループ名 (class名) は、 <i>pre</i> と <i>code</i> (<i>kbd</i>, <i>samp</i>) の両方に追加されます。</p>
+<p><i>code</i>, <i>kbd</i>, <i>samp</i> グループの出力は、 <i>pre</i> グループ(要素)が合わせて出力されます。
+オプションで追加したグループ名 (class名) は、 <i>pre</i> と <i>code</i> (<i>kbd</i>, <i>samp</i>) の両方に追加されます。</p>
 <figure>
 <figcaption>Input</figcaption>
 <pre class="karas"><code class="karas">{{code :: lang-c

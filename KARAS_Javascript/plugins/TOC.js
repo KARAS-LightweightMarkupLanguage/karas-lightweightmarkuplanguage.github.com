@@ -29,9 +29,12 @@
 
 KARAS.toc = new Object();
 
-KARAS.toc.action = function(text, options)
+KARAS.toc.action = function(options, markedupText, text)
 {
-    //match group index.
+    // Remove heading syntax in pre element.
+    text = KARAS.replaceTextInPreElement(text, "=", "");
+
+    // match group index.
     var mgiAllText = 0;
     var mgiMarks = 1;
     var mgiMarkedupText = 2;
@@ -104,7 +107,8 @@ KARAS.toc.action = function(text, options)
                 }
 
                 var markedupText = KARAS.convertInlineMarkup(match[mgiMarkedupText]);
-                var markedupTexts = KARAS.splitOptions(markedupText);
+                var splitResult = KARAS.splitOptions(markedupText, false);
+                var markedupTexts = splitResult.options;
                 var itemText = markedupTexts[0];
 
                 if (markedupTexts.length > 1)

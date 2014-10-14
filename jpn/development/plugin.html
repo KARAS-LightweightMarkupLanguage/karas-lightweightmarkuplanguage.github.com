@@ -62,7 +62,7 @@ ga('send', 'pageview');
                 <li><a href="../license.html" title="License">License</a></li>
                 <li><a href="../development/index.html" title="Development">Development</a></li>
                 <li><a href="../donation.html" title="Donation">Donation</a></li>
-                <li><a href="../information.html" title="Donation">Information</a></li>
+                <li><a href="../information.html" title="Information">Information</a></li>
             </ul>
             <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
             <!-- KARAS_Side_160x600 -->
@@ -73,18 +73,22 @@ ga('send', 'pageview');
             <script>
             (adsbygoogle = window.adsbygoogle || []).push({});
             </script>
-        </div>
+         </div>
         <div id="maincolumn">
             <div id="pageinfo">
-                <div id ="topicpath"><a href="../index.html">Top</a>&nbsp;&gt;&nbsp;<a href="../development/index.html">Development</a>&nbsp;&gt;&nbsp;<a href="plugin.html">Plugin</a></div>
-                <div id="lastmodified">Last modified : 2014. 06. 13</div>
+                <nav id ="topicpath"><a href="../index.html">Top</a>&nbsp;&gt;&nbsp;<a href="../development/index.html">Development</a>&nbsp;&gt;&nbsp;<a href="plugin.html">Plugin</a></nav>
+                <div id="lastmodified">Last modified : 2014. 10. 13</div>
             </div>
             <article>
             <h1 id="plugin">Plugin</h1>
 <p>ここではプラグイン (Plugin Syntax) の開発について解説します。</p>
 <ul>
 <li><a href="#directoryfile">ディレクトリとファイル</a></li>
-<li><a href="#pluginsyntax">Plugin Syntax</a></li>
+<li><a href="#pluginsyntax">Plugin Syntax</a>
+<ul>
+<li>大文字小文字は考慮してはならない</li>
+<li>パラメータの指定</li>
+</ul>
 <li><a href="#developplugin">プラグインの実装方法</a></li>
 <li><a href="#convertplugin">Convert type Plugin</a></li>
 <li><a href="#actionplugin">Action type Plugin</a></li>
@@ -96,64 +100,92 @@ ga('send', 'pageview');
 </li>
 </ul>
 <h2 id="directoryfile">ディレクトリとファイル</h2>
-<p>プラグインディレクトリの名前は <code>plugins</code> を推奨しています。また、プラグインディレクトリは、KARAS の実行ファイルと同じ階層に置くことを推奨しています。ただし、あなたのシステムが持つ既存の設定がこれらのルールと衝突する場合には、変更しても良いです。標準のコンバータでは、ディレクトリ名とそのパスを変更するためには、ソースコードを直接修正する必要があります。</p>
-<p>プラグインのファイル名は、そのプラグインの、<i>class</i> あるいは <i>module</i> などの名前と、等しい必要があります。ファイル名が大文字であるか小文字であるかは考慮されます。例えば、名前が <i>Sample</i> というプラグインは、 <i>Sample.ext</i> というファイル名である必要があります。このとき、 <i>class</i> あるいは <i>module</i> の名前は、<i>Sample</i> となります。あなたのシステムがこの命名規則によって問題を持つときは、この規則を変更することができます。標準のコンバータでは、命名規則を変更するためには、ソースコードを直接修正する必要があります。</p>
+<p>プラグインディレクトリの名前は <code>plugins</code> を推奨しています。
+また、プラグインディレクトリは、KARAS の実行ファイルと同じ階層に置くことを推奨しています。
+ただし、あなたのシステムが持つ既存の設定がこれらのルールと衝突する場合には、変更しても良いです。
+標準のコンバータでは、ディレクトリ名とそのパスを変更するためには、ソースコードを直接修正する必要があります。</p>
+<p>プラグインのファイル名は、そのプラグインの、<i>class</i> あるいは <i>module</i> などの名前と、等しい必要があります。
+ファイル名が大文字であるか小文字であるかは考慮されます。
+例えば、名前が <i>Sample</i> というプラグインは、 <i>Sample.ext</i> というファイル名である必要があります。
+このとき、 <i>class</i> あるいは <i>module</i> の名前は、<i>Sample</i> となります。
+あなたのシステムがこの命名規則によって問題を持つときは、この規則を変更することができます。
+標準のコンバータでは、命名規則を変更するためには、ソースコードを直接修正する必要があります。</p>
 <div class="note">
-<p>ただし、Javascript ver. の名前空間はこの限りではありません。アルゴリズムが複雑化することを避けるため、名前空間は小文字で定義されます。詳細は、Javascript ver. のプラグインのソースコードを読んでください。</p>
+<p>ただし、Javascript ver. の名前空間はこの限りではありません。
+アルゴリズムが複雑化することを避けるため、名前空間は小文字で定義されます。
+詳細は、Javascript ver. のプラグインのソースコードを読んでください。</p>
 </div>
 <h2 id="pluginsyntax">Plugin Syntax</h2>
 <p>KARAS では、Plugin の構文は、次のように定められています。</p>
 <figure>
 <figcaption>Convert type plugin (Level1)</figcaption>
-<pre class="karas"><code class="karas">[[ PluginName :: option1 :: option2... :: markedupText]]</code></pre>
+<pre class="karas"><code class="karas">[[ PluginName :: option1 :: option2... ::: markedupText]]</code></pre>
 </figure>
 <figure>
 <figcaption>Action type plugin (Level2)</figcaption>
-<pre class="karas"><code class="karas">[[[ PluginName :: option1 :: option2...]]]</code></pre>
+<pre class="karas"><code class="karas">[[[ PluginName :: option1 :: option2... ::: markedupText]]]</code></pre>
 </figure>
-<ul>
-<li><strong><code>PluginName</code> は大文字と小文字を無視します。</strong>大文字の場合も小文字の場合も、同じプラグインが呼び出されるようにしてください。</li>
-<li>オプションは必ず <code>::</code> で区切ります。 <code>,</code> などを使って区切ることは推奨されません。</li>
-<li>処理を変更するために <code>option1 - optionX</code> に与える文字列は、大文字か小文字かを考慮してはいけません。
-<ul>
-<li>例えば、<code>true</code> / <code>false</code> を指定するとき、<code>TRUE</code> / <code>FALSE</code> でも同じ結果が得られなければいけません。</li>
-</ul>
-</li>
-<li>パラメータではない、マークアップされたテキストをオプションにするときは、最後のオプションに設定する設定しなければいけません。</li>
-</ul>
+<h3>大文字小文字は考慮してはならない</h3>
+<p><strong><code>PluginName</code> は大文字と小文字を無視します。</strong>
+大文字の場合も小文字の場合も、同じプラグインが呼び出されるようにしてください。</p>
+<p>プラグインの処理を変更するために <code>option1 - optionX</code> に与える文字列は、
+大文字か小文字かを考慮してはいけません。例えば、<code>true</code> / <code>false</code> を指定するとき、
+<code>TRUE</code> / <code>FALSE</code> でも同じ結果が得られなければいけません。</p>
+<h3>パラメータの指定</h3>
+<p>オプションは必ず <code>::</code> で区切ります。 <code>,</code> などを使って区切ることは禁止されています。
+パラメータではない、KARAS によってマークアップされたテキストを指定する場合は、
+オプションの最後に <code>:::</code> によって1度だけ追加できます。</p>
 <h2 id="developplugin">プラグインの実装方法</h2>
-<p>標準のコンバータでは、プラグインの構文は、KARAS の他の構文が変換されるよりも前に変換されます。KARAS 以外の構文が、プラグインの中で書かれることがあるためです。例えば LaTeX はその1つです。ふつう、システムはこのような実装になると思います。しかし、もしも必要なら、変換する順序を変更しても良いです。プラグインを実装するとき、その実装方法は制限されません。プラグイン構文のフォーマットだけを守る必要があります。</p>
+<p>標準のコンバータでは、プラグインの構文は、KARAS の他の構文が変換されるよりも前に変換されます。
+KARAS 以外の構文が、プラグインの中で書かれることがあるためです。例えば LaTeX はその1つです。
+ふつう、システムはこのような実装になると思います。しかし、もしも必要なら、変換する順序を変更しても良いです。
+プラグインを実装するとき、その実装方法は制限されません。プラグイン構文のフォーマットだけを守る必要があります。</p>
 <h2 id="convertplugin">Convert type Plugin</h2>
 <p>Convert type plugin は、あるマークアップされたテキストから新しいテキストを出力するためのプラグインです。</p>
 <figure>
 <figcaption>Syntax</figcaption>
-<pre class="karas"><code class="karas">[[PluginName::markedupText :: options0 :: options1 :: ･･･]]</code></pre>
+<pre class="karas"><code class="karas">[[PluginName :: options0 :: options1 :: ･･･ :: markedupText]]</code></pre>
 </figure>
 <figure>
 <figcaption>Implement</figcaption>
-<pre class="csharp"><code class="csharp">public static Convert(markedupText, options)
+<pre class="csharp"><code class="csharp">public static Convert(options, markedupText)
 return string</code></pre>
 </figure>
-<p>引数 <code>markedupText</code> は、プラグイン構文でマークアップされた文字列型のテキストです。引数 <code>options</code> は、プラグイン構文で、オプションとしてマークアップされた文字列型の配列です。したがって、例えば、値型などのオプションを指定するときは、プラグイン内で値型に変換する必要があります。戻り値は、マークアップされたテキストを置き換える新しいテキストです。</p>
+<p>引数 <code>markedupText</code> は、プラグイン構文でマークアップされた文字列型のテキストです。
+引数 <code>options</code> は、プラグイン構文で、オプションとしてマークアップされた文字列型の配列です。
+したがって、例えば、値型などのオプションを指定するときは、プラグイン内で値型に変換する必要があります。
+戻り値は、マークアップされたテキストを置き換える新しいテキストです。</p>
 <h2 id="actionplugin">Action type Plugin</h2>
-<p>Action type plugin は、テキスト全体を使って新しいテキストを出力するためのプラグインです。例えば、テキストに含まれる見出しをすべて探して、一覧にするようなプラグインを作ることができます。</p>
+<p>Action type plugin は、テキスト全体を使って新しいテキストを出力するためのプラグインです。
+例えば、テキストに含まれる見出しをすべて探して、一覧にするようなプラグインを作ることができます。</p>
 <figure>
 <figcaption>Syntax</figcaption>
-<pre class="karas"><code class="karas">[[[PluginName::options0 :: options1 :: ･･･]]]</code></pre>
+<pre class="karas"><code class="karas">[[[PluginName::options0 :: options1 :: ･･･ :: markedupText]]]</code></pre>
 </figure>
 <figure>
 <figcaption>Implement</figcaption>
 <pre class="csharp"><code class="csharp">public static string Action(text, options)
 return string</code></pre>
 </figure>
-<p>引数 <code>text</code> は、Action type plugin が書かれたテキストのすべての文字列です。引数 <code>options</code> は、Plugin Syntax でマークアップされた文字列型の配列です。したがって、例えば、値型などのオプションを指定するときは、プラグイン内で値型に変換する必要があります。戻り値は、マークアップされたテキストを置き換える新しいテキストです。</p>
+<p>引数 <code>text</code> は、Action type plugin が書かれたテキストのすべての文字列です。
+引数 <code>options</code> は、Plugin Syntax でマークアップされた文字列型の配列です。
+したがって、例えば、値型などのオプションを指定するときは、プラグイン内で値型に変換する必要があります。
+戻り値は、マークアップされたテキストを置き換える新しいテキストです。</p>
 <h2 id="othertips">Other tips</h2>
 <h3 id="psyntaxmars">Plugin Syntax 内の [[ と ]]</h3>
-<p>プラグイン構文の中に、プラグイン構文ではない <kbd>[[</kbd> や <kbd>]]</kbd> 記号を書くことはできません。これは、解決不可能な問題です。この問題を回避するためには、それらの記号を <code>\</code> を用いてエスケープすることができます。あるいは、そのプラグインに実装する処理によって、回避します。</p>
+<p>プラグイン構文の中に、プラグイン構文ではない <kbd>[[</kbd> や <kbd>]]</kbd> 記号を書くことはできません。
+これは、解決不可能な問題です。この問題を回避するためには、それらの記号を <code>\</code> を用いてエスケープすることができます。
+あるいは、そのプラグインに実装する処理によって、回避します。</p>
 <h3 id="tofastconvert">高速な変換のために</h3>
-<p>高速な変換が必要なとき、プラグインはあらかじめコンパイルされていることが重要です。例えば Wiki のようなシステムでプラグインを利用するとき、システムの起動時にコンパイルするのは良い方法です。あるいは、変換した HTML をキャッシュすることが考えられます。</p>
-<p>C# や Java などの言語は、実行時のコンパイルがとても遅いです。そのような状況では、コンパイル済みのプラグインを利用するかもしれません。ただし、それを利用するときは注意が必要です。コンパイル済みのプラグインはソースコードが読めません。したがって、あなた以外のユーザが開発したコンパイル済みのプラグインを利用するとき、それは悪質なコードを出力するかもしれません。</p>
-<p>この問題を解決するには、プラグインのソースコードを公開し、ユーザによってコンパイルされる必要があります。開発者は、公開方法について注意する必要があります。</p>
+<p>高速な変換が必要なとき、プラグインはあらかじめコンパイルされていることが重要です。
+例えば Wiki のようなシステムでプラグインを利用するとき、システムの起動時にコンパイルするのは良い方法です。
+あるいは、変換した HTML をキャッシュすることが考えられます。</p>
+<p>C# や Java などの言語は、実行時のコンパイルがとても遅いです。
+そのような状況では、コンパイル済みのプラグインを利用するかもしれません。
+ただし、それを利用するときは注意が必要です。コンパイル済みのプラグインはソースコードが読めません。
+したがって、あなた以外のユーザが開発したコンパイル済みのプラグインを利用するとき、それは悪質なコードを出力するかもしれません。</p>
+<p>この問題を解決するには、プラグインのソースコードを公開し、ユーザによってコンパイルされる必要があります。
+開発者は、公開方法について注意する必要があります。</p>
             </article>
             <footer>
 <p><small><a href="http://lightweightmarkuplanguage.com">&copy; KARAS - Lightweight Markup Language</a></small></p>

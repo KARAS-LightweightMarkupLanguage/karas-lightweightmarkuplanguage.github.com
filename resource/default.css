@@ -149,11 +149,15 @@ div#maincolumn
     height: 100%;
 }
 
-div#lastmodified
+#topicpath
+{
+    display: block;
+}
+
+#lastmodified
 {
     float: right;
     position: relative;
-    top: 2em;
 }
 
 article

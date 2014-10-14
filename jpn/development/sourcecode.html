@@ -62,7 +62,7 @@ ga('send', 'pageview');
                 <li><a href="../license.html" title="License">License</a></li>
                 <li><a href="../development/index.html" title="Development">Development</a></li>
                 <li><a href="../donation.html" title="Donation">Donation</a></li>
-                <li><a href="../information.html" title="Donation">Information</a></li>
+                <li><a href="../information.html" title="Information">Information</a></li>
             </ul>
             <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
             <!-- KARAS_Side_160x600 -->
@@ -73,28 +73,34 @@ ga('send', 'pageview');
             <script>
             (adsbygoogle = window.adsbygoogle || []).push({});
             </script>
-        </div>
+         </div>
         <div id="maincolumn">
             <div id="pageinfo">
-                <div id ="topicpath"><a href="../index.html">Top</a>&nbsp;&gt;&nbsp;<a href="../development/index.html">Development</a>&nbsp;&gt;&nbsp;<a href="sourcecode.html">Source code</a></div>
-                <div id="lastmodified">Last modified : 2014. 06. 13</div>
+                <nav id ="topicpath"><a href="../index.html">Top</a>&nbsp;&gt;&nbsp;<a href="../development/index.html">Development</a>&nbsp;&gt;&nbsp;<a href="sourcecode.html">Source code</a></nav>
+                <div id="lastmodified">Last modified : 2014. 10. 13</div>
             </div>
             <article>
             <h1 id="sourcecode">Source code</h1>
-<p>KARAS の標準のコンバータは、アルゴリズムやそのソースコードを複数の言語で共有するようにコーディングされています。したがって、各言語や環境下において最適化されていません。ソースコードは少なくない冗長性を持っています。言い換えれば、ソースコードは最も簡単な方法で書かれていて、必要なときに直ぐに変更することができます。</p>
+<p>KARAS の標準のコンバータは、アルゴリズムやそのソースコードを複数の言語で共有するようにコーディングされています。
+したがって、各言語や環境下において最適化されていません。ソースコードは少なくない冗長性を持っています。
+言い換えれば、ソースコードは最も簡単な方法で書かれていて、必要なときに直ぐに変更することができます。</p>
 <p>このページでは KARAS の標準のコンバータが使うコーディングルールの一部を紹介します。</p>
 <div class="note">
-<p>アルゴリズムは将来的に改善される可能性があります。しかし、各言語や環境に対しての最適化は今後も行われないでしょう。</p>
+<p>アルゴリズムは将来的に改善される可能性があります。
+しかし、各言語や環境に対しての最適化は今後も行われないでしょう。</p>
 </div>
 <ul>
 <li><a href="#codecolumn">Code column</a></li>
 <li><a href="#namingrule">Naming rule</a></li>
-<li><a href="#operator">Operator</a></li>
 <li><a href="#regex">Regex</a></li>
+<li><a href="#codeblock">Code block marks</a></li>
+<li><a href="#operator">Operator</a></li>
+<li><a href="#overload">Overload</a></li>
 <li><a href="#others">Others</a></li>
 </ul>
 <h2 id="codecolumn">Code column</h2>
-<p>言語や標準クラスライブラリの制約がない限り、1行に含まれる文字は 100 に制限しています。改行の位置については、状況によって変わります。</p>
+<p>言語や標準クラスライブラリの制約がない限り、1行に含まれる文字はおよそ 100 に制限しています。
+改行の位置については、状況によって変わります。</p>
 <h2 id="namingrule">Naming rule</h2>
 <p>言語や標準クラスライブラリの制約がない限り、クラス名などは、次のルールで名前がつけられます。</p>
 <ul>
@@ -105,16 +111,27 @@ ga('send', 'pageview');
 </li>
 <li>関数、インスタンス変数、ローカル変数 は lowerCamel case で命名されます。</li>
 </ul>
-<p>Ruby などのいくつかの言語が、慣習的に snake_case を使うことを知っていますが、KARAS のあらゆるコードは、snake_case を使いません。</p>
+<p>Ruby などのいくつかの言語が、慣習的に snake_case を使うことを知っていますが、
+KARAS のあらゆるコードは、snake_case を使いません。</p>
 <p>Javascript は、外部ファイルを読み込む方法が制限されていることから、クラス名はすべて小文字で定義されています。</p>
-<h2 id="operator">Operator</h2>
-<p>インクリメント/デクリメントのために、<code>++</code> / <code>--</code> を使いません。Ruby がこの方法に対応していないためです。</p>
-<p><code>if</code> を用いて 値を確認するときは、必ず <code>==</code> を書きます。また、Ruby では <code>unless</code> を使いません。</p>
 <h2 id="regex">Regex</h2>
-<p>ECMAscript(Javascript) が正規表現の戻り読みを持っていないため、戻り読みを使っていません。同じ理由で、名前付けされたキャプチャグループも使っていません。</p>
+<p>ECMAscript(Javascript) が正規表現の戻り読みを持っていないため、戻り読みを使っていません。
+同じ理由で、名前付けされたキャプチャグループも使っていません。</p>
+<h2 id="codeblock">Code block marks</h2>
+<p><code>if</code>, <code>for</code>, <code>try</code> などのコードブロックを示す記号
+<code>{</code> と <code>}</code> は、どんな状況においても省略しません。
+省略を許可すると、許可する場合と許可しない場合を設定する必要があるためです。</p>
+<h2 id="operator">Operator</h2>
+<p>インクリメント/デクリメントのために、<code>++</code> / <code>--</code> を使いません。
+Ruby がこの方法に対応していないためです。</p>
+<p><code>if</code> を用いて 値を確認するときは、必ず <code>==</code> を書きます。
+また、Ruby では <code>unless</code> を使いません。</p>
+<h2 id="overload">Overload</h2>
+<p>原則として、オーバーロードは利用しません。いくつかの言語で仕様が異なるためです。
+したがって、引数の省略はできません。</p>
 <h2 id="others">Others</h2>
-<p>列挙型、ラムダ、匿名クラスは使われません。これらは処理の効率化やよりセキュアな設計のために使うことができます。しかしながら標準のコードがこれらを使うことはありません。</p>
-<p><code>if</code>, <code>for</code>, <code>try</code> などのコードブロックを示す記号 <code>{</code> と <code>}</code> は、どんな状況においても省略しません。</p>
+<p>列挙型、ラムダ、匿名クラスは使われません。これらは処理の効率化やよりセキュアな設計のために使うことができます。
+しかしながら標準のコードがこれらを使うことはありません。</p>
             </article>
             <footer>
 <p><small><a href="http://lightweightmarkuplanguage.com">&copy; KARAS - Lightweight Markup Language</a></small></p>

@@ -62,7 +62,7 @@ ga('send', 'pageview');
                 <li><a href="../license.html" title="License">License</a></li>
                 <li><a href="../development/index.html" title="Development">Development</a></li>
                 <li><a href="../donation.html" title="Donation">Donation</a></li>
-                <li><a href="../information.html" title="Donation">Information</a></li>
+                <li><a href="../information.html" title="Information">Information</a></li>
             </ul>
             <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
             <!-- KARAS_Side_160x600 -->
@@ -73,17 +73,19 @@ ga('send', 'pageview');
             <script>
             (adsbygoogle = window.adsbygoogle || []).push({});
             </script>
-        </div>
+         </div>
         <div id="maincolumn">
             <div id="pageinfo">
-                <div id ="topicpath"><a href="../index.html">Top</a>&nbsp;&gt;&nbsp;<a href="../syntax/index.html">Syntax</a>&nbsp;&gt;&nbsp;<a href="pluginsyntax.html">Plugin Syntax</a></div>
-                <div id="lastmodified">Last modified : 2014. 06. 13</div>
+                <nav id ="topicpath"><a href="../index.html">Top</a>&nbsp;&gt;&nbsp;<a href="../syntax/index.html">Syntax</a>&nbsp;&gt;&nbsp;<a href="pluginsyntax.html">Plugin Syntax</a></nav>
+                <div id="lastmodified">Last modified : 2014. 10. 14</div>
             </div>
             <article>
             <h1>Plugin Syntax</h1>
-<p>KARAS は、標準的な構文とは別に、特別な構文を持っています。それらの構文は"プラグイン構文"と呼びます。プラグイン構文はマークアップのためではない、特別な機能を実行することができます。</p>
+<p>KARAS は標準的な構文とは異なる特別な構文を持っています。それらの構文は"プラグイン構文"と呼びます。
+プラグイン構文はマークアップのためではない、特別な機能を実行することができます。</p>
 <div class="note">
-<p>プラグイン構文は、そのプラグインが導入されたシステム (KARAS) でなければ使うことができません。そのシステムが持つ、特別な構文です。</p>
+<p>プラグイン構文は、そのプラグインが導入されたシステム (KARAS) でなければ使うことができません。
+そのシステムが持つ特別な構文です。</p>
 </div>
 <ul>
 <li><a href="#description">Description</a></li>
@@ -96,23 +98,39 @@ ga('send', 'pageview');
 </li>
 </ul>
 <h2 id="description">Description</h2>
-<p>プラグイン構文はテキストを <code>[[</code> と <code>]]</code> で閉じます。プラグイン構文には2つの種類があります。レベル1のプラグイン構文は"コンバート型 (Convert type)" と呼ばれます。そして、レベル2のプラグイン構文は"アクション型 (Action type)"と呼ばれます。</p>
+<p>プラグイン構文はテキストを <code>[[</code> と <code>]]</code> で閉じます。
+プラグイン構文には2つの種類があります。レベル1のプラグイン構文は"コンバート型 (Convert type)" と呼ばれます。
+そして、レベル2のプラグイン構文は"アクション型 (Action type)"と呼ばれます。</p>
 <dl>
 <dt><b>Convert type plugin (Level1)</b></dt>
-<dd><pre class="karas"><code class="karas">[[ PluginName :: option1 :: option2... :: markedupText]]</code></pre></dd>
+<dd><pre class="karas"><code class="karas">[[ PluginName :: option1 :: option2... ::: markedupText]]</code></pre></dd>
 <dt><b>Action type plugin (Level2)</b></dt>
-<dd><pre class="karas"><code class="karas">[[[ PluginName :: option1 :: option2...]]]</code></pre></dd>
+<dd><pre class="karas"><code class="karas">[[[ PluginName :: option1 :: option2... ::: markedupText]]]</code></pre></dd>
 </dl>
-<p>プラグイン構文は必ずプラグイン名を1つ目のオプションに指定します。オプションは、<code>::</code> で区切られます。指定したプラグイン名によって、処理の内容が変わります。プラグイン名は大文字であるか小文字であるかを考慮しません。</p>
-<p>コンバート型のプラグインは、ある本文テキストを装飾したり、変換したりするために使います。例えば、他のフォーマットで書かれたテキストを変換するために使うことができます。コンバート型のプラグインでは、変換するテキストは、オプションの最後に指定する必要があります。</p>
-<p>アクション型のプラグインは、そのテキストの全ての内容を使った結果を得るために使います。例えば、目次 <i>TOC</i> (Table Of Contents) のために使います。あるいは、システムに命令を出すために使うことができます。例えば、コメント欄を挿入したり、ページを非公開にしたりするために使うことができます。</p>
+<p>プラグイン構文はプラグイン名を1つ目のオプションに必ず指定します。オプションは、<code>::</code> で区切られます。
+指定したプラグイン名によって、処理の内容が変わります。プラグイン名は大文字であるか小文字であるかを考慮しません。</p>
+<p>コンバート型のプラグインは、ある本文テキストを装飾したり、変換したりするために使います。
+例えば、他のフォーマットで書かれたテキストを変換するために使うことができます。
+また、KARAS によってマークアップされたテキストを含めるときは、オプションの最後に <code>:::</code> を使って指定します。
+これより後に記述された <var>::</var> と <var>:::</var> どは無視されます。</p>
+<p>アクション型のプラグインは、そのテキストの全ての内容を使った結果を得るために使います。
+例えば、目次 <i>TOC</i> (Table Of Contents) のために使います。
+あるいは、システムに命令を出すために使うことができます。
+例えば、コメント欄を挿入したり、ページを非公開にしたりするために使うことができます。
+また、コンバート型のプラグインと同様に、オプションに KARAS によってマークアップされたテキストを含めるときは、<code>:::</code> を使います。</p>
 <h2 id="sampleplugin">Sample plugin</h2>
 <p>KARAS の標準のコンバータに含まれるいくつかのプラグインについて解説します。</p>
 <h3 id="nowediting">NowEditiong</h3>
-<p><i>NowEditing</i> プラグインは、テキストを出力から削除して、代わりに、 "Now Editing" のテキストを表示するプラグインです。 レベル1 (Convert type) では、オプションとして指定されたテキストを削除します。レベル2 (Action type) では、そのページのすべてのテキストを削除します。</p>
+<p><i>NowEditing</i> プラグインは、テキストを出力から削除して、
+代わりに、 "Now Editing" のテキストを表示するプラグインです。 
+レベル1 (Convert type) では、オプションとして指定されたテキストを削除します。
+レベル2 (Action type) では、そのページのすべてのテキストを削除します。</p>
 <figure>
 <figcaption>Input</figcaption>
-<pre class="karas"><code class="karas">[[nowediting :: sample text.]]
+<pre class="karas"><code class="karas">[[nowediting :::
+sample text 1.
+sample text 2.
+]]
 [[[nowediting]]]</code></pre>
 </figure>
 <figure>
@@ -121,14 +139,16 @@ ga('send', 'pageview');
 &lt;p&gt;&lt;span style=\&#34;font-size:300%;\&#34;&gt;&lt;b&gt; Now Editing. &lt;/b&gt;&lt;/span&gt;&lt;/p&gt;</code></pre>
 </figure>
 <h3 id="mark">Mark</h3>
-<p><i>Mark</i> プラグインは、指定したテキストを <i>Mark</i> タグで閉じるプラグインです。 <i>Mark</i> プラグインはレベル1 (Convert type) の構文しか持ちません。レベル2 (Action type) として実行すると、エラーテキストを返します。 オプションを2つ指定するとき、1つ目のオプションにマークアップする色を指定することができます。</p>
+<p><i>Mark</i> プラグインは、指定したテキストを <i>Mark</i> タグで閉じるプラグインです。
+<i>Mark</i> プラグインはレベル1 (Convert type) の構文しか持ちません。
+レベル2 (Action type) として実行すると、エラーテキストを返します。 オプションを2つ指定するとき、1つ目のオプションにマークアップする色を指定することができます。</p>
 <div class="note">
 <p>KARAS は <i>Mark</i> 要素を出力するための構文を持っていません。</p>
 </div>
 <figure>
 <figcaption>Input</figcaption>
-<pre class="karas"><code class="karas">[[mark :: markedup text.]]
-[[mark :: red :: markedup text.]]</code></pre>
+<pre class="karas"><code class="karas">[[mark ::: markedup text.]]
+[[mark :: red ::: markedup text.]]</code></pre>
 </figure>
 <figure>
 <figcaption>Output</figcaption>
@@ -136,7 +156,13 @@ ga('send', 'pageview');
 &lt;mark style=&#34;background-color:red;&#34;&gt;markedupText&lt;/mark&gt;</code></pre>
 </figure>
 <h3 id="tableofc">TOC (Table Of Contents)</h3>
-<p>TOC プラグインは、ページに含まれる見出しをリストにして出力するプラグインです。 TOC プラグインはレベル2 (Action type) しか持ちません。レベル1 (Convert type) として実行すると、実行エラーのテキストが得られます。 オプションを1つ指定するとき、1つ目のオプションにリストにする見出しの最小レベルを指定します。2 を指定するとき、レベル1の見出しはリストに含まれません。オプションを2つ指定するとき、リストにする見出しの最大レベルを指定します。3 を指定するとき、レベル 4, 5, 6 の見出しはリストに含まれません。</p>
+<p>TOC プラグインは、ページに含まれる見出しをリストにして出力するプラグインです。
+TOC プラグインはレベル2 (Action type) しか持ちません。
+レベル1 (Convert type) として実行すると、実行エラーのテキストが得られます。
+オプションを1つ指定するとき、1つ目のオプションにリストにする見出しの最小レベルを指定します。
+2 を指定するとき、レベル1の見出しはリストに含まれません。
+オプションを2つ指定するとき、リストにする見出しの最大レベルを指定します。
+3 を指定するとき、レベル 4, 5, 6 の見出しはリストに含まれません。</p>
 <figure>
 <figcaption>Input</figcaption>
 <pre class="karas"><code class="karas">= Level1
